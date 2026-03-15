@@ -33,19 +33,21 @@
   <p>Stručni članci, savjeti i informacije o zdravlju žena na bosanskom jeziku.</p>
 </div>
 
-<!-- Category Filter Chips -->
-{% if categories %}
+<!-- Filter Chips -->
 <div class="cms-category-chips">
-  <a href="/blog/" class="cms-category-chip {% if not active_category %}active{% endif %}">Sve kategorije</a>
+  <a href="/blog/" class="cms-category-chip {% if not active_category and not active_cluster %}active{% endif %}">Sve kategorije</a>
   {% for cat in categories %}
   <a href="/blog/?category={{ cat.slug }}" class="cms-category-chip {% if active_category == cat.slug %}active{% endif %}">{{ cat.name }}</a>
   {% endfor %}
+  {% for cl in clusters %}
+  <a href="/blog/?cluster={{ cl.slug }}" class="cms-category-chip cms-cluster-chip {% if active_cluster == cl.slug %}active{% endif %}">{{ cl.name }}</a>
+  {% endfor %}
 </div>
-{% endif %}
 
 <!-- Post Grid -->
-{% if posts %}
+{% if posts or ai_posts %}
 <div class="cms-post-grid">
+
   {% for post in posts %}
   <article class="cms-post-card">
     {% if post.cover_image %}
@@ -55,7 +57,6 @@
     {% else %}
     <div class="cms-post-card-img-placeholder">&#9792;</div>
     {% endif %}
-
     <div class="cms-post-card-body">
       {% if post.categories.all %}
       <div class="cms-post-card-cats">
@@ -64,13 +65,10 @@
         {% endfor %}
       </div>
       {% endif %}
-
       <h2 class="cms-post-card-title">
         <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
       </h2>
-
       <p class="cms-post-card-excerpt">{{ post.computed_excerpt|truncatechars:140 }}</p>
-
       <div class="cms-post-card-footer">
         <span>{% if post.author_name %}{{ post.author_name }}{% endif %}</span>
         <a href="{{ post.get_absolute_url }}" class="cms-post-card-read-more">Čitaj više &rarr;</a>
@@ -78,10 +76,32 @@
     </div>
   </article>
   {% endfor %}
+
+  {% for post in ai_posts %}
+  <article class="cms-post-card">
+    <div class="cms-post-card-img-placeholder">&#9792;</div>
+    <div class="cms-post-card-body">
+      {% if post.cluster %}
+      <div class="cms-post-card-cats">
+        <a href="/blog/?cluster={{ post.cluster }}" class="cms-post-cat-badge">{{ post.cluster|title }}</a>
+      </div>
+      {% endif %}
+      <h2 class="cms-post-card-title">
+        <a href="/blog/{{ post.slug }}/">{{ post.title }}</a>
+      </h2>
+      <p class="cms-post-card-excerpt">{{ post.intro|truncatechars:140 }}</p>
+      <div class="cms-post-card-footer">
+        <span>ŽenskoZdravlje.ba Tim</span>
+        <a href="/blog/{{ post.slug }}/" class="cms-post-card-read-more">Čitaj više &rarr;</a>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+
 </div>
 {% else %}
 <div style="text-align:center;padding:4rem 2rem;color:var(--d-gray-500);">
-  <p style="font-size:1.1rem;">Još nema članaka. Uskoro!</p>
+  <p style="font-size:1.1rem;">Još nema članaka u ovoj kategoriji.</p>
 </div>
 {% endif %}
 {% endblock %}

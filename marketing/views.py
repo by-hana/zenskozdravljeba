@@ -41,6 +41,7 @@ def page_detail(request, slug):
 
 def blog_index(request):
     category_slug = request.GET.get('category', '')
+    cluster_slug = request.GET.get('cluster', '')
 
     # Existing Post objects
     posts_qs = Post.objects.filter(status__in=['published', 'scheduled']).order_by('-publish_at')
@@ -48,32 +49,42 @@ def blog_index(request):
         posts_qs = posts_qs.filter(categories__slug=category_slug)
     posts = [post for post in posts_qs if post.is_published]
 
-    # AI BlogPost objects (no category filter for now)
+    # AI BlogPost objects — filter by cluster if requested
     ai_posts_qs = BlogPost.objects.filter(status='published').order_by('-published_at')
-    if not category_slug:
-        ai_posts_qs = ai_posts_qs[:20]  # limit on blog index
-    else:
+    if cluster_slug:
+        ai_posts_qs = ai_posts_qs.filter(cluster=cluster_slug)
+        posts = []  # hide old CMS posts when filtering by cluster
+    elif category_slug:
         ai_posts_qs = ai_posts_qs.none()
+
+    # Clusters that have at least one published post
+    from django.db.models import Count
+    clusters_qs = (
+        BlogPost.objects.filter(status='published')
+        .values('cluster')
+        .annotate(count=Count('id'))
+        .order_by('cluster')
+    )
+    clusters = [{'slug': c['cluster'], 'name': c['cluster'].replace('-', ' ').title(), 'count': c['count']} for c in clusters_qs]
 
     categories = Category.objects.all()
     nav = NavMenu.objects.filter(name='Primary').first()
     footer = Footer.objects.first()
 
-    ai_post_count = BlogPost.objects.filter(status='published').count()
-
     return render(request, 'marketing/blog_index.html', {
         'posts': posts,
         'ai_posts': list(ai_posts_qs),
-        'ai_post_count': ai_post_count,
         'categories': categories,
+        'clusters': clusters,
         'active_category': category_slug,
+        'active_cluster': cluster_slug,
         'nav_menu': nav,
         'footer': footer,
         'seo': {
-            'title': 'Blog o zenskom zdravlju | ZenskoZdravlje.ba',
-            'description': 'Strucni clanci i informacije o zenskom zdravlju: PCOS, hormoni, ginekologija, trudnoca, ishrana i mentalno zdravlje.',
-            'og_title': 'Blog o zenskom zdravlju | ZenskoZdravlje.ba',
-            'og_description': 'Strucni clanci o zenskom zdravlju: PCOS, hormoni, ginekologija, trudnoca i mentalno zdravlje.',
+            'title': 'Blog o ženskom zdravlju | ŽenskoZdravlje.ba',
+            'description': 'Stručni članci i informacije o ženskom zdravlju: PCOS, hormoni, ginekologija, trudnoća, ishrana i mentalno zdravlje.',
+            'og_title': 'Blog o ženskom zdravlju | ŽenskoZdravlje.ba',
+            'og_description': 'Stručni članci o ženskom zdravlju: PCOS, hormoni, ginekologija, trudnoća i mentalno zdravlje.',
             'image': None,
         },
     })
