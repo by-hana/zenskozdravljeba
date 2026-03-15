@@ -138,7 +138,13 @@ Vrati ISKLJUCIVO JSON (bez markdown, bez komentara):
 Sve na bosanskom latinicnom pismu."""
 
     max_tokens = 5000 if is_pillar else 3500
-    return _call_api(client, prompt, max_tokens=max_tokens)
+    outline = _call_api(client, prompt, max_tokens=max_tokens)
+    # Restore diacritics on string fields
+    for field in ('title', 'meta_title', 'meta_description', 'search_intent',
+                  'opening_answer', 'brand_mention', 'cta_text'):
+        if outline.get(field):
+            outline[field] = restore_diacritics(outline[field], client)
+    return outline
 
 
 # ─── Step 2: Full article ─────────────────────────────────────────────────────
@@ -286,7 +292,13 @@ Vrati ISKLJUCIVO JSON objekat (bez markdown kod blokova, bez objasnjavanja):
 }}"""
 
     max_tokens = 16000 if is_pillar else 12000
-    return _call_api(client, prompt, max_tokens=max_tokens)
+    article = _call_api(client, prompt, max_tokens=max_tokens)
+    # Restore diacritics on article text fields
+    if article.get('intro'):
+        article['intro'] = restore_diacritics(article['intro'], client)
+    if article.get('content_html'):
+        article['content_html'] = restore_diacritics(article['content_html'], client)
+    return article
 
 
 # ─── Shared API caller with retry logic ──────────────────────────────────────
@@ -320,3 +332,34 @@ def _call_api(client, prompt: str, max_tokens: int = 8000) -> dict:
                 raise
             time.sleep(5 * (attempt + 1))
     return {}
+
+
+# ─── Diacritics restoration ───────────────────────────────────────────────────
+
+def restore_diacritics(text: str, client=None) -> str:
+    """
+    Post-process text to restore proper Bosnian diacritics (č, ć, š, ž, đ).
+    Uses claude-haiku-4-5 for speed and low cost.
+    """
+    if not text:
+        return text
+    client = client or get_client()
+    # Estimate output tokens: Bosnian text grows slightly with diacritics, add buffer
+    out_tokens = min(int(len(text) * 0.4) + 1000, 8000)
+    prompt = (
+        "Dodaj ispravne bosanske dijakritičke znakove (č, ć, š, ž, đ) u sljedeći tekst. "
+        "Vrati SAMO ispravljeni tekst, bez ikakvih objašnjenja ili komentara.\n\n" + text
+    )
+    for attempt in range(3):
+        try:
+            response = client.messages.create(
+                model="claude-haiku-4-5-20251001",
+                max_tokens=out_tokens,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            return response.content[0].text.strip()
+        except Exception:
+            if attempt == 2:
+                return text
+            time.sleep(2)
+    return text
