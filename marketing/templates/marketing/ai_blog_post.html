@@ -14,7 +14,7 @@
   <div class="zz-breadcrumb-inner">
     <ol itemscope itemtype="https://schema.org/BreadcrumbList">
       <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="/"><span itemprop="name">Pocetna</span></a>
+        <a itemprop="item" href="/"><span itemprop="name">Početna</span></a>
         <meta itemprop="position" content="1">
       </li>
       <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -56,7 +56,7 @@
           <div class="zz-author-avatar">Z</div>
           <div class="zz-author-info">
             <span class="zz-author-name" itemprop="name">ZenskoZdravlje.ba Tim</span>
-            <span class="zz-author-role">Strucni tim za zensko zdravlje</span>
+            <span class="zz-author-role">Stručni tim za žensko zdravlje</span>
           </div>
         </div>
         {% if post.published_at %}
@@ -64,11 +64,6 @@
           <time itemprop="datePublished" datetime="{{ post.published_at|date:'Y-m-d' }}">
             {{ post.published_at|date:"j. F Y." }}
           </time>
-        </div>
-        {% endif %}
-        {% if post.word_count %}
-        <div class="zz-article-readtime">
-          ~ {{ post.word_count }} rijeci
         </div>
         {% endif %}
       </div>
@@ -85,7 +80,7 @@
       <!-- FAQ Section -->
       {% if post.faq_json %}
       <section class="zz-faq-section">
-        <h2>Cesto postavljana pitanja</h2>
+        <h2>Često postavljana pitanja</h2>
         <div class="zz-faq-list">
           {% for item in post.faq_json %}
           <div class="zz-faq-item">
@@ -102,7 +97,7 @@
       <!-- Key Takeaways -->
       {% if post.key_takeaways %}
       <section class="zz-takeaways">
-        <h2>Kljucni zakljucci</h2>
+        <h2>Ključni zaključci</h2>
         <ul class="zz-takeaways-list">
           {% for item in post.key_takeaways %}
           <li>{{ item }}</li>
@@ -118,7 +113,7 @@
 
       <!-- Table of Contents (JS-generated) -->
       <div class="zz-toc" id="zz-toc">
-        <div class="zz-toc-title">Sadrzaj</div>
+        <div class="zz-toc-title">Sadržaj</div>
         <nav id="zz-toc-nav"></nav>
       </div>
 
@@ -127,15 +122,14 @@
         <div class="zz-author-box-avatar">Z</div>
         <div class="zz-author-box-name">ZenskoZdravlje.ba Tim</div>
         <p class="zz-author-box-bio">
-          Strucni tim urednika, nutricionista i zdravstvenih savjetnica koji prirema
-          medicinski provjerene clanke o zenskom zdravlju.
+          Stručni tim urednika koji priprema medicinski provjerene članke o ženskom zdravlju.
         </p>
       </div>
 
       <!-- Related cluster posts -->
       {% if related_posts %}
       <div class="zz-related">
-        <div class="zz-related-title">Srodni clanci</div>
+        <div class="zz-related-title">Srodni članci</div>
         <ul class="zz-related-list">
           {% for rp in related_posts %}
           <li><a href="/blog/{{ rp.slug }}/">{{ rp.title }}</a></li>
@@ -208,7 +202,7 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Pocetna", "item": "https://www.zenskozdravljeba.com/"},
+    {"@type": "ListItem", "position": 1, "name": "Početna", "item": "https://www.zenskozdravljeba.com/"},
     {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.zenskozdravljeba.com/blog/"},
     {"@type": "ListItem", "position": 3, "name": "{{ post.title|escapejs }}", "item": "{{ request.build_absolute_uri }}"}
   ]
