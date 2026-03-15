@@ -39,9 +39,18 @@ def page_detail(request, slug):
     })
 
 
+# Maps cluster slugs → category slugs (where they differ)
+_CLUSTER_TO_CATEGORY = {
+    'koza-kosa-hormoni':       'koza-kosa-i-hormoni',
+    'plodnost-trudnoca':       'plodnost-i-trudnoca',
+    'pcos-hormonski-poremecaji': 'pcos-i-hormonski-poremecaji',
+}
+# Reverse: category slug → cluster slug
+_CATEGORY_TO_CLUSTER = {v: k for k, v in _CLUSTER_TO_CATEGORY.items()}
+
+
 def blog_index(request):
     category_slug = request.GET.get('category', '')
-    cluster_slug = request.GET.get('cluster', '')
 
     # Existing Post objects
     posts_qs = Post.objects.filter(status__in=['published', 'scheduled']).order_by('-publish_at')
@@ -49,23 +58,11 @@ def blog_index(request):
         posts_qs = posts_qs.filter(categories__slug=category_slug)
     posts = [post for post in posts_qs if post.is_published]
 
-    # AI BlogPost objects — filter by cluster if requested
+    # AI BlogPost objects — match by cluster when a category is selected
     ai_posts_qs = BlogPost.objects.filter(status='published').order_by('-published_at')
-    if cluster_slug:
+    if category_slug:
+        cluster_slug = _CATEGORY_TO_CLUSTER.get(category_slug, category_slug)
         ai_posts_qs = ai_posts_qs.filter(cluster=cluster_slug)
-        posts = []  # hide old CMS posts when filtering by cluster
-    elif category_slug:
-        ai_posts_qs = ai_posts_qs.none()
-
-    # Clusters that have at least one published post
-    from django.db.models import Count
-    clusters_qs = (
-        BlogPost.objects.filter(status='published')
-        .values('cluster')
-        .annotate(count=Count('id'))
-        .order_by('cluster')
-    )
-    clusters = [{'slug': c['cluster'], 'name': c['cluster'].replace('-', ' ').title(), 'count': c['count']} for c in clusters_qs]
 
     categories = Category.objects.all()
     nav = NavMenu.objects.filter(name='Primary').first()
@@ -75,9 +72,7 @@ def blog_index(request):
         'posts': posts,
         'ai_posts': list(ai_posts_qs),
         'categories': categories,
-        'clusters': clusters,
         'active_category': category_slug,
-        'active_cluster': cluster_slug,
         'nav_menu': nav,
         'footer': footer,
         'seo': {

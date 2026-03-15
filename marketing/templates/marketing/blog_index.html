@@ -33,16 +33,15 @@
   <p>Stručni članci, savjeti i informacije o zdravlju žena na bosanskom jeziku.</p>
 </div>
 
-<!-- Filter Chips -->
+<!-- Category Filter Chips -->
+{% if categories %}
 <div class="cms-category-chips">
-  <a href="/blog/" class="cms-category-chip {% if not active_category and not active_cluster %}active{% endif %}">Sve kategorije</a>
+  <a href="/blog/" class="cms-category-chip {% if not active_category %}active{% endif %}">Sve kategorije</a>
   {% for cat in categories %}
   <a href="/blog/?category={{ cat.slug }}" class="cms-category-chip {% if active_category == cat.slug %}active{% endif %}">{{ cat.name }}</a>
   {% endfor %}
-  {% for cl in clusters %}
-  <a href="/blog/?cluster={{ cl.slug }}" class="cms-category-chip cms-cluster-chip {% if active_cluster == cl.slug %}active{% endif %}">{{ cl.name }}</a>
-  {% endfor %}
 </div>
+{% endif %}
 
 <!-- Post Grid -->
 {% if posts or ai_posts %}
@@ -83,7 +82,7 @@
     <div class="cms-post-card-body">
       {% if post.cluster %}
       <div class="cms-post-card-cats">
-        <a href="/blog/?cluster={{ post.cluster }}" class="cms-post-cat-badge">{{ post.cluster|title }}</a>
+        <a href="/blog/?category={{ post.cluster }}" class="cms-post-cat-badge">{{ post.cluster|title }}</a>
       </div>
       {% endif %}
       <h2 class="cms-post-card-title">

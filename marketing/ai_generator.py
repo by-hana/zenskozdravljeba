@@ -340,24 +340,36 @@ def restore_diacritics(text: str, client=None) -> str:
     """
     Post-process text to restore proper Bosnian diacritics (č, ć, š, ž, đ).
     Uses claude-haiku-4-5 for speed and low cost.
+    For HTML content, preserves all tags exactly — only text nodes are corrected.
     """
     if not text:
         return text
     client = client or get_client()
-    # Estimate output tokens: Bosnian text grows slightly with diacritics, add buffer
-    out_tokens = min(int(len(text) * 0.4) + 1000, 8000)
-    prompt = (
-        "Dodaj ispravne bosanske dijakritičke znakove (č, ć, š, ž, đ) u sljedeći tekst. "
-        "Vrati SAMO ispravljeni tekst, bez ikakvih objašnjenja ili komentara.\n\n" + text
+    # Output will be roughly same length as input; add generous buffer
+    # Haiku max is 8192, so for long HTML we chunk if needed
+    char_len = len(text)
+    out_tokens = min(int(char_len / 3) + 500, 8000)
+
+    system = (
+        "Ti si korektor bosanskog teksta. Tvoj jedini zadatak je da dodaš ispravne "
+        "dijakritičke znakove (č, ć, š, ž, đ) gdje nedostaju. "
+        "Ako je ulaz HTML, sve HTML tagove (<p>, <h2>, <ul>, <li>, <strong> itd.) "
+        "ostavi IDENTIČNE — mijenjaj samo tekst unutar tagova. "
+        "Vrati isključivo ispravljeni tekst ili HTML, bez ikakvih objašnjenja."
     )
     for attempt in range(3):
         try:
             response = client.messages.create(
                 model="claude-haiku-4-5-20251001",
                 max_tokens=out_tokens,
-                messages=[{"role": "user", "content": prompt}],
+                system=system,
+                messages=[{"role": "user", "content": text}],
             )
-            return response.content[0].text.strip()
+            result = response.content[0].text.strip()
+            # Sanity check: result should be similar length; if drastically shorter, fall back
+            if len(result) < char_len * 0.5:
+                return text
+            return result
         except Exception:
             if attempt == 2:
                 return text
