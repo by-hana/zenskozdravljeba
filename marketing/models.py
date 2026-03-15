@@ -212,3 +212,50 @@ class Footer(models.Model):
 
     def __str__(self):
         return self.label
+
+
+class BlogPost(models.Model):
+    """AI-generated SEO blog post, optimized for LLM discoverability."""
+
+    STATUS_DRAFT = 'draft'
+    STATUS_PUBLISHED = 'published'
+    STATUS_CHOICES = [('draft', 'Draft'), ('published', 'Published')]
+
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True, max_length=255)
+    keyword = models.CharField(max_length=255, blank=True)
+    cluster = models.CharField(max_length=120, blank=True, db_index=True)
+    is_pillar = models.BooleanField(default=False)
+    pillar_slug = models.SlugField(max_length=255, blank=True)
+
+    intro = models.TextField(blank=True)
+    content_html = models.TextField(blank=True)
+    faq_json = models.JSONField(blank=True, null=True)
+    key_takeaways = models.JSONField(blank=True, null=True)
+
+    meta_title = models.CharField(max_length=255, blank=True)
+    meta_description = models.CharField(max_length=320, blank=True)
+    internal_links = models.JSONField(blank=True, null=True)
+
+    quality_score = models.FloatField(default=0)
+    word_count = models.PositiveIntegerField(default=0)
+
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='draft', db_index=True)
+    published_at = models.DateTimeField(blank=True, null=True, db_index=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-published_at', '-created_at']
+        verbose_name = 'AI Blog Post'
+        verbose_name_plural = 'AI Blog Posts'
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('marketing-blog-post', kwargs={'slug': self.slug})
+
+    @property
+    def is_published(self):
+        return self.status == self.STATUS_PUBLISHED

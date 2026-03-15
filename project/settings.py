@@ -81,3 +81,6 @@ LOGIN_URL = '/admin/login/'
 CLOUDINARY_CLOUD_NAME = config('CLOUDINARY_CLOUD_NAME', default='')
 CLOUDINARY_API_KEY = config('CLOUDINARY_API_KEY', default='')
 CLOUDINARY_API_SECRET = config('CLOUDINARY_API_SECRET', default='')
+
+# Anthropic Claude API
+ANTHROPIC_API_KEY = config('ANTHROPIC_API_KEY', default='')

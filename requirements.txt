@@ -2,3 +2,4 @@ Django==6.0.3
 beautifulsoup4==4.14.3
 cloudinary==1.44.1
 python-decouple==3.8
+anthropic>=0.40.0

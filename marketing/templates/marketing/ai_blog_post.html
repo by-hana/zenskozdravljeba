@@ -1,0 +1,248 @@
+{% extends "marketing/base.html" %}
+{% load static %}
+
+{% block title %}{{ post.meta_title|default:post.title }} | ZenskoZdravlje.ba{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/ai_blog.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Breadcrumb -->
+<nav class="zz-breadcrumb" aria-label="Breadcrumb">
+  <div class="zz-breadcrumb-inner">
+    <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="/"><span itemprop="name">Pocetna</span></a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="/blog/"><span itemprop="name">Blog</span></a>
+        <meta itemprop="position" content="2">
+      </li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name">{{ post.title }}</span>
+        <meta itemprop="position" content="3">
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Article wrapper -->
+<article class="zz-article" itemscope itemtype="https://schema.org/Article">
+
+  <header class="zz-article-header">
+    <div class="zz-article-header-inner">
+
+      <!-- Cluster tag -->
+      {% if post.cluster %}
+      <div class="zz-article-cluster">{{ post.cluster|title }}</div>
+      {% endif %}
+
+      <!-- Title -->
+      <h1 class="zz-article-title" itemprop="headline">{{ post.title }}</h1>
+
+      <!-- Intro / quick answer -->
+      {% if post.intro %}
+      <div class="zz-article-intro">
+        <p>{{ post.intro }}</p>
+      </div>
+      {% endif %}
+
+      <!-- Meta row -->
+      <div class="zz-article-meta">
+        <div class="zz-article-author" itemprop="author" itemscope itemtype="https://schema.org/Organization">
+          <div class="zz-author-avatar">Z</div>
+          <div class="zz-author-info">
+            <span class="zz-author-name" itemprop="name">ZenskoZdravlje.ba Tim</span>
+            <span class="zz-author-role">Strucni tim za zensko zdravlje</span>
+          </div>
+        </div>
+        {% if post.published_at %}
+        <div class="zz-article-date">
+          <time itemprop="datePublished" datetime="{{ post.published_at|date:'Y-m-d' }}">
+            {{ post.published_at|date:"j. F Y." }}
+          </time>
+        </div>
+        {% endif %}
+        {% if post.word_count %}
+        <div class="zz-article-readtime">
+          ~ {{ post.word_count }} rijeci
+        </div>
+        {% endif %}
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Article body -->
+  <div class="zz-article-body" itemprop="articleBody">
+    <div class="zz-article-content">
+
+      {{ post.content_html|safe }}
+
+      <!-- FAQ Section -->
+      {% if post.faq_json %}
+      <section class="zz-faq-section">
+        <h2>Cesto postavljana pitanja</h2>
+        <div class="zz-faq-list">
+          {% for item in post.faq_json %}
+          <div class="zz-faq-item">
+            <h3 class="zz-faq-question">{{ item.question }}</h3>
+            <div class="zz-faq-answer">
+              <p>{{ item.answer }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- Key Takeaways -->
+      {% if post.key_takeaways %}
+      <section class="zz-takeaways">
+        <h2>Kljucni zakljucci</h2>
+        <ul class="zz-takeaways-list">
+          {% for item in post.key_takeaways %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="zz-article-sidebar">
+
+      <!-- Table of Contents (JS-generated) -->
+      <div class="zz-toc" id="zz-toc">
+        <div class="zz-toc-title">Sadrzaj</div>
+        <nav id="zz-toc-nav"></nav>
+      </div>
+
+      <!-- Author box -->
+      <div class="zz-author-box">
+        <div class="zz-author-box-avatar">Z</div>
+        <div class="zz-author-box-name">ZenskoZdravlje.ba Tim</div>
+        <p class="zz-author-box-bio">
+          Strucni tim urednika, nutricionista i zdravstvenih savjetnica koji prirema
+          medicinski provjerene clanke o zenskom zdravlju.
+        </p>
+      </div>
+
+      <!-- Related cluster posts -->
+      {% if related_posts %}
+      <div class="zz-related">
+        <div class="zz-related-title">Srodni clanci</div>
+        <ul class="zz-related-list">
+          {% for rp in related_posts %}
+          <li><a href="/blog/{{ rp.slug }}/">{{ rp.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+    </aside>
+  </div>
+
+</article>
+
+<!-- JSON-LD: Article Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ post.title|escapejs }}",
+  "description": "{{ post.meta_description|default:post.intro|escapejs }}",
+  "author": {
+    "@type": "Organization",
+    "name": "ZenskoZdravlje.ba Tim",
+    "url": "https://www.zenskozdravljeba.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ZenskoZdravlje.ba",
+    "url": "https://www.zenskozdravljeba.com"
+  },
+  "datePublished": "{{ post.published_at|date:'Y-m-d' }}",
+  "dateModified": "{{ post.updated_at|date:'Y-m-d' }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ request.build_absolute_uri }}"
+  },
+  "inLanguage": "bs",
+  "about": {
+    "@type": "Thing",
+    "name": "{{ post.keyword|escapejs }}"
+  }
+}
+</script>
+
+<!-- JSON-LD: FAQ Schema -->
+{% if post.faq_json %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for item in post.faq_json %}
+    {
+      "@type": "Question",
+      "name": "{{ item.question|escapejs }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ item.answer|escapejs }}"
+      }
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+
+<!-- JSON-LD: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Pocetna", "item": "https://www.zenskozdravljeba.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.zenskozdravljeba.com/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "{{ post.title|escapejs }}", "item": "{{ request.build_absolute_uri }}"}
+  ]
+}
+</script>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Auto-generate Table of Contents from H2/H3 headings
+(function() {
+  var content = document.querySelector('.zz-article-content');
+  var toc = document.getElementById('zz-toc-nav');
+  if (!content || !toc) return;
+
+  var headings = content.querySelectorAll('h2, h3');
+  if (headings.length < 3) {
+    document.getElementById('zz-toc').style.display = 'none';
+    return;
+  }
+
+  var ul = document.createElement('ul');
+  headings.forEach(function(h, i) {
+    if (!h.id) h.id = 'heading-' + i;
+    var li = document.createElement('li');
+    li.className = h.tagName.toLowerCase() === 'h3' ? 'toc-h3' : 'toc-h2';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+  toc.appendChild(ul);
+})();
+</script>
+{% endblock %}

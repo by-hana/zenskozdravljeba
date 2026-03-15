@@ -68,7 +68,15 @@
       "Bash(curl -s http://127.0.0.1:8000/ | grep -E \"\\(Zdravstvene teme|Više tema|Medicinska napomena|disclaimer\\)\" | head -6)",
       "Bash(curl -s http://127.0.0.1:8000/ | grep -oE \"\\(OVA Lab|ovalab|Myo-Inositol\\)\" | head -5)",
       "Bash(ls \"E:\\\\CLAUDE CODE HUB\\\\Website Generator Discord\\\\static\\\\images\\\\\" 2>/dev/null || echo \"folder empty or missing\")",
-      "Bash(grep -rn \"[А-Яа-яЁё]\" \"E:/CLAUDE CODE HUB/Website Generator Discord/marketing/templates/\" \"E:/CLAUDE CODE HUB/Website Generator Discord/marketing/management/\" 2>/dev/null | head -20)"
+      "Bash(grep -rn \"[А-Яа-яЁё]\" \"E:/CLAUDE CODE HUB/Website Generator Discord/marketing/templates/\" \"E:/CLAUDE CODE HUB/Website Generator Discord/marketing/management/\" 2>/dev/null | head -20)",
+      "Bash(gh auth:*)",
+      "Bash(python -c \"\nimport ast, sys\n\nfiles = [\n    'E:/CLAUDE CODE HUB/Website Generator Discord/marketing/models.py',\n    'E:/CLAUDE CODE HUB/Website Generator Discord/marketing/quality.py',\n    'E:/CLAUDE CODE HUB/Website Generator Discord/marketing/blog_keywords.py',\n    'E:/CLAUDE CODE HUB/Website Generator Discord/marketing/ai_generator.py',\n    'E:/CLAUDE CODE HUB/Website Generator Discord/marketing/management/commands/generate_blog_posts.py',\n    'E:/CLAUDE CODE HUB/Website Generator Discord/marketing/views.py',\n    'E:/CLAUDE CODE HUB/Website Generator Discord/marketing/migrations/0002_blogpost.py',\n]\nfor f in files:\n    try:\n        with open\\(f\\) as fh:\n            ast.parse\\(fh.read\\(\\)\\)\n        print\\(f'OK: {f.split\\(\\\\\"/\\\\\"\\)[-1]}'\\)\n    except SyntaxError as e:\n        print\\(f'SYNTAX ERROR in {f.split\\(\\\\\"/\\\\\"\\)[-1]}: {e}'\\)\n\")",
+      "Bash(py -3 -c \"\nimport ast\n\nfiles = [\n    'E:/CLAUDE CODE HUB/Website Generator Discord/marketing/models.py',\n    'E:/CLAUDE CODE HUB/Website Generator Discord/marketing/quality.py',\n    'E:/CLAUDE CODE HUB/Website Generator Discord/marketing/blog_keywords.py',\n    'E:/CLAUDE CODE HUB/Website Generator Discord/marketing/ai_generator.py',\n    'E:/CLAUDE CODE HUB/Website Generator Discord/marketing/management/commands/generate_blog_posts.py',\n    'E:/CLAUDE CODE HUB/Website Generator Discord/marketing/views.py',\n    'E:/CLAUDE CODE HUB/Website Generator Discord/marketing/migrations/0002_blogpost.py',\n]\nfor f in files:\n    try:\n        with open\\(f, encoding='utf-8'\\) as fh:\n            ast.parse\\(fh.read\\(\\)\\)\n        print\\('OK:', f.split\\('/'\\)[-1]\\)\n    except SyntaxError as e:\n        print\\('SYNTAX ERROR in', f.split\\('/'\\)[-1], ':', e\\)\n\")",
+      "Bash(cd \"E:/CLAUDE CODE HUB/Website Generator Discord\" && PYTHONUTF8=1 py manage.py migrate 2>&1)",
+      "Bash(cd \"E:/CLAUDE CODE HUB/Website Generator Discord\" && PYTHONUTF8=1 py manage.py generate_blog_posts --dry-run 2>&1 | head -30)",
+      "Bash(cd \"E:/CLAUDE CODE HUB/Website Generator Discord\" && pip install \"anthropic>=0.40.0\" 2>&1 | tail -5)",
+      "Bash(cd \"E:/CLAUDE CODE HUB/Website Generator Discord\" && py -m pip install \"anthropic>=0.40.0\" 2>&1 | tail -8)",
+      "Bash(cd \"E:/CLAUDE CODE HUB/Website Generator Discord\" && PYTHONUTF8=1 py manage.py generate_blog_posts --dry-run 2>&1 | tail -10)"
     ]
   }
 }
