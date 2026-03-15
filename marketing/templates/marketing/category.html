@@ -1,0 +1,117 @@
+{% extends "marketing/base.html" %}
+
+{% block title %}{{ category.name }} — ŽenskoZdravlje.ba{% endblock %}
+
+{% block content %}
+
+<!-- CollectionPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "{{ category.name|escapejs }}",
+  "description": "Članci o temi {{ category.name|escapejs }} na ŽenskoZdravlje.ba — pouzdane informacije o ženskom zdravlju.",
+  "url": "{{ seo.url|default:'' }}",
+  "inLanguage": "bs",
+  "publisher": {
+    "@type": "Organization",
+    "name": "ŽenskoZdravlje.ba"
+  }
+}
+</script>
+
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Početna",
+      "item": "https://www.zenskozdravljeba.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Kategorije",
+      "item": "https://www.zenskozdravljeba.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ category.name|escapejs }}",
+      "item": "{{ seo.url|default:'' }}"
+    }
+  ]
+}
+</script>
+
+<!-- Breadcrumb -->
+<nav class="mkt-breadcrumb" aria-label="Putanja">
+  <a href="/">Početna</a>
+  <span class="sep">/</span>
+  <a href="/blog/">Kategorije</a>
+  <span class="sep">/</span>
+  <span>{{ category.name }}</span>
+</nav>
+
+<!-- Category Hero -->
+<div class="cms-blog-hero">
+  <h1>{{ category.name }}</h1>
+  <p>
+    {% if posts %}
+      {{ posts|length }} član{% if posts|length == 1 %}ak{% elif posts|length < 5 %}ka{% else %}aka{% endif %} u ovoj kategoriji
+    {% else %}
+      Članci o temi {{ category.name }}
+    {% endif %}
+  </p>
+</div>
+
+<!-- Post Grid -->
+{% if posts %}
+<div class="cms-post-grid">
+  {% for post in posts %}
+  <article class="cms-post-card">
+    {% if post.cover_image %}
+    <div class="cms-post-card-img">
+      <img src="{{ post.cover_image }}" alt="{{ post.title }}" loading="lazy">
+    </div>
+    {% else %}
+    <div class="cms-post-card-img-placeholder">&#9792;</div>
+    {% endif %}
+
+    <div class="cms-post-card-body">
+      {% if post.categories.all %}
+      <div class="cms-post-card-cats">
+        {% for cat in post.categories.all %}
+        <a href="/kategorija/{{ cat.slug }}/" class="cms-post-cat-badge">{{ cat.name }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <h2 class="cms-post-card-title">
+        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+      </h2>
+
+      <p class="cms-post-card-excerpt">{{ post.computed_excerpt|truncatechars:140 }}</p>
+
+      <div class="cms-post-card-footer">
+        <span>{% if post.author_name %}{{ post.author_name }}{% endif %}</span>
+        <a href="{{ post.get_absolute_url }}" class="cms-post-card-read-more">Čitaj više &rarr;</a>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% else %}
+<div style="text-align:center;padding:5rem 2rem;color:var(--d-gray-500);">
+  <p style="font-size:2rem;margin-bottom:1rem;">&#9792;</p>
+  <p style="font-size:1.1rem;font-family:var(--font-heading);color:var(--d-dark);margin-bottom:0.5rem;">Nema još članaka</p>
+  <p style="margin-bottom:1.5rem;">U ovoj kategoriji još nema objavljenih članaka. Uskoro!</p>
+  <a href="/blog/" class="btn btn-primary btn-pill btn-small">Pogledaj sve članke</a>
+</div>
+{% endif %}
+
+{% endblock %}

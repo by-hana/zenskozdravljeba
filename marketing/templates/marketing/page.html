@@ -1,0 +1,17 @@
+{% extends "marketing/base.html" %}
+
+{% block title %}{{ page.seo_title|default:page.title }} — DivineYoga{% endblock %}
+
+{% block content %}
+<div class="mkt-page-content">
+  <h1 class="mkt-page-title">{{ page.title }}</h1>
+
+  {% if page.blocks_html %}
+    {{ page.blocks_html|safe }}
+  {% elif page.body_html %}
+    {{ page.body_html|safe }}
+  {% else %}
+    <p style="color:var(--d-gray-500);">This page has no content yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

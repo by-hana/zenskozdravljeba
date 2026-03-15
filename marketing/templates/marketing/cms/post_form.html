@@ -1,0 +1,205 @@
+{% extends "marketing/cms/base.html" %}
+{% load form_extras %}
+
+{% block title %}{% if post %}Edit Post{% else %}New Post{% endif %}{% endblock %}
+{% block page_title %}{% if post %}Edit: {{ post.title }}{% else %}New Post{% endif %}{% endblock %}
+
+{% block topbar_actions %}
+  {% if post %}
+  <a href="{{ post.get_absolute_url }}" class="btn btn-ghost btn-small" target="_blank">View Post →</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<!-- Delete confirm banner (OUTSIDE the form) -->
+{% if post %}
+<div class="cms-confirm-delete" id="cms-confirm-delete" style="display:none;">
+  <span>Are you sure you want to delete <strong>{{ post.title }}</strong>? This cannot be undone.</span>
+  <div>
+    <a href="{% url 'cms-post-delete' post.pk %}" class="btn btn-danger btn-small">Yes, Delete</a>
+    <button type="button" class="btn btn-ghost btn-small" onclick="document.getElementById('cms-confirm-delete').style.display='none'">Cancel</button>
+  </div>
+</div>
+{% endif %}
+
+<form method="post" id="cms-post-form" novalidate>
+  {% csrf_token %}
+
+  {% if form.non_field_errors %}
+  <div class="cms-form-errors">
+    {% for error in form.non_field_errors %}
+    <p class="cms-error">{{ error }}</p>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="cms-form-layout">
+    <!-- Left: main content -->
+    <div class="cms-form-main">
+
+      <!-- Title -->
+      <div class="cms-field">
+        <label class="cms-label" for="{{ form.title.id_for_label }}">Title <span class="cms-required">*</span></label>
+        {{ form.title|add_class:"cms-input cms-input--large" }}
+        {% if form.title.errors %}<p class="cms-field-error">{{ form.title.errors|join:", " }}</p>{% endif %}
+      </div>
+
+      <!-- Slug -->
+      <div class="cms-field">
+        <label class="cms-label" for="{{ form.slug.id_for_label }}">Slug</label>
+        <div class="cms-input-prefix-wrap">
+          <span class="cms-input-prefix">/blog/</span>
+          {{ form.slug|add_class:"cms-input cms-input--slug" }}
+          <span class="cms-input-suffix">/</span>
+        </div>
+        {% if form.slug.errors %}<p class="cms-field-error">{{ form.slug.errors|join:", " }}</p>{% endif %}
+      </div>
+
+      <!-- Cover image -->
+      <div class="cms-field">
+        <label class="cms-label" for="{{ form.cover_image.id_for_label }}">Cover Image</label>
+        <div class="cms-upload-widget" data-target="id_cover_image">
+          <button type="button" class="btn btn-ghost btn-small cms-upload-btn">Upload Image</button>
+          <span class="cms-upload-status"></span>
+        </div>
+        {{ form.cover_image|add_class:"cms-input" }}
+        {% if form.cover_image.value %}
+        <div class="cms-cover-preview">
+          <img src="{{ form.cover_image.value }}" alt="Cover" style="max-height:160px;border-radius:6px;margin-top:0.5rem;">
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Block Builder -->
+      <div class="cms-field">
+        <label class="cms-label">Content Blocks</label>
+        <div id="cms-blocks-builder" data-field="id_blocks_json"></div>
+        {{ form.blocks_json|add_class:"cms-hidden-json" }}
+        {{ form.body_json|add_class:"cms-hidden-json" }}
+        {% if form.blocks_json.errors %}<p class="cms-field-error">{{ form.blocks_json.errors|join:", " }}</p>{% endif %}
+      </div>
+
+    </div>
+
+    <!-- Right: sidebar -->
+    <div class="cms-form-sidebar">
+
+      <!-- Publish panel -->
+      <div class="cms-sidebar-panel">
+        <div class="cms-sidebar-panel-title">Publishing</div>
+
+        <div class="cms-field">
+          <label class="cms-label">Status</label>
+          {% if post %}
+            <span class="cms-badge {% if post.status == 'published' %}cms-badge--published{% else %}cms-badge--draft{% endif %}">
+              {{ post.get_status_display }}
+            </span>
+          {% else %}
+            <span class="cms-badge cms-badge--draft">Draft</span>
+          {% endif %}
+        </div>
+
+        <div class="cms-form-actions-bar">
+          <button type="submit" name="action" value="draft" class="btn btn-ghost btn-small">Save Draft</button>
+          <button type="submit" name="action" value="publish" class="btn btn-primary btn-small">Publish</button>
+        </div>
+
+        {% if post and post.status == 'published' %}
+        <div style="margin-top:0.75rem;">
+          <form method="post" action="{% url 'cms-post-toggle-status' post.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-warning btn-small" style="width:100%;">Unpublish</button>
+          </form>
+        </div>
+        {% endif %}
+
+        {% if post %}
+        <div style="margin-top:0.75rem;border-top:1px solid var(--cms-border);padding-top:0.75rem;">
+          <button type="button" class="btn btn-danger btn-small" style="width:100%;" id="cms-delete-btn">Delete Post</button>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Author & Date -->
+      <div class="cms-sidebar-panel">
+        <div class="cms-sidebar-panel-title">Details</div>
+        <div class="cms-field">
+          <label class="cms-label" for="{{ form.author_name.id_for_label }}">Author Name</label>
+          {{ form.author_name|add_class:"cms-input" }}
+        </div>
+        <div class="cms-field">
+          <label class="cms-label" for="{{ form.publish_at.id_for_label }}">Publish Date</label>
+          {{ form.publish_at|add_class:"cms-input" }}
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="cms-sidebar-panel">
+        <div class="cms-sidebar-panel-title">Categories</div>
+        <div class="cms-checkbox-list">
+          {% for checkbox in form.categories %}
+          <label class="cms-checkbox-label">
+            {{ checkbox.tag }}
+            {{ checkbox.choice_label }}
+          </label>
+          {% endfor %}
+        </div>
+        {% if form.categories.errors %}<p class="cms-field-error">{{ form.categories.errors|join:", " }}</p>{% endif %}
+      </div>
+
+      <!-- Tags -->
+      <div class="cms-sidebar-panel">
+        <div class="cms-sidebar-panel-title">Tags</div>
+        <div class="cms-checkbox-list">
+          {% for checkbox in form.tags %}
+          <label class="cms-checkbox-label">
+            {{ checkbox.tag }}
+            {{ checkbox.choice_label }}
+          </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- SEO -->
+      <div class="cms-sidebar-panel">
+        <div class="cms-sidebar-panel-title cms-seo-toggle" id="cms-seo-toggle">
+          SEO &amp; Meta
+          <svg class="cms-seo-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="cms-seo-fields" id="cms-seo-fields">
+          <div class="cms-field">
+            <label class="cms-label" for="{{ form.seo_title.id_for_label }}">SEO Title</label>
+            {{ form.seo_title|add_class:"cms-input" }}
+          </div>
+          <div class="cms-field">
+            <label class="cms-label" for="{{ form.seo_description.id_for_label }}">Meta Description</label>
+            {{ form.seo_description|add_class:"cms-input" }}
+          </div>
+          <div class="cms-field">
+            <label class="cms-label" for="{{ form.og_image.id_for_label }}">OG Image URL</label>
+            {{ form.og_image|add_class:"cms-input" }}
+          </div>
+          <div class="cms-field">
+            <label class="cms-label" for="{{ form.twitter_image.id_for_label }}">Twitter Image URL</label>
+            {{ form.twitter_image|add_class:"cms-input" }}
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /sidebar -->
+  </div><!-- /layout -->
+
+</form>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    initBlocksBuilder('id_blocks_json');
+    initUploadWidgets();
+    initSeoToggle();
+    {% if post %}initDeleteConfirm('cms-delete-btn', 'cms-confirm-delete');{% endif %}
+  });
+</script>
+{% endblock %}

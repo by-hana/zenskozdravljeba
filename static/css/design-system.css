@@ -1,0 +1,362 @@
+/*
+ * design-system.css — ŽenskoZdravlje.ba Design Tokens
+ * Women's health portal — soft pinks, medical/trustworthy, clean, readable
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Open+Sans:wght@300;400;500;600&display=swap');
+
+/* ─── Raw Palette ─────────────────────────────────────────── */
+:root {
+  --d-primary:          #B5446E;   /* deep rose */
+  --d-primary-dim:      #7A2F4A;   /* dark rose */
+  --d-primary-light:    #F9ECF1;   /* very light pink */
+  --d-primary-dark:     #922F56;   /* hover rose */
+  --d-secondary:        #6B4F8A;   /* medical purple */
+  --d-yellow:           #F4A5B9;   /* light pink accent */
+  --d-dark:             #1C1528;   /* deep dark text */
+  --d-dark-gray:        #4A4558;   /* medium dark */
+  --d-accent:           #2D2840;   /* main text color */
+  --d-gray-100:         #FDFAF9;   /* warm off-white bg */
+  --d-gray-200:         #F0EBF0;   /* light bg with pink tint */
+  --d-gray-300:         #DDD3DC;
+  --d-gray-400:         #C8BEC8;
+  --d-gray-500:         #8A8299;
+  --d-white:            #FFFFFF;
+  --d-danger:           #EF4444;
+  --d-danger-bg:        #FEF2F2;
+}
+
+/* ─── Semantic Tokens ─────────────────────────────────────── */
+:root {
+  --color-bg:               var(--d-white);
+  --color-bg-elevated:      var(--d-gray-100);
+  --color-bg-dark:          var(--d-dark);
+
+  --color-text:             var(--d-accent);
+  --color-text-light:       var(--d-white);
+  --color-text-muted:       var(--d-dark-gray);
+
+  --color-primary:          var(--d-primary);
+  --color-primary-dim:      var(--d-primary-dim);
+  --color-primary-light:    var(--d-primary-light);
+  --color-secondary:        var(--d-secondary);
+
+  --color-border:           var(--d-gray-200);
+  --color-divider:          var(--d-gray-300);
+  --color-danger:           var(--d-danger);
+}
+
+/* ─── Typography Tokens ───────────────────────────────────── */
+:root {
+  --font-heading: 'Merriweather', Georgia, serif;
+  --font-body:    'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:    ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* ─── Spacing Scale ───────────────────────────────────────── */
+:root {
+  --space-xs:    0.5rem;
+  --space-sm:    1rem;
+  --space-md:    2rem;
+  --space-lg:    4em;
+  --space-xl:    7em;
+  --space-xxl:   10em;
+}
+
+/* ─── Border Radius Scale ─────────────────────────────────── */
+:root {
+  --radius-sm:     4px;
+  --radius-md:     8px;
+  --radius-lg:     16px;
+  --radius-pill:   2em;
+  --radius-circle: 50%;
+}
+
+/* ─── Base Reset ──────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 0;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.4rem; }
+h3 { font-size: 1.9rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1.1rem; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+p {
+  margin-top: 0;
+  line-height: 1.8;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  padding-left: 1.5em;
+}
+
+/* ─── Scroll Reveal ───────────────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-reveal].revealed,
+[data-reveal-child].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.img-loading {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.img-revealed {
+  opacity: 1;
+}
+
+/* ─── Utility Classes ─────────────────────────────────────── */
+.text-primary       { color: var(--color-primary) !important; }
+.text-secondary     { color: var(--color-secondary) !important; }
+.text-primary-dim   { color: var(--color-primary-dim) !important; }
+.text-light         { color: var(--color-text-light) !important; }
+.text-muted         { color: var(--color-text-muted) !important; }
+.text-dark          { color: var(--d-dark) !important; }
+.text-center        { text-align: center; }
+.text-uppercase     { text-transform: uppercase; }
+
+.bg-dark            { background: var(--d-dark) !important; }
+.bg-light           { background: var(--d-white) !important; }
+.bg-gray-100        { background: var(--d-gray-100) !important; }
+.bg-primary-light   { background: var(--d-primary-light) !important; }
+
+.fw-bold            { font-weight: 700 !important; }
+.fw-semibold        { font-weight: 600 !important; }
+.fw-500             { font-weight: 500 !important; }
+
+.d-flex             { display: flex; }
+.d-block            { display: block; }
+.flex-wrap          { flex-wrap: wrap; }
+.align-items-center { align-items: center; }
+.justify-content-center  { justify-content: center; }
+.justify-content-between { justify-content: space-between; }
+.flex-grow-1        { flex-grow: 1; }
+
+.w-100    { width: 100%; }
+.h-100    { height: 100%; }
+.mx-auto  { margin-left: auto; margin-right: auto; }
+.mt-3     { margin-top: 1rem; }
+.mt-4     { margin-top: 1.5rem; }
+.me-5     { margin-right: 3rem; }
+.pb-3     { padding-bottom: 1rem; }
+.pb-5     { padding-bottom: 3rem; }
+.pe-3     { padding-right: 1rem; }
+.pe-4     { padding-right: 1.5rem; }
+.ps-5     { padding-left: 3rem; }
+.p-4      { padding: 1.5rem; }
+.py-5     { padding-top: 3rem; padding-bottom: 3rem; }
+
+.border-circle       { border-radius: var(--radius-circle); }
+.border-rounded-40   { border-radius: 340px; }
+
+.overflow-hidden     { overflow: hidden; }
+.position-relative   { position: relative; }
+.position-absolute   { position: absolute; }
+
+.img-fluid           { max-width: 100%; height: auto; }
+
+/* ─── Section Padding ─────────────────────────────────────── */
+.padding-small  { padding-top: 2em; padding-bottom: 2em; }
+.padding-medium { padding-top: 4em; padding-bottom: 4em; }
+.padding-large  { padding-top: 7em; padding-bottom: 7em; }
+.padding-xlarge { padding-top: 10em; padding-bottom: 10em; }
+
+/* ─── Container ───────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.container-md {
+  width: 100%;
+  max-width: 1450px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* ─── Grid (Bootstrap-like) ───────────────────────────────── */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+}
+
+[class*="col-"] {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .col-md-6  { flex: 0 0 50%; max-width: 50%; }
+  .col-md-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+  .col-md-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+@media (min-width: 992px) {
+  .col-lg-3  { flex: 0 0 25%; max-width: 25%; }
+  .col-lg-4  { flex: 0 0 33.333%; max-width: 33.333%; }
+  .col-lg-5  { flex: 0 0 41.667%; max-width: 41.667%; }
+  .col-lg-6  { flex: 0 0 50%; max-width: 50%; }
+  .col-lg-7  { flex: 0 0 58.333%; max-width: 58.333%; }
+  .col-lg-8  { flex: 0 0 66.667%; max-width: 66.667%; }
+  .col-lg-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* ─── Buttons ─────────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  line-height: 1.5;
+}
+
+.btn.btn-small  { padding: 0.8em 2.7em; font-size: 0.85em; }
+.btn.btn-medium { padding: 1.2em 2.7em; font-size: 1em; }
+.btn.btn-large  { padding: 0.8em 4.6em; font-size: 1.6em; }
+
+.btn.btn-pill, .btn.btn-pill::after { border-radius: var(--radius-pill); }
+.btn.btn-rounded { border-radius: var(--radius-md); }
+
+.btn-primary {
+  color: var(--d-white);
+  background-color: var(--d-primary);
+  border-color: var(--d-primary);
+}
+.btn-primary:hover {
+  color: var(--d-white);
+  background-color: var(--d-primary-dark);
+  border-color: var(--d-primary-dark);
+}
+
+.btn.btn-black {
+  background-color: var(--d-dark);
+  color: var(--d-white);
+  border: none;
+}
+.btn.btn-black:hover {
+  background-color: var(--d-primary);
+  color: var(--d-white);
+}
+
+.btn.btn-light {
+  background-color: var(--d-white);
+  color: var(--d-dark);
+  border: none;
+}
+.btn.btn-light:hover {
+  background-color: var(--d-primary);
+  color: var(--d-white);
+}
+
+.btn.btn-outline-dark {
+  background: transparent;
+  border-color: rgba(0,0,0,0.4);
+  color: var(--d-dark);
+}
+.btn.btn-outline-dark:hover {
+  background: var(--d-dark);
+  color: var(--d-white);
+}
+
+/* ─── Cards ───────────────────────────────────────────────── */
+.card {
+  background: var(--d-white);
+  border: 1px solid var(--d-gray-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.card.border-0        { border: none; }
+.card.bg-transparent  { background: transparent; }
+
+.border-radius-top-10 {
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+/* ─── Misc ────────────────────────────────────────────────── */
+.list-unstyled {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.shadow-none { box-shadow: none; }
+
+/* ─── Legacy color classes ────────────────────────────────── */
+.light            { color: var(--d-white); }
+p.light           { color: var(--d-white); }
+a.light           { color: var(--d-white); }
+svg.light         { color: var(--d-white); }
+svg.light:hover   { color: var(--d-primary); }
+ul.light li       { color: var(--d-white); }
+h3.light          { color: var(--d-white); }

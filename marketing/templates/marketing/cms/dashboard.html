@@ -1,0 +1,115 @@
+{% extends "marketing/cms/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+{% block page_title %}Dashboard{% endblock %}
+
+{% block topbar_actions %}
+  <a href="{% url 'cms-page-create' %}" class="btn btn-primary btn-small btn-pill">+ New Page</a>
+  <a href="{% url 'cms-post-create' %}" class="btn btn-primary btn-small btn-pill" style="margin-left:0.5rem;">+ New Post</a>
+{% endblock %}
+
+{% block content %}
+<!-- Stats -->
+<div class="cms-stats-grid">
+  <div class="cms-stat-card">
+    <div class="cms-stat-value">{{ page_count }}</div>
+    <div class="cms-stat-label">Total Pages</div>
+  </div>
+  <div class="cms-stat-card">
+    <div class="cms-stat-value">{{ post_count }}</div>
+    <div class="cms-stat-label">Total Posts</div>
+  </div>
+  <div class="cms-stat-card">
+    <div class="cms-stat-value">{{ published_count }}</div>
+    <div class="cms-stat-label">Published</div>
+  </div>
+  <div class="cms-stat-card">
+    <div class="cms-stat-value">{{ draft_count }}</div>
+    <div class="cms-stat-label">Drafts</div>
+  </div>
+</div>
+
+<!-- Recent Pages -->
+<div class="cms-section">
+  <div class="cms-section-header">
+    <h2 class="cms-section-title">Recent Pages</h2>
+    <a href="{% url 'cms-page-list' %}" class="cms-section-link">View all →</a>
+  </div>
+  {% if pages %}
+  <table class="cms-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Slug</th>
+        <th>Status</th>
+        <th>Updated</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for page in pages %}
+      <tr>
+        <td><strong>{{ page.title }}</strong></td>
+        <td><code>/{{ page.slug }}/</code></td>
+        <td>
+          {% if page.status == 'published' %}
+            <span class="cms-badge cms-badge--published">Published</span>
+          {% else %}
+            <span class="cms-badge cms-badge--draft">Draft</span>
+          {% endif %}
+        </td>
+        <td>{{ page.updated_at|date:"M j, Y" }}</td>
+        <td class="cms-table-actions">
+          <a href="{% url 'cms-page-edit' page.pk %}" class="btn btn-ghost btn-small">Edit</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="cms-empty">No pages yet. <a href="{% url 'cms-page-create' %}">Create your first page →</a></p>
+  {% endif %}
+</div>
+
+<!-- Recent Posts -->
+<div class="cms-section">
+  <div class="cms-section-header">
+    <h2 class="cms-section-title">Recent Blog Posts</h2>
+    <a href="{% url 'cms-post-list' %}" class="cms-section-link">View all →</a>
+  </div>
+  {% if posts %}
+  <table class="cms-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Status</th>
+        <th>Published</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for post in posts %}
+      <tr>
+        <td><strong>{{ post.title }}</strong></td>
+        <td>{{ post.author_name|default:"—" }}</td>
+        <td>
+          {% if post.status == 'published' %}
+            <span class="cms-badge cms-badge--published">Published</span>
+          {% else %}
+            <span class="cms-badge cms-badge--draft">Draft</span>
+          {% endif %}
+        </td>
+        <td>{{ post.publish_at|date:"M j, Y"|default:"—" }}</td>
+        <td class="cms-table-actions">
+          <a href="{% url 'cms-post-edit' post.pk %}" class="btn btn-ghost btn-small">Edit</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="cms-empty">No posts yet. <a href="{% url 'cms-post-create' %}">Write your first post →</a></p>
+  {% endif %}
+</div>
+{% endblock %}

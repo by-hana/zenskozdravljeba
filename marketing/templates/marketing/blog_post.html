@@ -1,0 +1,114 @@
+{% extends "marketing/base.html" %}
+
+{% block title %}{{ post.seo_title|default:post.title }} — ŽenskoZdravlje.ba{% endblock %}
+
+{% block content %}
+
+<!-- Article + MedicalWebPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["Article", "MedicalWebPage"],
+  "headline": "{{ post.title|escapejs }}",
+  "description": "{{ seo.description|default:''|escapejs }}",
+  "datePublished": "{% if post.publish_at %}{{ post.publish_at|date:'c' }}{% endif %}",
+  "dateModified": "{{ post.updated_at|date:'c' }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ post.author_name|default:'ŽenskoZdravlje.ba'|escapejs }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ŽenskoZdravlje.ba"
+  },
+  "inLanguage": "bs",
+  "url": "{{ seo.url|default:'' }}"{% if seo.image %},"image": "{{ seo.image }}"{% endif %}
+}
+</script>
+
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Početna",
+      "item": "https://www.zenskozdravljeba.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.zenskozdravljeba.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ post.title|escapejs }}",
+      "item": "{{ seo.url|default:'' }}"
+    }
+  ]
+}
+</script>
+
+<!-- Breadcrumb -->
+<nav class="mkt-breadcrumb" aria-label="Putanja">
+  <a href="/">Početna</a>
+  <span class="sep">/</span>
+  <a href="/blog/">Blog</a>
+  <span class="sep">/</span>
+  <span>{{ post.title|truncatechars:50 }}</span>
+</nav>
+
+<article class="cms-post-hero">
+
+  {% if post.cover_image %}
+  <div class="cms-post-cover">
+    <img src="{{ post.cover_image }}" alt="{{ post.title }}" loading="lazy">
+  </div>
+  {% endif %}
+
+  <header class="cms-post-header">
+    {% if post.categories.all %}
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem;">
+      {% for cat in post.categories.all %}
+      <a href="/blog/?category={{ cat.slug }}" class="cms-post-cat-badge">{{ cat.name }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <h1>{{ post.title }}</h1>
+
+    <div class="cms-post-meta">
+      {% if post.author_name %}<span class="author">{{ post.author_name }}</span>{% endif %}
+      {% if post.publish_at %}<span>{{ post.publish_at|date:"d. F Y." }}</span>{% endif %}
+    </div>
+  </header>
+
+  <div class="cms-post-detail">
+    {% if post.blocks_html %}
+      {{ post.blocks_html|safe }}
+    {% elif post.body_html %}
+      {{ post.body_html|safe }}
+    {% endif %}
+
+    {% if post.tags.all %}
+    <div class="cms-post-tags">
+      <strong style="font-size:0.8rem;color:var(--d-gray-500);margin-right:0.5rem;">TAGOVI:</strong>
+      {% for tag in post.tags.all %}
+      <span class="cms-post-tag">{{ tag.name }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+</article>
+
+<!-- Back to Blog -->
+<div style="max-width:720px;margin:0 auto;padding:0 2rem 3rem;">
+  <a href="/blog/" class="btn btn-outline-dark btn-small btn-pill">&larr; Nazad na Blog</a>
+</div>
+{% endblock %}

@@ -1,0 +1,611 @@
+{% load static %}<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <title>{{ seo.title }}</title>
+  <meta name="description" content="{{ seo.description }}">
+  <meta property="og:title" content="{{ seo.og_title }}">
+  <meta property="og:description" content="{{ seo.og_description }}">
+  {% if seo.image %}<meta property="og:image" content="{{ seo.image }}">{% endif %}
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ seo.url }}">
+  <meta property="og:locale" content="bs_BA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ seo.og_title }}">
+  <meta name="twitter:description" content="{{ seo.og_description }}">
+  {% if seo.image %}<meta name="twitter:image" content="{{ seo.image }}">{% endif %}
+  <link rel="canonical" href="{{ seo.url }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'css/design-system.css' %}">
+  <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+
+  <!-- Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalOrganization",
+    "name": "ŽenskoZdravlje.ba",
+    "url": "https://www.zenskozdravljeba.com",
+    "description": "Pouzdani informativni portal o ženskom zdravlju. Pružamo provjerene informacije o PCOS-u, hormonima, menstrualnom ciklusu, ginekološkom zdravlju, trudnoći, ishrani i mentalnom zdravlju žena.",
+    "inLanguage": "bs",
+    "audience": {
+      "@type": "PeopleAudience",
+      "suggestedGender": "Female",
+      "geographicArea": "Bosnia and Herzegovina"
+    },
+    "knowsAbout": [
+      "PCOS i hormonski poremećaji",
+      "Žensko reproduktivno zdravlje",
+      "Hormoni i menstrualni ciklus",
+      "Ginekološko zdravlje",
+      "Ishrana za žensko zdravlje",
+      "Vitamini i suplementi za žene",
+      "Mentalno zdravlje žena",
+      "Plodnost i trudnoća",
+      "Fitness za žene",
+      "Prirodni pristupi zdravlju",
+      "Medicinski testovi i analize"
+    ]
+  }
+  </script>
+
+  <!-- WebSite Schema with SearchAction -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ŽenskoZdravlje.ba",
+    "url": "https://www.zenskozdravljeba.com",
+    "inLanguage": "bs",
+    "description": "Pouzdani informativni portal o ženskom zdravlju za žene u Bosni i Hercegovini.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://www.zenskozdravljeba.com/blog/?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<!-- ─── Navigation ─────────────────────────────────────── -->
+<nav class="hp-nav" id="hp-nav">
+  <div class="hp-nav-inner">
+    <a class="hp-nav-logo" href="/">ŽenskoZdravlje<span class="ba">.ba</span></a>
+
+    <ul class="hp-nav-links">
+      {% if nav_menu and nav_menu.items_json %}
+        {% for item in nav_menu.items_json %}
+          <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+        {% endfor %}
+      {% else %}
+        <li><a href="/">Početna</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/">Kategorije</a></li>
+        <li><a href="/kategorija/vitamini-suplementi-minerali/">Suplementi</a></li>
+        <li><a href="/o-nama/">O Nama</a></li>
+        <li><a href="/kontakt/">Kontakt</a></li>
+      {% endif %}
+    </ul>
+
+    <button class="hp-nav-toggle" id="hp-nav-toggle" aria-label="Otvori meni">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <ul class="hp-nav-mobile" id="hp-nav-mobile">
+    {% if nav_menu and nav_menu.items_json %}
+      {% for item in nav_menu.items_json %}
+        <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+      {% endfor %}
+    {% else %}
+      <li><a href="/">Početna</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/blog/">Kategorije</a></li>
+      <li><a href="/kategorija/ishrana-suplementi/">Suplementi</a></li>
+      <li><a href="/o-nama/">O Nama</a></li>
+      <li><a href="/kontakt/">Kontakt</a></li>
+    {% endif %}
+  </ul>
+</nav>
+
+<!-- ─── Hero ────────────────────────────────────────────── -->
+<section class="hp-hero">
+  <div class="hp-hero-orb3"></div>
+  <div class="hp-hero-inner">
+    <div class="hp-hero-tag">Pouzdane informacije &bull; Žensko zdravlje</div>
+    <h1 class="hp-hero-title">Žensko zdravlje: stručni vodič za reproduktivno zdravlje, ginekologiju, hormone i mentalno zdravlje</h1>
+    <p class="hp-hero-sub">Stručni, medicinski provjereni članci o svim aspektima ženskog zdravlja: hormoni, menstrualni ciklus, PCOS, ginekologija, trudnoća, ishrana, suplementi i mentalno zdravlje. Sve na jednom mjestu, besplatno.</p>
+    <div class="hp-hero-actions">
+      <a href="/blog/" class="hp-btn-primary">Čitaj Članke</a>
+      <a href="/kategorija/pcos-i-hormonski-poremecaji/" class="hp-btn-outline">PCOS &amp; Hormoni</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── Trust Bar ────────────────────────────────────────── -->
+<div class="hp-trust">
+  <div class="hp-trust-inner">
+    <div class="hp-trust-item">
+      <span class="hp-trust-icon">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3.5L6 11l-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Medicinski provjerene informacije</span>
+    </div>
+    <div class="hp-trust-item">
+      <span class="hp-trust-icon">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3.5L6 11l-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Redovno ažurirani sadržaj</span>
+    </div>
+    <div class="hp-trust-item">
+      <span class="hp-trust-icon">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3.5L6 11l-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Za žene u Bosni i Hercegovini</span>
+    </div>
+    <div class="hp-trust-item">
+      <span class="hp-trust-icon">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3.5L6 11l-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Besplatan pristup svim sadržajima</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Categories ───────────────────────────────────────── -->
+<section class="hp-categories">
+  <h2 class="hp-section-title">Zdravstvene teme</h2>
+  <p class="hp-section-sub">Pregledajte naše kategorije i pronađite informacije koje su vam potrebne</p>
+
+  <div class="hp-cat-grid">
+
+    <!-- Hormoni i menstrualni ciklus -->
+    <a href="/kategorija/hormoni-menstrualni-ciklus/" class="hp-cat-card">
+      <div class="hp-cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="hp-cat-name">Hormoni i menstrualni ciklus</div>
+      <div class="hp-cat-count">Hormonalni balans</div>
+    </a>
+
+    <!-- PCOS i hormonski poremećaji -->
+    <a href="/kategorija/pcos-i-hormonski-poremecaji/" class="hp-cat-card">
+      <div class="hp-cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M12 17v4M9 21h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="hp-cat-name">PCOS i hormonski poremećaji</div>
+      <div class="hp-cat-count">Sindrom policističnih jajnika</div>
+    </a>
+
+    <!-- Ginekološko zdravlje -->
+    <a href="/kategorija/ginekolosko-zdravlje/" class="hp-cat-card">
+      <div class="hp-cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="hp-cat-name">Ginekološko zdravlje</div>
+      <div class="hp-cat-count">Ginekološke teme</div>
+    </a>
+
+    <!-- Ishrana za žensko zdravlje -->
+    <a href="/kategorija/ishrana-zensko-zdravlje/" class="hp-cat-card">
+      <div class="hp-cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3v18M7 8c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="hp-cat-name">Ishrana za žensko zdravlje</div>
+      <div class="hp-cat-count">Prehrana i nutrijenti</div>
+    </a>
+
+    <!-- Vitamini, suplementi i minerali -->
+    <a href="/kategorija/vitamini-suplementi-minerali/" class="hp-cat-card">
+      <div class="hp-cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="9" width="16" height="6" rx="3" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="12" y1="9" x2="12" y2="15" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="hp-cat-name">Vitamini, suplementi i minerali</div>
+      <div class="hp-cat-count">Suplementacija za žene</div>
+    </a>
+
+    <!-- Mentalno zdravlje žena -->
+    <a href="/kategorija/mentalno-zdravlje-zena/" class="hp-cat-card">
+      <div class="hp-cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="hp-cat-name">Mentalno zdravlje žena</div>
+      <div class="hp-cat-count">Psihičko blagostanje</div>
+    </a>
+
+    <!-- Plodnost i trudnoća -->
+    <a href="/kategorija/plodnost-i-trudnoca/" class="hp-cat-card">
+      <div class="hp-cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="hp-cat-name">Plodnost i trudnoća</div>
+      <div class="hp-cat-count">Reproduktivno zdravlje</div>
+    </a>
+
+    <!-- Fitness i kretanje za žene -->
+    <a href="/kategorija/fitness-kretanje-zene/" class="hp-cat-card">
+      <div class="hp-cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="5" r="2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M5 20l4-6 3 3 4-8 4 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="hp-cat-name">Fitness i kretanje za žene</div>
+      <div class="hp-cat-count">Tjelesna aktivnost</div>
+    </a>
+
+    <!-- Prirodni pristupi zdravlju -->
+    <a href="/kategorija/prirodni-pristupi-zdravlju/" class="hp-cat-card">
+      <div class="hp-cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 8C8 10 5.9 16.17 3.82 19.28c0 0 3.18.72 6.18-3.28C11 14 14 13 17 8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 19c0-4.4 2-8 5-11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="hp-cat-name">Prirodni pristupi zdravlju</div>
+      <div class="hp-cat-count">Prirodne metode</div>
+    </a>
+
+    <!-- Koža, kosa i hormoni -->
+    <a href="/kategorija/koza-kosa-i-hormoni/" class="hp-cat-card">
+      <div class="hp-cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="hp-cat-name">Koža, kosa i hormoni</div>
+      <div class="hp-cat-count">Hormonalni utjecaj</div>
+    </a>
+
+    <!-- Medicinski testovi i analize -->
+    <a href="/kategorija/medicinski-testovi-analize/" class="hp-cat-card">
+      <div class="hp-cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="hp-cat-name">Medicinski testovi i analize</div>
+      <div class="hp-cat-count">Laboratorijsko ispitivanje</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ─── Featured Article ─────────────────────────────────── -->
+{% if recent_posts %}
+{% with featured=recent_posts.0 %}
+<section class="hp-featured">
+  <div class="hp-featured-inner">
+    <div class="hp-featured-label">Izdvojeni članak</div>
+    <div class="hp-featured-card">
+      <div class="hp-featured-img">
+        {% if featured.cover_image %}
+        <img src="{{ featured.cover_image }}" alt="{{ featured.title }}" loading="lazy">
+        {% else %}
+        <div style="background:#F9ECF1;height:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;">&#9792;</div>
+        {% endif %}
+      </div>
+      <div class="hp-featured-body">
+        {% if featured.categories.all %}
+        <span class="hp-featured-cat">{{ featured.categories.first.name }}</span>
+        {% endif %}
+        <h2 class="hp-featured-title"><a href="{{ featured.get_absolute_url }}">{{ featured.title }}</a></h2>
+        <p class="hp-featured-excerpt">{{ featured.computed_excerpt|truncatechars:220 }}</p>
+        <div class="hp-featured-meta">
+          {% if featured.author_name %}<span class="hp-featured-author">{{ featured.author_name }}</span>{% endif %}
+          {% if featured.publish_at %}<span>{{ featured.publish_at|date:"j. F Y." }}</span>{% endif %}
+        </div>
+        <a href="{{ featured.get_absolute_url }}" class="hp-featured-read">Pročitaj članak <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endwith %}
+{% endif %}
+
+<!-- ─── Latest Articles ──────────────────────────────────── -->
+<section class="hp-latest">
+  <div class="hp-latest-inner">
+    <div class="hp-latest-header">
+      <h2 class="hp-section-title">Najnoviji članci</h2>
+      <a href="/blog/" class="hp-all-link">Svi članci &rarr;</a>
+    </div>
+
+    {% if recent_posts %}
+      {% with remaining=recent_posts|slice:"1:" %}
+      {% if remaining %}
+      <div class="hp-articles-grid">
+        {% for post in remaining %}
+        <article class="hp-article-card">
+          <div class="hp-article-img">
+            {% if post.cover_image %}
+              <img src="{{ post.cover_image }}" alt="{{ post.title }}" loading="lazy">
+            {% else %}
+              <div class="hp-article-placeholder">&#9792;</div>
+            {% endif %}
+          </div>
+          <div class="hp-article-body">
+            {% if post.categories.all %}
+            <div class="hp-article-cat">
+              {% for cat in post.categories.all %}{{ cat.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+            </div>
+            {% endif %}
+            <h3 class="hp-article-title">
+              <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </h3>
+            <p class="hp-article-excerpt">{{ post.computed_excerpt|truncatechars:120 }}</p>
+            <div class="hp-article-meta">
+              <span>{% if post.author_name %}{{ post.author_name }}{% endif %}</span>
+              {% if post.publish_at %}<span>{{ post.publish_at|date:"d.m.Y" }}</span>{% endif %}
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="hp-articles-grid">
+        {% for post in recent_posts %}
+        <article class="hp-article-card">
+          <div class="hp-article-img">
+            {% if post.cover_image %}
+              <img src="{{ post.cover_image }}" alt="{{ post.title }}" loading="lazy">
+            {% else %}
+              <div class="hp-article-placeholder">&#9792;</div>
+            {% endif %}
+          </div>
+          <div class="hp-article-body">
+            {% if post.categories.all %}
+            <div class="hp-article-cat">
+              {% for cat in post.categories.all %}{{ cat.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+            </div>
+            {% endif %}
+            <h3 class="hp-article-title">
+              <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </h3>
+            <p class="hp-article-excerpt">{{ post.computed_excerpt|truncatechars:120 }}</p>
+            <div class="hp-article-meta">
+              <span>{% if post.author_name %}{{ post.author_name }}{% endif %}</span>
+              {% if post.publish_at %}<span>{{ post.publish_at|date:"d.m.Y" }}</span>{% endif %}
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endwith %}
+    {% else %}
+    <div style="text-align:center;padding:3rem 0;color:#8A8299;">
+      <p>Uskoro ćemo objaviti prve članke. Pratite nas!</p>
+      <a href="/blog/" class="hp-btn-primary" style="display:inline-block;margin-top:1rem;">Pogledaj Blog</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- ─── FAQ Strip ────────────────────────────────────────── -->
+<section class="hp-faq-strip">
+  <div class="hp-faq-inner">
+    <h2 class="hp-section-title">Često postavljana pitanja</h2>
+    <p class="hp-section-sub">Odgovori na najčešća pitanja o ženskom zdravlju</p>
+    <div class="hp-faq-grid">
+
+      <div class="hp-faq-item">
+        <div class="hp-faq-q">Šta je PCOS i koji su simptomi?</div>
+        <p class="hp-faq-a">PCOS (sindrom policističnih jajnika) je hormonalni poremećaj koji utječe na 1 od 10 žena u reproduktivnoj dobi. Simptomi uključuju neredovitu menstruaciju, akne i višak dlaka.</p>
+        <a href="/kategorija/pcos-i-hormonski-poremecaji/" class="hp-faq-link">Saznaj više o PCOS-u &rarr;</a>
+      </div>
+
+      <div class="hp-faq-item">
+        <div class="hp-faq-q">Koji suplementi su korisni za žensko zdravlje?</div>
+        <p class="hp-faq-a">Folna kiselina, vitamin D, magnezij i omega-3 masne kiseline su među najvažnijim suplementima za žene. Svaki ima specifičnu ulogu u hormonalnom zdravlju.</p>
+        <a href="/kategorija/vitamini-suplementi-minerali/" class="hp-faq-link">Pregled suplementa &rarr;</a>
+      </div>
+
+      <div class="hp-faq-item">
+        <div class="hp-faq-q">Kada posjetiti ginekologa?</div>
+        <p class="hp-faq-a">Redovni ginekološki pregledi su preporučeni jednom godišnje. Hitno posjetite ginekologa ako imate jaku bol, nepravilna krvarenja ili zabrinjavajuće simptome.</p>
+        <a href="/kategorija/ginekolosko-zdravlje/" class="hp-faq-link">Ginekološko zdravlje &rarr;</a>
+      </div>
+
+      <div class="hp-faq-item">
+        <div class="hp-faq-q">Šta je endometrioza i kako je prepoznati?</div>
+        <p class="hp-faq-a">Endometrioza je stanje u kojem tkivo slično unutrašnjosti materice raste izvan nje. Simptomi uključuju jake menstrualne bolove, bol tokom odnosa i poteškoće s začećem. Pogađa oko 10% žena reproduktivne dobi.</p>
+        <a href="/kategorija/ginekolosko-zdravlje/" class="hp-faq-link">Saznaj više &rarr;</a>
+      </div>
+
+      <div class="hp-faq-item">
+        <div class="hp-faq-q">Koji su znakovi hormonalnog disbalansa?</div>
+        <p class="hp-faq-a">Najčešći znakovi uključuju neredovitu menstruaciju, umor, promjene raspoloženja, probleme s kožom i kosom, debljanje ili mršavljenje bez jasnog razloga i poteškoće sa spavanjem. Hormonalni disbalans može imati različite uzroke.</p>
+        <a href="/kategorija/hormoni-menstrualni-ciklus/" class="hp-faq-link">Hormoni i ciklus &rarr;</a>
+      </div>
+
+      <div class="hp-faq-item">
+        <div class="hp-faq-q">Kako stres utiče na žensko zdravlje i hormone?</div>
+        <p class="hp-faq-a">Hronični stres podiže razine kortizola, što može poremetiti ravnotežu estrogena i progesterona, uzrokovati neredovitu menstruaciju, smanjiti libido i negativno utjecati na plodnost. Upravljanje stresom je ključni dio ženskog zdravlja.</p>
+        <a href="/kategorija/mentalno-zdravlje-zena/" class="hp-faq-link">Mentalno zdravlje &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Mission / About ──────────────────────────────────── -->
+<section class="hp-mission">
+  <div class="hp-mission-inner">
+    <div class="hp-mission-left">
+      <div class="hp-mission-label">Naša misija</div>
+      <h2>Zdravstvene informacije na vašem jeziku</h2>
+      <p>ŽenskoZdravlje.ba je besplatni edukativni portal posvećen ženama u Bosni i Hercegovini. Vjerujemo da svaka žena zaslužuje pristup pouzdanim, razumljivim i praktičnim informacijama o svom zdravlju. Naš sadržaj pišu i recenziraju zdravstveni stručnjaci, a namijenjen je informisanju, ne zamjeni liječničkog savjeta.</p>
+    </div>
+    <div class="hp-mission-right">
+      <div class="hp-trust-point">
+        <div class="hp-trust-point-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="hp-trust-point-body">
+          <h3>Provjerene informacije</h3>
+          <p>Sav sadržaj temelji se na medicinskim istraživanjima i stručnim smjernicama.</p>
+        </div>
+      </div>
+      <div class="hp-trust-point">
+        <div class="hp-trust-point-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="hp-trust-point-body">
+          <h3>Razumljiv jezik</h3>
+          <p>Pišemo jasno i pristupačno, bez pretjeranog medicinskog žargona.</p>
+        </div>
+      </div>
+      <div class="hp-trust-point">
+        <div class="hp-trust-point-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="hp-trust-point-body">
+          <h3>Za žene iz BiH</h3>
+          <p>Sadržaj prilagođen kontekstu i potrebama žena u Bosni i Hercegovini.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Newsletter ───────────────────────────────────────── -->
+<section class="hp-newsletter">
+  <div class="hp-newsletter-inner">
+    <h2>Ostanite informisane</h2>
+    <p>Primajte najnovije članke o ženskom zdravlju direktno u vaš inbox. Besplatno, bez spama.</p>
+    <form class="hp-newsletter-form" onsubmit="return false;">
+      <input type="email" placeholder="Vaša email adresa">
+      <button type="submit">Pretplatite se</button>
+    </form>
+    <p class="hp-newsletter-note">Možete se odjaviti u bilo kom trenutku.</p>
+  </div>
+</section>
+
+<!-- ─── Footer ───────────────────────────────────────────── -->
+<footer class="hp-footer">
+  <div class="hp-footer-inner">
+
+    <!-- Brand -->
+    <div>
+      <a class="hp-footer-logo" href="/">ŽenskoZdravlje<span class="ba">.ba</span></a>
+      <p class="hp-footer-tagline">Pouzdane, provjerene informacije o ženskom zdravlju. Besplatno, uvijek dostupno.</p>
+    </div>
+
+    {% if footer and footer.columns_json %}
+      {% for col in footer.columns_json %}
+      <div class="hp-footer-col">
+        {% if col.title %}<div class="hp-footer-col-title">{{ col.title }}</div>{% endif %}
+        {% for link in col.links %}
+        <a href="{{ link.url }}">{{ link.label }}</a>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    {% else %}
+      <div class="hp-footer-col">
+        <div class="hp-footer-col-title">Zdravstvene teme</div>
+        <a href="/kategorija/hormoni-menstrualni-ciklus/">Hormoni i menstrualni ciklus</a>
+        <a href="/kategorija/pcos-i-hormonski-poremecaji/">PCOS i hormonski poremećaji</a>
+        <a href="/kategorija/ginekolosko-zdravlje/">Ginekološko zdravlje</a>
+        <a href="/kategorija/ishrana-zensko-zdravlje/">Ishrana za žensko zdravlje</a>
+        <a href="/kategorija/vitamini-suplementi-minerali/">Vitamini, suplementi i minerali</a>
+        <a href="/kategorija/mentalno-zdravlje-zena/">Mentalno zdravlje žena</a>
+      </div>
+      <div class="hp-footer-col">
+        <div class="hp-footer-col-title">Više tema</div>
+        <a href="/kategorija/plodnost-i-trudnoca/">Plodnost i trudnoća</a>
+        <a href="/kategorija/fitness-kretanje-zene/">Fitness i kretanje za žene</a>
+        <a href="/kategorija/prirodni-pristupi-zdravlju/">Prirodni pristupi zdravlju</a>
+        <a href="/kategorija/koza-kosa-i-hormoni/">Koža, kosa i hormoni</a>
+        <a href="/kategorija/medicinski-testovi-analize/">Medicinski testovi i analize</a>
+      </div>
+      <div class="hp-footer-col">
+        <div class="hp-footer-col-title">Stranice</div>
+        <a href="/o-nama/">O Nama</a>
+        <a href="/blog/">Blog</a>
+        <a href="/suplementi/">Suplementi</a>
+        <a href="/kontakt/">Kontakt</a>
+        <a href="/sitemap.xml">Mapa sajta</a>
+      </div>
+    {% endif %}
+
+  </div>
+
+  <div class="hp-footer-disclaimer">
+    <strong>Medicinska napomena:</strong> Sav sadržaj na ŽenskoZdravlje.ba je isključivo informativnog i edukativnog karaktera. Ne predstavlja medicinski savjet, dijagnozu niti zamjenu za liječenje od strane kvalificiranog zdravstvenog radnika. Uvijek se posavjetujte s liječnikom ili ginekologom za konkretne zdravstvene tegobe.
+  </div>
+
+  <div class="hp-footer-legal">
+    {% if footer and footer.legal_text %}
+      {{ footer.legal_text }}
+    {% else %}
+      &copy; 2026 ŽenskoZdravlje.ba. Sva prava zadržana.
+    {% endif %}
+  </div>
+</footer>
+
+<script>
+  // ─── Sticky Nav on Scroll ────────────────────────────────
+  var nav = document.getElementById('hp-nav');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 60) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // ─── Mobile Menu Toggle ──────────────────────────────────
+  var toggle = document.getElementById('hp-nav-toggle');
+  toggle.addEventListener('click', function () {
+    nav.classList.toggle('menu-open');
+    var expanded = nav.classList.contains('menu-open');
+    toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      nav.classList.remove('menu-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+</body>
+</html>

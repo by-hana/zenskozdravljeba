@@ -1,0 +1,61 @@
+{% extends "marketing/cms/base.html" %}
+
+{% block title %}Pages{% endblock %}
+{% block page_title %}Pages{% endblock %}
+
+{% block topbar_actions %}
+  <a href="{% url 'cms-page-create' %}" class="btn btn-primary btn-small btn-pill">+ New Page</a>
+{% endblock %}
+
+{% block content %}
+{% if pages %}
+<table class="cms-table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Slug</th>
+      <th>Status</th>
+      <th>Updated</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for page in pages %}
+    <tr>
+      <td><strong>{{ page.title }}</strong></td>
+      <td><code>/{{ page.slug }}/</code></td>
+      <td>
+        {% if page.status == 'published' %}
+          <span class="cms-badge cms-badge--published">Published</span>
+        {% else %}
+          <span class="cms-badge cms-badge--draft">Draft</span>
+        {% endif %}
+      </td>
+      <td>{{ page.updated_at|date:"M j, Y" }}</td>
+      <td class="cms-table-actions">
+        <a href="/{{ page.slug }}/" class="btn btn-ghost btn-small" target="_blank">View</a>
+        <a href="{% url 'cms-page-edit' page.pk %}" class="btn btn-ghost btn-small">Edit</a>
+        <form method="post" action="{% url 'cms-page-toggle-status' page.pk %}" style="display:inline;">
+          {% csrf_token %}
+          {% if page.status == 'published' %}
+            <button type="submit" class="btn btn-warning btn-small">Unpublish</button>
+          {% else %}
+            <button type="submit" class="btn btn-primary btn-small">Publish</button>
+          {% endif %}
+        </form>
+        <form method="post" action="{% url 'cms-page-delete' page.pk %}" style="display:inline;" onsubmit="return confirm('Delete &quot;{{ page.title }}&quot;? This cannot be undone.')">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger btn-small">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<div class="cms-empty-state">
+  <p>No pages yet.</p>
+  <a href="{% url 'cms-page-create' %}" class="btn btn-primary btn-pill">Create your first page</a>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,167 @@
+{% load static %}<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ seo.title }} | ŽenskoZdravlje.ba{% endblock %}</title>
+  {% if seo.description %}<meta name="description" content="{{ seo.description }}">{% endif %}
+  {% if seo.og_title %}<meta property="og:title" content="{{ seo.og_title }}">{% endif %}
+  {% if seo.og_description %}<meta property="og:description" content="{{ seo.og_description }}">{% endif %}
+  {% if seo.image %}<meta property="og:image" content="{{ seo.image }}">{% endif %}
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="bs_BA">
+  {% if seo.url %}<meta property="og:url" content="{{ seo.url }}">
+  <link rel="canonical" href="{{ seo.url }}">{% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  {% if seo.og_title %}<meta name="twitter:title" content="{{ seo.og_title }}">{% endif %}
+  {% if seo.og_description %}<meta name="twitter:description" content="{{ seo.og_description }}">{% endif %}
+  {% if seo.image %}<meta name="twitter:image" content="{{ seo.image }}">{% endif %}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'css/design-system.css' %}">
+  <link rel="stylesheet" href="{% static 'css/marketing.css' %}">
+  {% block extra_css %}{% endblock %}
+
+  <!-- Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalOrganization",
+    "name": "ŽenskoZdravlje.ba",
+    "url": "https://www.zenskozdravljeba.com",
+    "description": "Pouzdani informativni portal o ženskom zdravlju. Pružamo provjerene informacije o reproduktivnom zdravlju, PCOS-u, hormonima, menstrualnom ciklusu, trudnoći i ginekološkom zdravlju.",
+    "inLanguage": "bs",
+    "audience": {
+      "@type": "PeopleAudience",
+      "suggestedGender": "Female",
+      "geographicArea": "Bosnia and Herzegovina"
+    },
+    "knowsAbout": [
+      "PCOS",
+      "Žensko zdravlje",
+      "Reproduktivno zdravlje",
+      "Menstrualni ciklus",
+      "Hormonalni disbalans"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- ─── Navigation ──────────────────────────────────────────── -->
+<nav class="mkt-nav" id="mkt-nav">
+  <div class="mkt-nav-inner">
+    <a class="mkt-nav-logo" href="/">ŽenskoZdravlje<span class="zz-ba">.ba</span></a>
+
+    <ul class="mkt-nav-links">
+      {% if nav_menu and nav_menu.items_json %}
+        {% for item in nav_menu.items_json %}
+          <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+        {% endfor %}
+      {% else %}
+        <li><a href="/">Početna</a></li>
+        <li><a href="/o-nama/">O Nama</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/">Kategorije</a></li>
+        <li><a href="/kategorija/ishrana-suplementi/">Suplementi</a></li>
+        <li><a href="/kontakt/">Kontakt</a></li>
+      {% endif %}
+    </ul>
+
+    <div class="mkt-nav-cta">
+      <a href="/blog/" class="btn btn-primary btn-pill btn-small">Čitaj Više</a>
+    </div>
+
+    <button class="mkt-nav-toggle" onclick="this.closest('.mkt-nav').classList.toggle('menu-open')" aria-label="Otvori meni">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="mkt-nav-mobile">
+    {% if nav_menu and nav_menu.items_json %}
+      {% for item in nav_menu.items_json %}
+        <a href="{{ item.url }}">{{ item.label }}</a>
+      {% endfor %}
+    {% else %}
+      <a href="/">Početna</a>
+      <a href="/o-nama/">O Nama</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/">Kategorije</a>
+      <a href="/kategorija/ishrana-suplementi/">Suplementi</a>
+      <a href="/kontakt/">Kontakt</a>
+    {% endif %}
+  </nav>
+</nav>
+
+<!-- ─── Page Content ─────────────────────────────────────── -->
+<div class="mkt-page-shell">
+  {% block content %}{% endblock %}
+</div>
+
+<!-- ─── Footer ───────────────────────────────────────────── -->
+<footer class="mkt-footer">
+  <div class="mkt-footer-inner">
+    <div>
+      <a class="mkt-footer-logo" href="/">ŽenskoZdravlje<span class="zz-ba">.ba</span></a>
+      <p class="mkt-footer-tagline">Pouzdane informacije o ženskom zdravlju na bosanskom jeziku.</p>
+    </div>
+
+    {% if footer and footer.columns_json %}
+      {% for col in footer.columns_json %}
+      <div>
+        {% if col.title %}<div class="mkt-footer-col-title">{{ col.title }}</div>{% endif %}
+        <ul class="mkt-footer-links">
+          {% for link in col.links %}
+          <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    {% else %}
+      <div>
+        <div class="mkt-footer-col-title">Stranice</div>
+        <ul class="mkt-footer-links">
+          <li><a href="/o-nama/">O Nama</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/suplementi/">Suplementi</a></li>
+          <li><a href="/kontakt/">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="mkt-footer-col-title">Resursi</div>
+        <ul class="mkt-footer-links">
+          <li><a href="/sitemap.xml">Mapa sajta</a></li>
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="mkt-footer-legal">
+    {% if footer and footer.legal_text %}
+      {{ footer.legal_text }}
+    {% else %}
+      &copy; 2026 ŽenskoZdravlje.ba. Sva prava zadržana.
+    {% endif %}
+  </div>
+</footer>
+
+<script src="{% static 'js/scroll-reveal.js' %}"></script>
+<script>
+  // Sticky nav on scroll
+  var mktNav = document.getElementById('mkt-nav');
+  if (mktNav) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 60) {
+        mktNav.classList.add('scrolled');
+      } else {
+        mktNav.classList.remove('scrolled');
+      }
+    });
+  }
+</script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,87 @@
+{% extends "marketing/base.html" %}
+
+{% block title %}Blog o ženskom zdravlju — ŽenskoZdravlje.ba{% endblock %}
+
+{% block content %}
+
+<!-- CollectionPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Blog o ženskom zdravlju",
+  "description": "Stručni članci i informacije o ženskom zdravlju na bosanskom jeziku.",
+  "url": "https://www.zenskozdravljeba.com/blog/",
+  "inLanguage": "bs",
+  "publisher": {
+    "@type": "Organization",
+    "name": "ŽenskoZdravlje.ba"
+  }
+}
+</script>
+
+<!-- Breadcrumb -->
+<nav class="mkt-breadcrumb" aria-label="Putanja">
+  <a href="/">Početna</a>
+  <span class="sep">/</span>
+  <span>Blog</span>
+</nav>
+
+<!-- Hero -->
+<div class="cms-blog-hero">
+  <h1>Blog o ženskom zdravlju</h1>
+  <p>Stručni članci, savjeti i informacije o zdravlju žena na bosanskom jeziku.</p>
+</div>
+
+<!-- Category Filter Chips -->
+{% if categories %}
+<div class="cms-category-chips">
+  <a href="/blog/" class="cms-category-chip {% if not active_category %}active{% endif %}">Sve kategorije</a>
+  {% for cat in categories %}
+  <a href="/blog/?category={{ cat.slug }}" class="cms-category-chip {% if active_category == cat.slug %}active{% endif %}">{{ cat.name }}</a>
+  {% endfor %}
+</div>
+{% endif %}
+
+<!-- Post Grid -->
+{% if posts %}
+<div class="cms-post-grid">
+  {% for post in posts %}
+  <article class="cms-post-card">
+    {% if post.cover_image %}
+    <div class="cms-post-card-img">
+      <img src="{{ post.cover_image }}" alt="{{ post.title }}" loading="lazy">
+    </div>
+    {% else %}
+    <div class="cms-post-card-img-placeholder">&#9792;</div>
+    {% endif %}
+
+    <div class="cms-post-card-body">
+      {% if post.categories.all %}
+      <div class="cms-post-card-cats">
+        {% for cat in post.categories.all %}
+        <a href="/blog/?category={{ cat.slug }}" class="cms-post-cat-badge">{{ cat.name }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <h2 class="cms-post-card-title">
+        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+      </h2>
+
+      <p class="cms-post-card-excerpt">{{ post.computed_excerpt|truncatechars:140 }}</p>
+
+      <div class="cms-post-card-footer">
+        <span>{% if post.author_name %}{{ post.author_name }}{% endif %}</span>
+        <a href="{{ post.get_absolute_url }}" class="cms-post-card-read-more">Čitaj više &rarr;</a>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% else %}
+<div style="text-align:center;padding:4rem 2rem;color:var(--d-gray-500);">
+  <p style="font-size:1.1rem;">Još nema članaka. Uskoro!</p>
+</div>
+{% endif %}
+{% endblock %}

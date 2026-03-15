@@ -1,0 +1,85 @@
+{% extends "marketing/cms/base.html" %}
+{% load form_extras %}
+
+{% block title %}Navigation{% endblock %}
+{% block page_title %}Navigation &amp; Footer{% endblock %}
+
+{% block content %}
+<form method="post" id="cms-nav-form" novalidate>
+  {% csrf_token %}
+
+  <div class="cms-form-layout cms-form-layout--single">
+    <div class="cms-form-main">
+
+      <!-- Nav Menu -->
+      <div class="cms-sidebar-panel">
+        <div class="cms-sidebar-panel-title">Navigation Menu</div>
+
+        <div class="cms-field">
+          <label class="cms-label" for="{{ nav_form.name.id_for_label }}">Menu Name</label>
+          {{ nav_form.name|add_class:"cms-input" }}
+          {% if nav_form.name.errors %}<p class="cms-field-error">{{ nav_form.name.errors|join:", " }}</p>{% endif %}
+        </div>
+
+        <div class="cms-field">
+          <label class="cms-label" for="{{ nav_form.items_json.id_for_label }}">Menu Items (JSON)</label>
+          <p class="cms-help-text">Array of <code>{"label": "...", "url": "..."}</code> objects.</p>
+          {{ nav_form.items_json|add_class:"cms-input cms-input--code cms-input--tall" }}
+          {% if nav_form.items_json.errors %}<p class="cms-field-error">{{ nav_form.items_json.errors|join:", " }}</p>{% endif %}
+        </div>
+
+        <div class="cms-json-helpers" data-json-field="{{ nav_form.items_json.id_for_label }}">
+          <button type="button" class="btn btn-ghost btn-small cms-json-format-btn">Format JSON</button>
+          <button type="button" class="btn btn-ghost btn-small cms-json-sample-btn"
+                  data-sample='[{"label":"Home","url":"/"},{"label":"About","url":"/about/"},{"label":"Pricing","url":"/pricing/"},{"label":"Blog","url":"/blog/"},{"label":"Contact","url":"/contact/"}]'>
+            Insert Sample
+          </button>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="cms-sidebar-panel">
+        <div class="cms-sidebar-panel-title">Footer Columns (JSON)</div>
+        <p class="cms-help-text">
+          Array of column objects: <code>{"title": "...", "links": [{"label": "...", "url": "..."}]}</code>
+        </p>
+
+        <div class="cms-field">
+          <label class="cms-label" for="{{ footer_form.columns_json.id_for_label }}">Columns JSON</label>
+          {{ footer_form.columns_json|add_class:"cms-input cms-input--code cms-input--tall" }}
+          {% if footer_form.columns_json.errors %}<p class="cms-field-error">{{ footer_form.columns_json.errors|join:", " }}</p>{% endif %}
+        </div>
+
+        <div class="cms-json-helpers" data-json-field="{{ footer_form.columns_json.id_for_label }}">
+          <button type="button" class="btn btn-ghost btn-small cms-json-format-btn">Format JSON</button>
+          <button type="button" class="btn btn-ghost btn-small cms-json-sample-btn"
+                  data-sample='[{"title":"Studio","links":[{"label":"About Us","url":"/about/"},{"label":"Pricing","url":"/pricing/"},{"label":"Blog","url":"/blog/"},{"label":"Contact","url":"/contact/"}]},{"title":"Resources","links":[{"label":"Sitemap","url":"/sitemap.xml"}]}]'>
+            Insert Sample
+          </button>
+        </div>
+
+        <div class="cms-field" style="margin-top:1rem;">
+          <label class="cms-label" for="{{ footer_form.legal_text.id_for_label }}">Legal / Copyright Text</label>
+          {{ footer_form.legal_text|add_class:"cms-input" }}
+          {% if footer_form.legal_text.errors %}<p class="cms-field-error">{{ footer_form.legal_text.errors|join:", " }}</p>{% endif %}
+        </div>
+      </div>
+
+      <div class="cms-form-actions-bar" style="justify-content:flex-start;margin-top:1.5rem;">
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a href="{% url 'cms-dashboard' %}" class="btn btn-ghost" style="margin-left:0.75rem;">Cancel</a>
+      </div>
+
+    </div>
+  </div>
+
+</form>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    attachJsonHelpers();
+  });
+</script>
+{% endblock %}

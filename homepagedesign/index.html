@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Healthmantra</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="aos/aos.css">
+    <link href="css/date-time-picker-component.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:wght@400;500;600;700;800;900&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+  </head>
+  <body>
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> 
+      <symbol xmlns="http://www.w3.org/2000/svg" id="facebook" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/>
+      </symbol>
+      <svg xmlns="http://www.w3.org/2000/svg" id="skype" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M13.005 18.423a2 2 0 0 1 1.237.207a3.25 3.25 0 0 0 4.389-4.389a2 2 0 0 1-.207-1.237a6.5 6.5 0 0 0-7.427-7.427A2 2 0 0 1 9.76 5.37a3.25 3.25 0 0 0-4.389 4.39a2 2 0 0 1 .207 1.237a6.5 6.5 0 0 0 7.427 7.427ZM12.001 20.5a8.5 8.5 0 0 1-8.4-9.81a5.25 5.25 0 0 1 7.09-7.09a8.5 8.5 0 0 1 9.71 9.71a5.25 5.25 0 0 1-7.09 7.09c-.427.066-.865.1-1.31.1Zm.053-3.5C9.252 17 8 15.62 8 14.586c0-.532.39-.902.928-.902c1.2 0 .887 1.725 3.125 1.725c1.143 0 1.776-.624 1.776-1.261c0-.384-.188-.808-.943-.995l-2.49-.624c-2.006-.504-2.37-1.592-2.37-2.612C8.027 7.797 10.019 7 11.89 7c1.72 0 3.755.956 3.755 2.228c0 .545-.479.863-1.011.863c-1.023 0-.835-1.418-2.9-1.418c-1.023 0-1.596.462-1.596 1.126c0 .663.803.876 1.502 1.035l1.836.409C15.49 11.695 16 12.876 16 13.989C16 15.713 14.675 17 12.015 17h.038Z"/></svg>
+      </symbol> 
+      <symbol xmlns="http://www.w3.org/2000/svg" id="instagram" viewBox="0 0 256 256">
+        <path fill="currentColor" d="M128 80a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Zm48-136H80a56.06 56.06 0 0 0-56 56v96a56.06 56.06 0 0 0 56 56h96a56.06 56.06 0 0 0 56-56V80a56.06 56.06 0 0 0-56-56Zm40 152a40 40 0 0 1-40 40H80a40 40 0 0 1-40-40V80a40 40 0 0 1 40-40h96a40 40 0 0 1 40 40ZM192 76a12 12 0 1 1-12-12a12 12 0 0 1 12 12Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="twitter" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z"/>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="star-empty" viewBox="0 0 16 16">
+        <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="star-fill" viewBox="0 0 16 16">
+        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="star-half" viewBox="0 0 16 16">
+        <path d="M5.354 5.119 7.538.792A.516.516 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0 1 16 6.32a.548.548 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.52.52 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.58.58 0 0 1 .085-.302.513.513 0 0 1 .37-.245l4.898-.696zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.565.565 0 0 1 .162-.505l2.907-2.77-4.052-.576a.525.525 0 0 1-.393-.288L8.001 2.223 8 2.226v9.8z"/>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="navbar-icon" viewBox="0 0 48 48">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M7.95 11.95h32m-32 12h32m-32 12h32"/>
+      </symbol>
+    </svg>
+
+    <header id="header" class="site-header pt-5">
+      <nav id="header-nav" class="navbar navbar-expand-lg px-3 fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/main-logo.png" class="logo">
+          </a>
+          <button class="navbar-toggler d-flex d-lg-none order-3 p-2 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <svg class="navbar-icon">
+              <use xlink:href="#navbar-icon"></use>
+            </svg>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+            <div class="offcanvas-header px-4 pb-0">
+              <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul id="navbar" class="navbar-nav text-uppercase justify-content-lg-end align-items-center flex-grow-1 pe-3">
+                <li class="nav-item pe-4">
+                  <a class="nav-link text-uppercase text-dark fw-bold" href="#intro">Home</a>
+                </li>
+                <li class="nav-item pe-4">
+                  <a class="nav-link text-uppercase text-dark fw-bold" href="#training">Training</a>
+                </li>
+                <li class="nav-item pe-4">
+                  <a class="nav-link text-uppercase text-dark fw-bold" href="#information">Information</a>
+                </li>
+                <li class="nav-item pe-4">
+                  <a class="nav-link text-uppercase text-dark fw-bold" href="#newsletter">Newsletter</a>
+                </li> 
+                <li class="nav-item pe-4">
+                  <a class="nav-link text-uppercase text-dark fw-bold" href="#latest-blog">Blog</a>
+                </li>                
+                <li class="nav-item pe-4">
+                  <a class="nav-link text-uppercase text-primary fw-bold" href="https://templatesjungle.gumroad.com/l/healthmantra-free-yoga-studio-html-website-template" target="_blank">Get Pro</a>
+                </li>
+              </ul>
+              
+              <div class="btn-box">
+                <button class="btn btn-pill btn-small btn-primary text-uppercase">join us </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section id="intro" class="padding-large position-relative overflow-hidden" style="background-image: url(images/text-pattern.jpg); background-repeat: no-repeat; background-position: center; background-position: top;">
+      <div class="container-md">
+        <div class="row">
+
+          <div class="col-lg-6">
+            <div class="banner-content pt-5">
+              <h1 class="banner-title text-secondary">Mantra</h1>
+              <h2 class="subtitle text-primary-dim">for healthy life</h2>
+            </div>              
+          </div>
+
+          <div class="col-lg-6">
+            <div class="image-holder position-relative">
+              <img src="images/banner-item1.png" alt="banner" class="img-fluid">              
+            </div>              
+          </div>
+
+        </div>
+
+        <div class="testimonial position-absolute" data-aos="fade-left" data-aos-duration="2000">
+          <div class="row">
+
+            <div class="review-item bg-light d-flex p-4 me-5">
+              <div class="image-holder pe-4 pb-3">
+                <img src="images/review-item1.jpg" alt="reviewer" class="border-circle img-fluid">
+              </div>
+              <div class="review-content">
+                <blockquote>Best Yoga Teacher in the town. Definitely recommend her.</blockquote>
+                <div class="author-detail d-flex justify-content-between">
+                  <span class="name fw-bold">Nicola Ross | Australia</span>
+                  <div class="rating-container d-flex align-items-center">
+                    <div class="rating" data-rating="1" onclick="rate(1)">
+                      <svg class="star star-fill" width="16" height="16">
+                        <use xlink:href="#star-fill"></use>
+                      </svg>
+                    </div>
+                    <div class="rating" data-rating="2" onclick="rate(1)">
+                      <svg class="star star-fill" width="16" height="16">
+                        <use xlink:href="#star-fill"></use>
+                      </svg>
+                    </div>
+                    <div class="rating" data-rating="3" onclick="rate(1)">
+                      <svg class="star star-fill" width="16" height="16">
+                        <use xlink:href="#star-fill"></use>
+                      </svg>
+                    </div>
+                    <div class="rating" data-rating="4" onclick="rate(1)">
+                      <svg class="star star-half" width="16" height="16">
+                        <use xlink:href="#star-half"></use>
+                      </svg>
+                    </div>
+                    <div class="rating" data-rating="5" onclick="rate(1)">
+                      <svg class="star star-empty" width="16" height="16">
+                        <use xlink:href="#star-empty"></use>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="review-item bg-light d-flex p-4">
+              <div class="image-holder pe-4 pb-3">
+                <img src="images/review-item2.jpg" alt="reviewer" class="border-circle img-fluid">
+              </div>
+              <div class="review-content">
+                <blockquote>Best Yoga Teacher in the town. Definitely recommend her.</blockquote>
+                <div class="author-detail d-flex justify-content-between">
+                  <span class="name fw-bold">Jenny Rohn | Canada</span>
+                  <div class="rating-container d-flex align-items-center">
+                    <div class="rating" data-rating="1" onclick="rate(1)">
+                      <svg class="star star-fill" width="16" height="16">
+                        <use xlink:href="#star-fill"></use>
+                      </svg>
+                    </div>
+                    <div class="rating" data-rating="2" onclick="rate(1)">
+                      <svg class="star star-fill" width="16" height="16">
+                        <use xlink:href="#star-fill"></use>
+                      </svg>
+                    </div>
+                    <div class="rating" data-rating="3" onclick="rate(1)">
+                      <svg class="star star-fill" width="16" height="16">
+                        <use xlink:href="#star-fill"></use>
+                      </svg>
+                    </div>
+                    <div class="rating" data-rating="4" onclick="rate(1)">
+                      <svg class="star star-half" width="16" height="16">
+                        <use xlink:href="#star-half"></use>
+                      </svg>
+                    </div>
+                    <div class="rating" data-rating="5" onclick="rate(1)">
+                      <svg class="star star-empty" width="16" height="16">
+                        <use xlink:href="#star-empty"></use>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>   
+
+    <section id="training" class="padding-large">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 mb-4"">
+            <div class="training-card position-relative">
+              <div class="card-img">
+                <img src="images/training-item1.jpg" alt="product-item" class="img-fluid">
+              </div>
+              <div class="card-detail position-absolute" data-aos="zoom-in-up" data-aos-duration="2000">
+                <h3 class="display-6 fw-bold text-uppercase light">
+                  <a href="#">Outdoor Training</a>
+                </h3>
+                <p class="light">Feugiat tellus metus lacus vulputate sed nec, feugiat at.</p>
+                <a href="#" class="btn btn-primary btn-small text-uppercase mt-3 btn-pill">join us</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4"">
+            <div class="training-card position-relative">
+              <div class="card-img">
+                <img src="images/training-item2.jpg" alt="product-item" class="img-fluid">
+              </div>
+              <div class="card-detail position-absolute" data-aos="zoom-in-up" data-aos-duration="2000">
+                <h3 class="display-6 fw-bold text-uppercase light">
+                  <a href="#">Online Training</a>
+                </h3>
+                <p class="light">Feugiat tellus metus lacus vulputate sed nec, feugiat at.</p>
+                <a href="#" class="btn btn-primary btn-small text-uppercase mt-3 btn-pill">join us</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4"">
+            <div class="training-card position-relative">
+              <div class="card-img">
+                <img src="images/training-item3.jpg" alt="product-item" class="img-fluid">
+              </div>
+              <div class="card-detail position-absolute" data-aos="zoom-in-up" data-aos-duration="2000">
+                <h3 class="display-6 fw-bold text-uppercase light">
+                  <a href="#">Workshops</a>
+                </h3>
+                <p class="light">Feugiat tellus metus lacus vulputate sed nec, feugiat at.</p>
+                <a href="#" class="btn btn-primary btn-small text-uppercase mt-3 btn-pill">join us</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="information">
+      <div class="container-md">
+
+        <div class="row mb-4">  
+          <div class="col-lg-7 col-md-12">
+            <div class="image-holder">
+              <img src="images/info-item1.jpg" alt="review" class="img-fluid">
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-12" data-aos="fade-right">          
+            <div class="info-detail bg-primary-light">
+              <p>“True yoga is not about the shape of your body, but the shape of your life. Yoga is not to be performed; 
+                yoga is to be lived. Yoga doesn’t care about what you have been; yoga cares about the person you are becoming. 
+                Yoga is designed for a vast and profound purpose, and for it to be truly called yoga, 
+                its essence must be embodied.” — Aadil Palkhivala</p>
+                <a href="#" class="btn btn-primary btn-small text-uppercase mt-3 btn-pill">join us</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">  
+          <div class="col-lg-5 col-md-12" data-aos="fade-left">          
+            <div class="info-detail bg-primary-light">
+              <p>“True yoga is not about the shape of your body, but the shape of your life. Yoga is not to be performed; 
+                yoga is to be lived. Yoga doesn’t care about what you have been; yoga cares about the person you are becoming. 
+                Yoga is designed for a vast and profound purpose, and for it to be truly called yoga, 
+                its essence must be embodied.” — Aadil Palkhivala</p>
+                <a href="#" class="btn btn-primary btn-small text-uppercase mt-3 btn-pill">join us</a>
+            </div>
+          </div>
+          <div class="col-lg-7 col-md-12">
+            <div class="image-holder">
+              <img src="images/info-item2.jpg" alt="review" class="img-fluid">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="newsletter" class="padding-large">
+      <div class="container-md">
+        <div class="row">
+          <div class="newsletter-content" style="background-image: url(images/pattern-bg.jpg); background-repeat: no-repeat; background-position: center; height: auto;" data-aos="fade-left">
+
+            <div class="col-lg-8 col-md-10 mx-auto text-center padding-large">
+              <h2 class="display-2 text-primary-dim fw-bold">Join DivineYoga Free <span class="text-secondary d-block">Email Newsletter</span></h2> 
+              <p>Sign Up for our newsletter and never miss any offers</p>
+              <form id="form" class="newsletter-form d-flex flex-wrap position-relative mx-auto">
+                <input type="text" name="email" placeholder="Your email address" class="border-rounded-40 text-light ps-5 fs-5 mx-auto position-relative">  
+                <button class="btn btn-subscribe btn-arrow btn-pill btn-medium btn-primary position-absolute">Subscribe</button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="latest-blog" class="pb-5">
+      <div class="container">
+        <div class="row">
+          <div class="display-header">
+            <h2 class="display-5 fw-bold text-dark text-center">Yoga News</h2>
+          </div>
+          <div class="post-grid d-flex flex-wrap mt-4" data-aos="fade-left" data-aos-duration="2000">
+
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-5">
+              <div class="card-item pe-3">
+                <div class="card border-0 bg-transparent">
+                  <div class="card-image position-relative">
+                    <img src="images/post-item1.jpg" alt="" class="post-image img-fluid border-radius-top-10">
+                  </div>
+                </div>
+                <div class="card-body mt-3 p-0">
+                  <h3 class="card-title fs-3 text-capitalize fw-semibold mt-3">
+                    <a href="blog.html">101 Yoga Poses for healthy Life</a>
+                  </h3>
+                  <p>Sem magna ut pharetra vitae duis eu senectus sem risus. Morbi non, semper vestibulum euismod accumsan...</p>
+                  <a href="#" class="btn btn-small btn-black btn-pill">Read More</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-5">
+              <div class="card-item pe-3">
+                <div class="card border-0 bg-transparent">
+                  <div class="card-image position-relative">
+                    <img src="images/post-item2.jpg" alt="" class="post-image img-fluid border-radius-top-10">
+                  </div>
+                </div>
+                <div class="card-body mt-3 p-0">
+                  <h3 class="card-title fs-3 text-capitalize fw-semibold mt-3">
+                    <a href="blog.html">Giftable Plants which warms the heart</a>
+                  </h3>
+                  <p>Morbi non, semper vestibulum euismod accumsan. Sem magna ut pharetra vitae duis eu senectus sem risus...</p>
+                  <a href="#" class="btn btn-small btn-black btn-pill">Read More</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-5">
+              <div class="card-item pe-3">
+                <div class="card border-0 bg-transparent">
+                  <div class="card-image position-relative">
+                    <img src="images/post-item3.jpg" alt="" class="post-image img-fluid border-radius-top-10">
+                  </div>
+                </div>
+                <div class="card-body mt-3 p-0">
+                  <h3 class="card-title fs-3 text-capitalize fw-semibold mt-3">
+                    <a href="blog.html">Creative ideas to make this holiday special</a>
+                  </h3>
+                  <p>Pharetra vitae sem magna ut duis eu senectus sem risus. Morbi non, semper vestibulum euismod accumsan ...</p>
+                  <a href="#" class="btn btn-small btn-black btn-pill">Read More</a>
+                </div>
+              </div>
+            </div>           
+
+          </div>
+        </div>
+      </div>
+    </section>    
+
+    <footer id="footer" class="overflow-hidden padding-large pb-0 bg-dark">
+      <div class="container">
+
+        <div class="row d-flex flex-wrap justify-content-center">   
+          
+          <div class="col-lg-3 col-md-6 col-sm-12 pb-3">
+            <div class="footer-menu">
+              <div class="image-holder">
+                <img src="images/main-logo.png" alt="logo">
+              </div>
+
+              <ul class="social-links list-unstyled d-flex mt-3">
+                <li class="pe-3">
+                  <a href="#">                          
+                    <svg class="facebook text-primary-500 light" width="25" height="25">
+                      <use xlink:href="#facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="pe-3">
+                  <a href="#">                          
+                    <svg class="twitter text-primary-500 light" width="25" height="25">
+                      <use xlink:href="#twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="pe-3">
+                  <a href="#">                          
+                    <svg class="instagram text-primary-500 light" width="25" height="25">
+                      <use xlink:href="#instagram"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="pe-3">
+                  <a href="#">                          
+                    <svg class="skype text-primary-500 light" width="25" height="25">
+                      <use xlink:href="#skype"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+
+            </div>
+          </div>                          
+          
+          <div class="col-lg-3 col-md-6 col-sm-12 pb-3">
+            <div class="footer-menu light">
+              <ul class="menu-list list-unstyled light">
+                <li class="pb-2 light">
+                  <a href="mailto:">info@templatesjungle.com</a>
+                </li>
+                <li class="pb-2 light">15Th Street Avenue, New York, USA
+                </li>
+                <li class="pb-2 light">011-554-8798-6556
+                </li>
+              </ul>
+            </div>
+          </div>  
+
+          <div class="col-lg-3 col-md-12 col-sm-12 pb-3">
+            <div class="footer-menu light">
+              <ul class="menu-list list-unstyled light">
+                <li class="pb-2 light"><a href="#">Our Partners</a>
+                </li>
+                <li class="pb-2 light"><a href="#">Buy a T-shirt</a>
+                </li>                
+                <li class="pb-2 light"><a href="#">Join Classes</a>
+                </li>
+                <li class="pb-2 light"><a href="#">Shop</a>
+                </li>
+              </ul>
+            </div>
+          </div>  
+
+        </div>
+        
+        <div class="col-lg-6 mx-auto text-center">
+          <p class="light">©2022 HealthMantra by  <a href="https://templatesjungle.com/">TemplatesJungle.</a> </p>
+        </div>      
+
+      </div>
+    </footer>  
+
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="aos/aos.js"></script>		
+    <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
+</html>
