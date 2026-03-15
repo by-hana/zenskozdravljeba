@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1f0a"/>
+      <stop offset="100%" style="stop-color:#1a0d33"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="35%">
+      <stop offset="0%" style="stop-color:#e91e8c;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#e91e8c;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect width="800" height="450" fill="url(#glow)"/>
+
+  <!-- Pregnant silhouette -->
+  <path d="M370,80 C355,80 345,92 345,108 C345,124 355,132 368,136 C350,142 338,158 338,178 C338,215 340,250 345,270 C352,295 358,310 365,325 L435,325 C442,310 448,295 455,270 C460,250 462,215 462,178 C462,158 450,142 432,136 C445,132 455,124 455,108 C455,92 445,80 430,80 Z" fill="#2d1b4e" stroke="#e91e8c" stroke-width="2"/>
+  <!-- Baby bump -->
+  <ellipse cx="400" cy="230" rx="48" ry="55" fill="#3d2060" stroke="#e91e8c" stroke-width="1.5"/>
+  <!-- Baby inside -->
+  <circle cx="400" cy="225" r="22" fill="none" stroke="#f48fb1" stroke-width="1" opacity="0.5"/>
+  <circle cx="400" cy="220" r="10" fill="#e91e8c" opacity="0.3"/>
+  <!-- Heart on bump -->
+  <path d="M396,230 C396,226 391,224 391,229 C391,233 396,237 396,237 C396,237 401,233 401,229 C401,224 396,226 396,230 Z" fill="#e91e8c" opacity="0.9"/>
+
+  <!-- Leaf/growth elements -->
+  <path d="M120,200 C100,180 80,165 95,145 C110,125 130,140 135,165 C140,145 155,130 170,140 C185,150 175,175 155,185 Z" fill="#4caf50" opacity="0.7"/>
+  <line x1="135" y1="165" x2="135" y2="220" stroke="#4caf50" stroke-width="2" opacity="0.6"/>
+  <path d="M100,240 C85,228 75,218 82,204 C90,190 105,198 108,215" fill="#2e7d32" opacity="0.6"/>
+
+  <!-- Timeline / journey -->
+  <line x1="80" y1="350" x2="720" y2="350" stroke="#6b4fa0" stroke-width="2"/>
+  <!-- Milestones -->
+  <circle cx="140" cy="350" r="10" fill="#e91e8c" stroke="white" stroke-width="2"/>
+  <text x="140" y="375" text-anchor="middle" fill="#f48fb1" font-size="10" font-family="Georgia">Priprema</text>
+  <circle cx="260" cy="350" r="10" fill="#9c27b0" stroke="white" stroke-width="2"/>
+  <text x="260" y="375" text-anchor="middle" fill="#c9a8e0" font-size="10" font-family="Georgia">Začeće</text>
+  <circle cx="380" cy="350" r="10" fill="#e91e8c" stroke="white" stroke-width="2"/>
+  <text x="380" y="375" text-anchor="middle" fill="#f48fb1" font-size="10" font-family="Georgia">I trimest.</text>
+  <circle cx="500" cy="350" r="10" fill="#9c27b0" stroke="white" stroke-width="2"/>
+  <text x="500" y="375" text-anchor="middle" fill="#c9a8e0" font-size="10" font-family="Georgia">II trimest.</text>
+  <circle cx="620" cy="350" r="10" fill="#e91e8c" stroke="white" stroke-width="2"/>
+  <text x="620" y="375" text-anchor="middle" fill="#f48fb1" font-size="10" font-family="Georgia">III trimest.</text>
+
+  <!-- Right info -->
+  <rect x="555" y="80" width="195" height="240" rx="10" fill="#1a0d33" stroke="#4caf50" stroke-width="1.5"/>
+  <text x="652" y="108" text-anchor="middle" fill="#4caf50" font-size="13" font-family="Georgia" font-weight="bold">Plodnost</text>
+  <line x1="570" y1="118" x2="735" y2="118" stroke="#2e7d32" stroke-width="1"/>
+  <text x="575" y="140" fill="#81c784" font-size="11" font-family="Georgia">● Plodni prozor: 6 dana</text>
+  <text x="575" y="162" fill="#81c784" font-size="11" font-family="Georgia">● Ovulacija: Dan 14</text>
+  <text x="575" y="184" fill="#81c784" font-size="11" font-family="Georgia">● Bazalna T: praćenje</text>
+  <text x="575" y="206" fill="#f48fb1" font-size="11" font-family="Georgia">● Folna kiselina: 3mj</text>
+  <text x="575" y="228" fill="#f48fb1" font-size="11" font-family="Georgia">● Stres smanjuje šanse</text>
+  <text x="575" y="250" fill="#c9a8e0" font-size="11" font-family="Georgia">● AMH test: rezerva</text>
+  <text x="575" y="272" fill="#c9a8e0" font-size="11" font-family="Georgia">● IVF opcija dostupna</text>
+  <text x="575" y="294" fill="#81c784" font-size="11" font-family="Georgia">● Ishrana: ključna</text>
+
+  <!-- Title -->
+  <text x="310" y="410" text-anchor="middle" fill="#e91e8c" font-size="18" font-family="Georgia" font-weight="bold">Plodnost i trudnoća</text>
+</svg>

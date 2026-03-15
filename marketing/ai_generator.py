@@ -101,7 +101,7 @@ Ne postavljaj ista pitanja kao naslovi sekcija.
 Vrati ISKLJUCIVO JSON (bez markdown, bez komentara):
 
 {{
-  "title": "Naslov clanka — kljucna rijec sto blize pocetku, max 65 znakova, ukljuci godinu 2025 gdje ima smisla",
+  "title": "Naslov clanka — kljucna rijec sto blize pocetku, max 65 znakova. NE koristiti 'kompletan vodic' ni slicne genericki fraze. Varirati format: pitanje, broj, konkretan benefit, kako/zasto. Godinu (2026) dodaj samo ako je topicki relevantno.",
   "meta_title": "Meta title — max 65 znakova, kljucna rijec na pocetku",
   "meta_description": "Meta opis — 150-160 znakova, direktan, konkretan, povecaj CTR",
   "article_type": "guide|list|qa|explanation|comparison",
@@ -138,13 +138,7 @@ Vrati ISKLJUCIVO JSON (bez markdown, bez komentara):
 Sve na bosanskom latinicnom pismu."""
 
     max_tokens = 5000 if is_pillar else 3500
-    outline = _call_api(client, prompt, max_tokens=max_tokens)
-    # Restore diacritics on string fields
-    for field in ('title', 'meta_title', 'meta_description', 'search_intent',
-                  'opening_answer', 'brand_mention', 'cta_text'):
-        if outline.get(field):
-            outline[field] = restore_diacritics(outline[field], client)
-    return outline
+    return _call_api(client, prompt, max_tokens=max_tokens)
 
 
 # ─── Step 2: Full article ─────────────────────────────────────────────────────
@@ -292,13 +286,7 @@ Vrati ISKLJUCIVO JSON objekat (bez markdown kod blokova, bez objasnjavanja):
 }}"""
 
     max_tokens = 16000 if is_pillar else 12000
-    article = _call_api(client, prompt, max_tokens=max_tokens)
-    # Restore diacritics on article text fields
-    if article.get('intro'):
-        article['intro'] = restore_diacritics(article['intro'], client)
-    if article.get('content_html'):
-        article['content_html'] = restore_diacritics(article['content_html'], client)
-    return article
+    return _call_api(client, prompt, max_tokens=max_tokens)
 
 
 # ─── Shared API caller with retry logic ──────────────────────────────────────

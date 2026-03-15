@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0a1a"/>
+      <stop offset="100%" style="stop-color:#2d1535"/>
+    </linearGradient>
+    <radialGradient id="skin" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" style="stop-color:#f48fb1;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#f48fb1;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect width="800" height="450" fill="url(#skin)"/>
+
+  <!-- Face outline -->
+  <ellipse cx="400" cy="195" rx="95" ry="115" fill="#2d1b4e" stroke="#e91e8c" stroke-width="2.5"/>
+  <!-- Hair -->
+  <path d="M308,165 C295,140 298,100 320,85 C340,70 370,68 400,70 C430,68 460,70 480,85 C502,100 505,140 492,165" fill="none" stroke="#e91e8c" stroke-width="3" stroke-linecap="round"/>
+  <path d="M308,165 C295,155 290,175 292,195" fill="none" stroke="#c2185b" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M492,165 C505,155 510,175 508,195" fill="none" stroke="#c2185b" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Hair strands -->
+  <path d="M330,75 C320,110 315,145 318,175" fill="none" stroke="#ad1457" stroke-width="1.5" opacity="0.6"/>
+  <path d="M355,70 C348,105 345,140 348,170" fill="none" stroke="#ad1457" stroke-width="1.5" opacity="0.6"/>
+  <path d="M400,70 C400,105 400,140 400,170" fill="none" stroke="#c2185b" stroke-width="1.5" opacity="0.6"/>
+  <path d="M445,70 C452,105 455,140 452,170" fill="none" stroke="#ad1457" stroke-width="1.5" opacity="0.6"/>
+  <path d="M470,75 C480,110 485,145 482,175" fill="none" stroke="#ad1457" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Eyes (simplified) -->
+  <ellipse cx="368" cy="185" rx="14" ry="8" fill="#1a0533" stroke="#f48fb1" stroke-width="1.5"/>
+  <ellipse cx="432" cy="185" rx="14" ry="8" fill="#1a0533" stroke="#f48fb1" stroke-width="1.5"/>
+  <circle cx="370" cy="185" r="5" fill="#c9a8e0"/>
+  <circle cx="434" cy="185" r="5" fill="#c9a8e0"/>
+
+  <!-- Lips -->
+  <path d="M378,235 C386,228 414,228 422,235 C414,245 386,245 378,235 Z" fill="#e91e8c" opacity="0.8"/>
+
+  <!-- Skin layer diagram - left -->
+  <rect x="40" y="80" width="215" height="285" rx="10" fill="#150a1a" stroke="#9c27b0" stroke-width="1.5"/>
+  <text x="147" y="108" text-anchor="middle" fill="#e91e8c" font-size="13" font-family="Georgia" font-weight="bold">Slojevi kože</text>
+  <line x1="55" y1="118" x2="240" y2="118" stroke="#6b4fa0" stroke-width="1"/>
+  <!-- Layers -->
+  <rect x="55" y="128" width="185" height="35" rx="4" fill="#e91e8c" opacity="0.25"/>
+  <text x="147" y="150" text-anchor="middle" fill="#f48fb1" font-size="11" font-family="Georgia">Epidermis</text>
+  <rect x="55" y="170" width="185" height="35" rx="4" fill="#9c27b0" opacity="0.2"/>
+  <text x="147" y="192" text-anchor="middle" fill="#c9a8e0" font-size="11" font-family="Georgia">Dermis (kolagen)</text>
+  <rect x="55" y="212" width="185" height="35" rx="4" fill="#7b1fa2" opacity="0.2"/>
+  <text x="147" y="234" text-anchor="middle" fill="#c9a8e0" font-size="11" font-family="Georgia">Hipodermis (masti)</text>
+  <text x="60" y="270" fill="#f48fb1" font-size="11" font-family="Georgia">Hormoni utiču na:</text>
+  <text x="60" y="290" fill="#c9a8e0" font-size="11" font-family="Georgia">● Produkciju sebuma</text>
+  <text x="60" y="310" fill="#c9a8e0" font-size="11" font-family="Georgia">● Kolagen (estrogen)</text>
+  <text x="60" y="330" fill="#c9a8e0" font-size="11" font-family="Georgia">● Vlažnost kože</text>
+  <text x="60" y="350" fill="#c9a8e0" font-size="11" font-family="Georgia">● Akne (androgeni)</text>
+
+  <!-- Right: Hair health -->
+  <rect x="545" y="80" width="215" height="285" rx="10" fill="#150a1a" stroke="#9c27b0" stroke-width="1.5"/>
+  <text x="652" y="108" text-anchor="middle" fill="#e91e8c" font-size="13" font-family="Georgia" font-weight="bold">Zdravlje kose</text>
+  <line x1="560" y1="118" x2="745" y2="118" stroke="#6b4fa0" stroke-width="1"/>
+  <text x="562" y="140" fill="#f48fb1" font-size="11" font-family="Georgia">Faze rasta dlake:</text>
+  <rect x="560" y="148" width="185" height="22" rx="4" fill="#4caf50" opacity="0.2"/>
+  <text x="652" y="163" text-anchor="middle" fill="#a5d6a7" font-size="11" font-family="Georgia">Anagen (rast): 2-7g</text>
+  <rect x="560" y="177" width="185" height="22" rx="4" fill="#ffa726" opacity="0.2"/>
+  <text x="652" y="192" text-anchor="middle" fill="#ffcc80" font-size="11" font-family="Georgia">Katagen (prijelaz): 2tj</text>
+  <rect x="560" y="206" width="185" height="22" rx="4" fill="#e91e8c" opacity="0.2"/>
+  <text x="652" y="221" text-anchor="middle" fill="#f48fb1" font-size="11" font-family="Georgia">Telogen (mirovanje)</text>
+  <text x="562" y="250" fill="#f48fb1" font-size="11" font-family="Georgia">Uzroci gubitka kose:</text>
+  <text x="562" y="270" fill="#c9a8e0" font-size="11" font-family="Georgia">● Nizak feritin</text>
+  <text x="562" y="290" fill="#c9a8e0" font-size="11" font-family="Georgia">● DHT (androgeni)</text>
+  <text x="562" y="310" fill="#c9a8e0" font-size="11" font-family="Georgia">● Hipotireoza</text>
+  <text x="562" y="330" fill="#c9a8e0" font-size="11" font-family="Georgia">● PCOS</text>
+  <text x="562" y="350" fill="#c9a8e0" font-size="11" font-family="Georgia">● Stres (kortizol)</text>
+
+  <!-- Sparkle elements -->
+  <text x="310" y="100" fill="#e91e8c" font-size="18" opacity="0.7">✦</text>
+  <text x="480" y="95" fill="#c9a8e0" font-size="14" opacity="0.6">✦</text>
+  <text x="350" y="350" fill="#e91e8c" font-size="12" opacity="0.5">✦</text>
+  <text x="440" y="355" fill="#c9a8e0" font-size="10" opacity="0.5">✦</text>
+
+  <!-- Title -->
+  <text x="400" y="415" text-anchor="middle" fill="#e91e8c" font-size="18" font-family="Georgia" font-weight="bold">Koža, kosa i hormoni</text>
+</svg>

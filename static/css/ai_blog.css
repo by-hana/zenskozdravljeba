@@ -38,6 +38,20 @@
   padding: 0 2rem 4rem;
 }
 
+/* Article illustration */
+.zz-article-illustration {
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  line-height: 0;
+}
+.zz-article-illustration img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1rem;
+}
+
 /* Article header */
 .zz-article-header {
   background: linear-gradient(135deg, #FDF5FF 0%, #F5E8FF 60%, #FFF0F8 100%);

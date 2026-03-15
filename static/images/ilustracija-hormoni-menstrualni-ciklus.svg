@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0533"/>
+      <stop offset="100%" style="stop-color:#2d1b69"/>
+    </linearGradient>
+    <linearGradient id="wave" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e91e8c;stop-opacity:0.3"/>
+      <stop offset="50%" style="stop-color:#e91e8c;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#e91e8c;stop-opacity:0.3"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <!-- Stars -->
+  <circle cx="50" cy="40" r="1.5" fill="white" opacity="0.6"/>
+  <circle cx="120" cy="80" r="1" fill="white" opacity="0.4"/>
+  <circle cx="200" cy="30" r="2" fill="white" opacity="0.5"/>
+  <circle cx="350" cy="50" r="1.5" fill="white" opacity="0.7"/>
+  <circle cx="500" cy="25" r="1" fill="white" opacity="0.4"/>
+  <circle cx="620" cy="60" r="2" fill="white" opacity="0.6"/>
+  <circle cx="720" cy="35" r="1.5" fill="white" opacity="0.5"/>
+  <circle cx="760" cy="90" r="1" fill="white" opacity="0.3"/>
+  <circle cx="80" cy="150" r="1" fill="white" opacity="0.3"/>
+  <circle cx="440" cy="120" r="1.5" fill="white" opacity="0.4"/>
+
+  <!-- Moon phases row -->
+  <!-- New moon -->
+  <circle cx="100" cy="160" r="38" fill="#0d0820" stroke="#6b4fa0" stroke-width="2"/>
+  <text x="100" y="215" text-anchor="middle" fill="#8b6fb5" font-size="11" font-family="Georgia">Nova</text>
+
+  <!-- Waxing crescent -->
+  <circle cx="200" cy="160" r="38" fill="#0d0820" stroke="#8b6fb5" stroke-width="1.5"/>
+  <path d="M200,122 Q225,160 200,198 Q185,160 200,122" fill="#c9a8e0"/>
+  <text x="200" y="215" text-anchor="middle" fill="#8b6fb5" font-size="11" font-family="Georgia">Rastući</text>
+
+  <!-- First quarter -->
+  <circle cx="300" cy="160" r="38" fill="#0d0820" stroke="#a87ed0" stroke-width="1.5"/>
+  <path d="M300,122 A38,38 0 0,1 300,198 Z" fill="#c9a8e0"/>
+  <text x="300" y="215" text-anchor="middle" fill="#8b6fb5" font-size="11" font-family="Georgia">Prva četvrt</text>
+
+  <!-- Full moon -->
+  <circle cx="400" cy="160" r="42" fill="#c9a8e0" stroke="#e91e8c" stroke-width="2.5"/>
+  <circle cx="400" cy="160" r="38" fill="#d4bde8"/>
+  <circle cx="385" cy="148" r="6" fill="#c0a8d8" opacity="0.5"/>
+  <circle cx="408" cy="170" r="4" fill="#c0a8d8" opacity="0.4"/>
+  <text x="400" y="219" text-anchor="middle" fill="#e91e8c" font-size="11" font-family="Georgia" font-weight="bold">Pun</text>
+
+  <!-- Last quarter -->
+  <circle cx="500" cy="160" r="38" fill="#0d0820" stroke="#a87ed0" stroke-width="1.5"/>
+  <path d="M500,122 A38,38 0 0,0 500,198 Z" fill="#c9a8e0"/>
+  <text x="500" y="215" text-anchor="middle" fill="#8b6fb5" font-size="11" font-family="Georgia">Posljednja</text>
+
+  <!-- Waning crescent -->
+  <circle cx="600" cy="160" r="38" fill="#0d0820" stroke="#8b6fb5" stroke-width="1.5"/>
+  <path d="M600,122 Q575,160 600,198 Q615,160 600,122" fill="#c9a8e0"/>
+  <text x="600" y="215" text-anchor="middle" fill="#8b6fb5" font-size="11" font-family="Georgia">Opadajući</text>
+
+  <!-- Dark again -->
+  <circle cx="700" cy="160" r="38" fill="#0d0820" stroke="#6b4fa0" stroke-width="2"/>
+  <text x="700" y="215" text-anchor="middle" fill="#8b6fb5" font-size="11" font-family="Georgia">Nova</text>
+
+  <!-- Sine wave below representing cycle -->
+  <path d="M50,310 C100,270 150,350 200,310 C250,270 300,350 350,310 C400,270 450,350 500,310 C550,270 600,350 650,310 C700,270 750,350 780,320" stroke="url(#wave)" stroke-width="3" fill="none"/>
+
+  <!-- Phase labels on wave -->
+  <rect x="60" y="330" width="100" height="22" rx="4" fill="#e91e8c" opacity="0.2"/>
+  <text x="110" y="345" text-anchor="middle" fill="#e91e8c" font-size="11" font-family="Georgia">Menstruacija</text>
+
+  <rect x="185" y="260" width="100" height="22" rx="4" fill="#9c27b0" opacity="0.2"/>
+  <text x="235" y="275" text-anchor="middle" fill="#c9a8e0" font-size="11" font-family="Georgia">Folikularna</text>
+
+  <rect x="360" y="260" width="80" height="22" rx="4" fill="#e91e8c" opacity="0.25"/>
+  <text x="400" y="275" text-anchor="middle" fill="#e91e8c" font-size="11" font-family="Georgia">Ovulacija</text>
+
+  <rect x="510" y="330" width="90" height="22" rx="4" fill="#9c27b0" opacity="0.2"/>
+  <text x="555" y="345" text-anchor="middle" fill="#c9a8e0" font-size="11" font-family="Georgia">Lutealna</text>
+
+  <!-- Day markers -->
+  <line x1="50" y1="300" x2="50" y2="395" stroke="#6b4fa0" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+  <text x="50" y="410" text-anchor="middle" fill="#8b6fb5" font-size="10">Dan 1</text>
+  <line x1="200" y1="300" x2="200" y2="395" stroke="#6b4fa0" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+  <text x="200" y="410" text-anchor="middle" fill="#8b6fb5" font-size="10">Dan 7</text>
+  <line x1="400" y1="300" x2="400" y2="395" stroke="#e91e8c" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.7"/>
+  <text x="400" y="410" text-anchor="middle" fill="#e91e8c" font-size="10">Dan 14</text>
+  <line x1="600" y1="300" x2="600" y2="395" stroke="#6b4fa0" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+  <text x="600" y="410" text-anchor="middle" fill="#8b6fb5" font-size="10">Dan 21</text>
+  <line x1="750" y1="300" x2="750" y2="395" stroke="#6b4fa0" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+  <text x="750" y="410" text-anchor="middle" fill="#8b6fb5" font-size="10">Dan 28</text>
+</svg>

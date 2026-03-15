@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#071a0a"/>
+      <stop offset="100%" style="stop-color:#1a1535"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+
+  <!-- Large central herb/plant -->
+  <!-- Stem -->
+  <line x1="400" y1="380" x2="400" y2="200" stroke="#4caf50" stroke-width="4" stroke-linecap="round"/>
+  <!-- Leaves -->
+  <path d="M400,300 C375,275 340,270 330,285 C320,300 335,315 370,310 Z" fill="#2e7d32" opacity="0.8"/>
+  <path d="M400,300 C425,275 460,270 470,285 C480,300 465,315 430,310 Z" fill="#388e3c" opacity="0.8"/>
+  <path d="M400,250 C370,230 340,228 335,242 C330,258 348,268 385,262 Z" fill="#4caf50" opacity="0.85"/>
+  <path d="M400,250 C430,230 460,228 465,242 C470,258 452,268 415,262 Z" fill="#43a047" opacity="0.85"/>
+  <!-- Flower top -->
+  <circle cx="400" cy="190" r="28" fill="#e91e8c" opacity="0.8"/>
+  <circle cx="375" cy="175" r="16" fill="#c2185b" opacity="0.7"/>
+  <circle cx="425" cy="175" r="16" fill="#c2185b" opacity="0.7"/>
+  <circle cx="365" cy="200" r="14" fill="#ad1457" opacity="0.6"/>
+  <circle cx="435" cy="200" r="14" fill="#ad1457" opacity="0.6"/>
+  <circle cx="400" cy="190" r="12" fill="#f8bbd9" opacity="0.9"/>
+
+  <!-- Left: Natural approaches -->
+  <rect x="35" y="60" width="210" height="320" rx="12" fill="#071a0a" stroke="#4caf50" stroke-width="1.5"/>
+  <text x="140" y="92" text-anchor="middle" fill="#4caf50" font-size="13" font-family="Georgia" font-weight="bold">Prirodni pristupi</text>
+  <line x1="50" y1="102" x2="230" y2="102" stroke="#2e7d32" stroke-width="1"/>
+  <text x="55" y="124" fill="#81c784" font-size="13">🌿</text><text x="77" y="125" fill="#a5d6a7" font-size="11" font-family="Georgia">Biljni čajevi</text>
+  <text x="55" y="152" fill="#81c784" font-size="13">🌸</text><text x="77" y="153" fill="#a5d6a7" font-size="11" font-family="Georgia">Aromaterapija</text>
+  <text x="55" y="180" fill="#81c784" font-size="13">🪷</text><text x="77" y="181" fill="#a5d6a7" font-size="11" font-family="Georgia">Akupunktura</text>
+  <text x="55" y="208" fill="#e91e8c" font-size="13">●</text><text x="73" y="209" fill="#f48fb1" font-size="11" font-family="Georgia">Seed cycling</text>
+  <text x="55" y="236" fill="#e91e8c" font-size="13">●</text><text x="73" y="237" fill="#f48fb1" font-size="11" font-family="Georgia">Ayurveda</text>
+  <text x="55" y="264" fill="#ffa726" font-size="13">●</text><text x="73" y="265" fill="#ffcc80" font-size="11" font-family="Georgia">Kurkuma</text>
+  <text x="55" y="292" fill="#ffa726" font-size="13">●</text><text x="73" y="293" fill="#ffcc80" font-size="11" font-family="Georgia">Maca korijen</text>
+  <text x="55" y="320" fill="#c9a8e0" font-size="13">●</text><text x="73" y="321" fill="#c9a8e0" font-size="11" font-family="Georgia">Grounding</text>
+  <text x="55" y="348" fill="#c9a8e0" font-size="13">●</text><text x="73" y="349" fill="#c9a8e0" font-size="11" font-family="Georgia">Detoksikacija</text>
+  <text x="55" y="368" fill="#c9a8e0" font-size="13">●</text><text x="73" y="369" fill="#c9a8e0" font-size="11" font-family="Georgia">Kineska medicina</text>
+
+  <!-- Right: Key herbs -->
+  <rect x="555" y="60" width="210" height="320" rx="12" fill="#071a0a" stroke="#4caf50" stroke-width="1.5"/>
+  <text x="660" y="92" text-anchor="middle" fill="#e91e8c" font-size="13" font-family="Georgia" font-weight="bold">Ključne biljke</text>
+  <line x1="570" y1="102" x2="750" y2="102" stroke="#2e7d32" stroke-width="1"/>
+  <rect x="570" y="112" width="185" height="28" rx="5" fill="#e91e8c" opacity="0.2"/>
+  <text x="662" y="131" text-anchor="middle" fill="#f48fb1" font-size="12" font-family="Georgia">Vitex (konopljika)</text>
+  <rect x="570" y="148" width="185" height="28" rx="5" fill="#4caf50" opacity="0.15"/>
+  <text x="662" y="167" text-anchor="middle" fill="#a5d6a7" font-size="12" font-family="Georgia">Ashwagandha</text>
+  <rect x="570" y="184" width="185" height="28" rx="5" fill="#9c27b0" opacity="0.2"/>
+  <text x="662" y="203" text-anchor="middle" fill="#ce93d8" font-size="12" font-family="Georgia">Crvena djetelina</text>
+  <rect x="570" y="220" width="185" height="28" rx="5" fill="#ffa726" opacity="0.15"/>
+  <text x="662" y="239" text-anchor="middle" fill="#ffcc80" font-size="12" font-family="Georgia">Kurkuma + Bioperine</text>
+  <rect x="570" y="256" width="185" height="28" rx="5" fill="#4caf50" opacity="0.15"/>
+  <text x="662" y="275" text-anchor="middle" fill="#a5d6a7" font-size="12" font-family="Georgia">Maca</text>
+  <rect x="570" y="292" width="185" height="28" rx="5" fill="#e91e8c" opacity="0.15"/>
+  <text x="662" y="311" text-anchor="middle" fill="#f48fb1" font-size="12" font-family="Georgia">Večernja jagorčevina</text>
+  <rect x="570" y="328" width="185" height="28" rx="5" fill="#26a69a" opacity="0.15"/>
+  <text x="662" y="347" text-anchor="middle" fill="#80cbc4" font-size="12" font-family="Georgia">Kamilica</text>
+  <text x="662" y="375" text-anchor="middle" fill="#6b4fa0" font-size="11" font-family="Georgia">+ još 50+ biljaka</text>
+
+  <!-- Title -->
+  <text x="400" y="425" text-anchor="middle" fill="#4caf50" font-size="16" font-family="Georgia" font-weight="bold">Prirodni pristupi ženskom zdravlju</text>
+</svg>

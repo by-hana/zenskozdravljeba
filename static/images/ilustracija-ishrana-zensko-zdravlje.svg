@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1f0a"/>
+      <stop offset="100%" style="stop-color:#1a0d33"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+
+  <!-- Plate circle -->
+  <circle cx="400" cy="230" r="155" fill="none" stroke="#4caf50" stroke-width="3"/>
+  <circle cx="400" cy="230" r="148" fill="#0d2010" opacity="0.8"/>
+  <!-- Plate dividers -->
+  <line x1="400" y1="82" x2="400" y2="378" stroke="#2e7d32" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.5"/>
+  <line x1="252" y1="230" x2="548" y2="230" stroke="#2e7d32" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.5"/>
+
+  <!-- Section: Vegetables (top-left) -->
+  <text x="330" y="145" text-anchor="middle" fill="#4caf50" font-size="32">🥦</text>
+  <text x="310" y="200" text-anchor="middle" fill="#81c784" font-size="11" font-family="Georgia">Povrće</text>
+  <text x="310" y="215" text-anchor="middle" fill="#4caf50" font-size="11" font-family="Georgia">50%</text>
+
+  <!-- Section: Protein (top-right) -->
+  <text x="468" y="145" text-anchor="middle" fill="#e91e8c" font-size="32">🐟</text>
+  <text x="490" y="200" text-anchor="middle" fill="#f48fb1" font-size="11" font-family="Georgia">Proteini</text>
+  <text x="490" y="215" text-anchor="middle" fill="#e91e8c" font-size="11" font-family="Georgia">25%</text>
+
+  <!-- Section: Grains (bottom-left) -->
+  <text x="330" y="285" text-anchor="middle" fill="#ffa726" font-size="32">🌾</text>
+  <text x="310" y="345" text-anchor="middle" fill="#ffcc80" font-size="11" font-family="Georgia">Žitarice</text>
+  <text x="310" y="360" text-anchor="middle" fill="#ffa726" font-size="11" font-family="Georgia">15%</text>
+
+  <!-- Section: Healthy fats (bottom-right) -->
+  <text x="468" y="285" text-anchor="middle" fill="#8bc34a" font-size="32">🥑</text>
+  <text x="490" y="345" text-anchor="middle" fill="#aed581" font-size="11" font-family="Georgia">Masti</text>
+  <text x="490" y="360" text-anchor="middle" fill="#8bc34a" font-size="11" font-family="Georgia">10%</text>
+
+  <!-- Left nutrient list -->
+  <rect x="30" y="80" width="175" height="280" rx="10" fill="#0a1a08" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="117" y="108" text-anchor="middle" fill="#4caf50" font-size="13" font-family="Georgia" font-weight="bold">Ključni nutrijenti</text>
+  <line x1="45" y1="118" x2="190" y2="118" stroke="#2e7d32" stroke-width="1"/>
+  <text x="50" y="138" fill="#e91e8c" font-size="13">●</text><text x="67" y="138" fill="#c9a8e0" font-size="11" font-family="Georgia">Folna kiselina</text>
+  <text x="50" y="160" fill="#e91e8c" font-size="13">●</text><text x="67" y="160" fill="#c9a8e0" font-size="11" font-family="Georgia">Magnezijum</text>
+  <text x="50" y="182" fill="#e91e8c" font-size="13">●</text><text x="67" y="182" fill="#c9a8e0" font-size="11" font-family="Georgia">Omega-3</text>
+  <text x="50" y="204" fill="#4caf50" font-size="13">●</text><text x="67" y="204" fill="#c9a8e0" font-size="11" font-family="Georgia">Željezo</text>
+  <text x="50" y="226" fill="#4caf50" font-size="13">●</text><text x="67" y="226" fill="#c9a8e0" font-size="11" font-family="Georgia">Kalcijum</text>
+  <text x="50" y="248" fill="#ffa726" font-size="13">●</text><text x="67" y="248" fill="#c9a8e0" font-size="11" font-family="Georgia">Vitamin D</text>
+  <text x="50" y="270" fill="#ffa726" font-size="13">●</text><text x="67" y="270" fill="#c9a8e0" font-size="11" font-family="Georgia">Cink</text>
+  <text x="50" y="292" fill="#8bc34a" font-size="13">●</text><text x="67" y="292" fill="#c9a8e0" font-size="11" font-family="Georgia">Vlakna</text>
+  <text x="50" y="314" fill="#8bc34a" font-size="13">●</text><text x="67" y="314" fill="#c9a8e0" font-size="11" font-family="Georgia">Probiotici</text>
+  <text x="50" y="336" fill="#c9a8e0" font-size="13">●</text><text x="67" y="336" fill="#c9a8e0" font-size="11" font-family="Georgia">Antioksidansi</text>
+
+  <!-- Right: Life phase -->
+  <rect x="595" y="80" width="175" height="280" rx="10" fill="#0a1a08" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="682" y="108" text-anchor="middle" fill="#4caf50" font-size="13" font-family="Georgia" font-weight="bold">Faze života</text>
+  <line x1="610" y1="118" x2="755" y2="118" stroke="#2e7d32" stroke-width="1"/>
+  <rect x="615" y="130" width="145" height="35" rx="5" fill="#e91e8c" opacity="0.2"/>
+  <text x="688" y="152" text-anchor="middle" fill="#f48fb1" font-size="12" font-family="Georgia">Reproduktivne godine</text>
+  <rect x="615" y="175" width="145" height="35" rx="5" fill="#9c27b0" opacity="0.2"/>
+  <text x="688" y="197" text-anchor="middle" fill="#c9a8e0" font-size="12" font-family="Georgia">Trudnoća</text>
+  <rect x="615" y="220" width="145" height="35" rx="5" fill="#4caf50" opacity="0.2"/>
+  <text x="688" y="242" text-anchor="middle" fill="#81c784" font-size="12" font-family="Georgia">Dojenje</text>
+  <rect x="615" y="265" width="145" height="35" rx="5" fill="#ffa726" opacity="0.2"/>
+  <text x="688" y="287" text-anchor="middle" fill="#ffcc80" font-size="12" font-family="Georgia">Perimenopauza</text>
+  <rect x="615" y="310" width="145" height="35" rx="5" fill="#7b1fa2" opacity="0.2"/>
+  <text x="688" y="332" text-anchor="middle" fill="#c9a8e0" font-size="12" font-family="Georgia">Menopauza</text>
+
+  <!-- Title -->
+  <text x="400" y="45" text-anchor="middle" fill="#4caf50" font-size="20" font-family="Georgia" font-weight="bold">Ishrana za žensko zdravlje</text>
+  <text x="400" y="68" text-anchor="middle" fill="#81c784" font-size="13" font-family="Georgia">Prehrana prilagođena ženskim potrebama</text>
+
+  <!-- Bottom water reminder -->
+  <text x="400" y="415" text-anchor="middle" fill="#4fc3f7" font-size="13" font-family="Georgia">💧 2–2.5 L vode dnevno · Hormonska ravnoteža počinje na tanjiru</text>
+</svg>

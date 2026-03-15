@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="100%" style="stop-color:#1e0d3f"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e91e8c"/>
+      <stop offset="100%" style="stop-color:#7b1fa2"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+
+  <!-- Central uterus shape -->
+  <path d="M380,120 C340,120 310,145 305,180 C298,220 310,250 320,270 C330,285 355,305 380,310 C405,305 430,285 440,270 C450,250 462,220 455,180 C450,145 420,120 380,120 Z" fill="none" stroke="#e91e8c" stroke-width="3"/>
+  <path d="M380,120 C340,120 310,145 305,180 C298,220 310,250 320,270 C330,285 355,305 380,310 C405,305 430,285 440,270 C450,250 462,220 455,180 C450,145 420,120 380,120 Z" fill="#e91e8c" opacity="0.15"/>
+
+  <!-- Fallopian tubes -->
+  <path d="M305,175 C270,165 230,150 195,165 C175,175 165,190 170,210 C175,228 195,235 215,225" fill="none" stroke="#c9a8e0" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M455,175 C490,165 530,150 565,165 C585,175 595,190 590,210 C585,228 565,235 545,225" fill="none" stroke="#c9a8e0" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Ovaries -->
+  <ellipse cx="170" cy="218" rx="32" ry="22" fill="#7b1fa2" opacity="0.5" stroke="#c9a8e0" stroke-width="2"/>
+  <circle cx="160" cy="210" r="6" fill="#e91e8c" opacity="0.5"/>
+  <circle cx="180" cy="222" r="5" fill="#c9a8e0" opacity="0.4"/>
+  <ellipse cx="590" cy="218" rx="32" ry="22" fill="#7b1fa2" opacity="0.5" stroke="#c9a8e0" stroke-width="2"/>
+  <circle cx="580" cy="210" r="6" fill="#e91e8c" opacity="0.5"/>
+  <circle cx="600" cy="222" r="5" fill="#c9a8e0" opacity="0.4"/>
+
+  <!-- Shield protection symbol -->
+  <path d="M380,330 L340,355 L340,395 C340,415 360,430 380,435 C400,430 420,415 420,395 L420,355 Z" fill="url(#shield)" opacity="0.85"/>
+  <path d="M365,382 L375,392 L398,368" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Calendar / prevention checkmarks -->
+  <rect x="80" y="320" width="140" height="105" rx="10" fill="#1e0d3f" stroke="#6b4fa0" stroke-width="1.5"/>
+  <text x="150" y="345" text-anchor="middle" fill="#c9a8e0" font-size="12" font-family="Georgia" font-weight="bold">Prevencija</text>
+  <line x1="95" y1="355" x2="205" y2="355" stroke="#6b4fa0" stroke-width="1"/>
+  <text x="100" y="372" fill="#4caf50" font-size="13">✓</text>
+  <text x="118" y="372" fill="#c9a8e0" font-size="11" font-family="Georgia">PAPA test</text>
+  <text x="100" y="390" fill="#4caf50" font-size="13">✓</text>
+  <text x="118" y="390" fill="#c9a8e0" font-size="11" font-family="Georgia">Ultrazvuk</text>
+  <text x="100" y="408" fill="#4caf50" font-size="13">✓</text>
+  <text x="118" y="408" fill="#c9a8e0" font-size="11" font-family="Georgia">Pregled</text>
+
+  <!-- Right info panel -->
+  <rect x="580" y="320" width="160" height="105" rx="10" fill="#1e0d3f" stroke="#6b4fa0" stroke-width="1.5"/>
+  <text x="660" y="345" text-anchor="middle" fill="#e91e8c" font-size="12" font-family="Georgia" font-weight="bold">Zdravlje</text>
+  <line x1="595" y1="355" x2="725" y2="355" stroke="#6b4fa0" stroke-width="1"/>
+  <circle cx="610" cy="369" r="5" fill="#e91e8c" opacity="0.7"/>
+  <text x="625" y="373" fill="#c9a8e0" font-size="11" font-family="Georgia">Higijena</text>
+  <circle cx="610" cy="389" r="5" fill="#9c27b0" opacity="0.7"/>
+  <text x="625" y="393" fill="#c9a8e0" font-size="11" font-family="Georgia">Infekcije</text>
+  <circle cx="610" cy="409" r="5" fill="#c9a8e0" opacity="0.7"/>
+  <text x="625" y="413" fill="#c9a8e0" font-size="11" font-family="Georgia">Menopauza</text>
+
+  <!-- Title -->
+  <text x="400" y="65" text-anchor="middle" fill="#e91e8c" font-size="20" font-family="Georgia" font-weight="bold">Ginekološko zdravlje</text>
+  <text x="400" y="90" text-anchor="middle" fill="#8b6fb5" font-size="13" font-family="Georgia">Prevencija · Rano otkrivanje · Zaštita</text>
+</svg>

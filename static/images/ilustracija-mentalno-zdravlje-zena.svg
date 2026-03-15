@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="100%" style="stop-color:#1a1035"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="40%">
+      <stop offset="0%" style="stop-color:#e91e8c;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#e91e8c;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect width="800" height="450" fill="url(#glow)"/>
+
+  <!-- Central female head silhouette -->
+  <ellipse cx="400" cy="165" rx="65" ry="75" fill="#2d1b4e" stroke="#e91e8c" stroke-width="2"/>
+  <!-- Hair suggestion -->
+  <path d="M338,130 C335,100 350,75 400,72 C450,75 465,100 462,130" fill="#1a0533" stroke="#e91e8c" stroke-width="1.5"/>
+  <!-- Brain inside head (simplified) -->
+  <path d="M370,140 C360,130 355,145 365,155 C360,165 365,178 375,175 C378,185 395,185 398,175 C408,182 422,175 420,163 C430,158 428,142 418,138 C415,128 402,125 395,133 C388,125 375,128 370,140 Z" fill="none" stroke="#c9a8e0" stroke-width="1.5" opacity="0.8"/>
+  <!-- Heart inside head -->
+  <path d="M392,155 C392,150 385,147 385,154 C385,159 392,164 392,164 C392,164 399,159 399,154 C399,147 392,150 392,155 Z" fill="#e91e8c" opacity="0.8"/>
+
+  <!-- Meditation pose body -->
+  <path d="M400,240 C380,242 355,255 340,275 C330,288 328,300 335,308 C345,318 365,312 380,305 L400,295 L420,305 C435,312 455,318 465,308 C472,300 470,288 460,275 C445,255 420,242 400,240 Z" fill="#2d1b4e" stroke="#e91e8c" stroke-width="1.5"/>
+  <!-- Legs crossed -->
+  <ellipse cx="360" cy="320" rx="40" ry="18" fill="#2d1b4e" stroke="#8b6fb5" stroke-width="1.5"/>
+  <ellipse cx="440" cy="320" rx="40" ry="18" fill="#2d1b4e" stroke="#8b6fb5" stroke-width="1.5"/>
+
+  <!-- Floating wellness elements -->
+  <!-- Breathing circles -->
+  <circle cx="150" cy="150" r="45" fill="none" stroke="#e91e8c" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6"/>
+  <circle cx="150" cy="150" r="30" fill="none" stroke="#e91e8c" stroke-width="1" opacity="0.4"/>
+  <circle cx="150" cy="150" r="15" fill="#e91e8c" opacity="0.2"/>
+  <text x="150" y="215" text-anchor="middle" fill="#f48fb1" font-size="11" font-family="Georgia">Disanje</text>
+
+  <!-- Sleep symbol -->
+  <text x="650" y="130" fill="#c9a8e0" font-size="22" text-anchor="middle" opacity="0.9">Zzz</text>
+  <text x="650" y="160" text-anchor="middle" fill="#8b6fb5" font-size="11" font-family="Georgia">Kvalitet sna</text>
+
+  <!-- Anxiety wave -->
+  <path d="M80,290 C100,275 110,305 130,290 C150,275 160,305 180,290" stroke="#ff8a65" stroke-width="2" fill="none" opacity="0.7"/>
+  <text x="130" y="320" text-anchor="middle" fill="#ffab91" font-size="11" font-family="Georgia">Anksioznost</text>
+
+  <!-- Mood chart -->
+  <rect x="580" y="250" width="170" height="110" rx="8" fill="#1a1035" stroke="#6b4fa0" stroke-width="1.5"/>
+  <text x="665" y="272" text-anchor="middle" fill="#c9a8e0" font-size="11" font-family="Georgia" font-weight="bold">Raspoloženje</text>
+  <path d="M595,330 L615,310 L635,325 L655,295 L675,315 L695,300 L735,318" stroke="#e91e8c" stroke-width="2" fill="none"/>
+  <circle cx="695" cy="300" r="4" fill="#e91e8c"/>
+  <text x="665" y="355" text-anchor="middle" fill="#8b6fb5" font-size="10" font-family="Georgia">Hormoni utiču na um</text>
+
+  <!-- Positive affirmations -->
+  <text x="400" y="380" text-anchor="middle" fill="#e91e8c" font-size="13" font-family="Georgia" font-weight="bold">Mentalno zdravlje je dio ženskog zdravlja</text>
+  <text x="400" y="400" text-anchor="middle" fill="#8b6fb5" font-size="11" font-family="Georgia">Stres · Depresija · Anksioznost · Burnout · San</text>
+
+  <!-- Sparkle elements -->
+  <text x="290" y="200" fill="#e91e8c" font-size="16" opacity="0.6">✦</text>
+  <text x="510" y="200" fill="#c9a8e0" font-size="12" opacity="0.5">✦</text>
+  <text x="200" y="380" fill="#e91e8c" font-size="10" opacity="0.4">✦</text>
+  <text x="580" y="390" fill="#c9a8e0" font-size="14" opacity="0.5">✦</text>
+</svg>

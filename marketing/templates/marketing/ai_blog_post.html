@@ -35,6 +35,16 @@
   <header class="zz-article-header">
     <div class="zz-article-header-inner">
 
+      <!-- Featured illustration -->
+      {% if post.cluster %}
+      <div class="zz-article-illustration">
+        <img src="{% static 'images/ilustracija-' %}{{ post.cluster }}.svg"
+             alt="{{ post.title }}"
+             width="800" height="450"
+             loading="eager">
+      </div>
+      {% endif %}
+
       <!-- Cluster tag -->
       {% if post.cluster %}
       <div class="zz-article-cluster">{{ post.cluster|title }}</div>

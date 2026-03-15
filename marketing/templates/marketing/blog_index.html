@@ -78,7 +78,10 @@
 
   {% for post in ai_posts %}
   <article class="cms-post-card">
-    <div class="cms-post-card-img-placeholder">&#9792;</div>
+    {% load static %}
+    <div class="cms-post-card-img">
+      <img src="{% static 'images/ilustracija-' %}{{ post.cluster }}.svg" alt="{{ post.title }}" loading="lazy">
+    </div>
     <div class="cms-post-card-body">
       {% if post.cluster %}
       <div class="cms-post-card-cats">

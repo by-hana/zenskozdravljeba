@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0533"/>
+      <stop offset="100%" style="stop-color:#3d0d4f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#e91e8c;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#e91e8c;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+
+  <!-- Left ovary with PCOS follicles -->
+  <ellipse cx="220" cy="220" rx="110" ry="85" fill="none" stroke="#c9a8e0" stroke-width="2.5"/>
+  <ellipse cx="220" cy="220" rx="110" ry="85" fill="#4a1060" opacity="0.4"/>
+  <!-- Follicles around edge (PCOS pattern) -->
+  <circle cx="220" cy="142" r="14" fill="none" stroke="#e91e8c" stroke-width="2"/>
+  <circle cx="220" cy="142" r="8" fill="#e91e8c" opacity="0.3"/>
+  <circle cx="270" cy="155" r="12" fill="none" stroke="#e91e8c" stroke-width="2"/>
+  <circle cx="270" cy="155" r="7" fill="#e91e8c" opacity="0.3"/>
+  <circle cx="308" cy="190" r="13" fill="none" stroke="#e91e8c" stroke-width="2"/>
+  <circle cx="308" cy="190" r="7" fill="#e91e8c" opacity="0.3"/>
+  <circle cx="315" cy="235" r="11" fill="none" stroke="#c9a8e0" stroke-width="2"/>
+  <circle cx="315" cy="235" r="6" fill="#c9a8e0" opacity="0.3"/>
+  <circle cx="295" cy="278" r="12" fill="none" stroke="#e91e8c" stroke-width="2"/>
+  <circle cx="295" cy="278" r="7" fill="#e91e8c" opacity="0.3"/>
+  <circle cx="255" cy="300" r="13" fill="none" stroke="#c9a8e0" stroke-width="2"/>
+  <circle cx="255" cy="300" r="7" fill="#c9a8e0" opacity="0.3"/>
+  <circle cx="185" cy="300" r="11" fill="none" stroke="#e91e8c" stroke-width="2"/>
+  <circle cx="185" cy="300" r="6" fill="#e91e8c" opacity="0.3"/>
+  <circle cx="145" cy="278" r="12" fill="none" stroke="#c9a8e0" stroke-width="2"/>
+  <circle cx="145" cy="278" r="7" fill="#c9a8e0" opacity="0.3"/>
+  <circle cx="125" cy="235" r="13" fill="none" stroke="#e91e8c" stroke-width="2"/>
+  <circle cx="125" cy="235" r="7" fill="#e91e8c" opacity="0.3"/>
+  <circle cx="130" cy="190" r="11" fill="none" stroke="#c9a8e0" stroke-width="2"/>
+  <circle cx="130" cy="190" r="6" fill="#c9a8e0" opacity="0.3"/>
+  <circle cx="168" cy="155" r="12" fill="none" stroke="#e91e8c" stroke-width="2"/>
+  <circle cx="168" cy="155" r="7" fill="#e91e8c" opacity="0.3"/>
+  <!-- No dominant follicle label -->
+  <text x="220" y="225" text-anchor="middle" fill="#c9a8e0" font-size="12" font-family="Georgia">PCOS</text>
+  <text x="220" y="242" text-anchor="middle" fill="#8b6fb5" font-size="10" font-family="Georgia">jajnik</text>
+
+  <!-- Right side: hormone imbalance chart -->
+  <!-- Background panel -->
+  <rect x="420" y="80" width="340" height="300" rx="12" fill="#2d1b4e" opacity="0.7"/>
+
+  <!-- Title -->
+  <text x="590" y="115" text-anchor="middle" fill="#e91e8c" font-size="14" font-family="Georgia" font-weight="bold">Hormonski profil</text>
+
+  <!-- Bar chart -->
+  <!-- Androgen bar (high) -->
+  <rect x="460" y="140" width="50" height="180" rx="4" fill="#e91e8c" opacity="0.2"/>
+  <rect x="460" y="175" width="50" height="145" rx="4" fill="#e91e8c" opacity="0.8"/>
+  <text x="485" y="165" text-anchor="middle" fill="#e91e8c" font-size="11" font-family="Georgia">↑ visok</text>
+  <text x="485" y="340" text-anchor="middle" fill="#c9a8e0" font-size="11" font-family="Georgia">Androgen</text>
+
+  <!-- LH bar (high) -->
+  <rect x="530" y="140" width="50" height="180" rx="4" fill="#9c27b0" opacity="0.2"/>
+  <rect x="530" y="165" width="50" height="155" rx="4" fill="#9c27b0" opacity="0.8"/>
+  <text x="555" y="155" text-anchor="middle" fill="#c9a8e0" font-size="11" font-family="Georgia">↑ visok</text>
+  <text x="555" y="340" text-anchor="middle" fill="#c9a8e0" font-size="11" font-family="Georgia">LH</text>
+
+  <!-- Estrogen bar (moderate) -->
+  <rect x="600" y="140" width="50" height="180" rx="4" fill="#7b1fa2" opacity="0.2"/>
+  <rect x="600" y="235" width="50" height="85" rx="4" fill="#7b1fa2" opacity="0.8"/>
+  <text x="625" y="340" text-anchor="middle" fill="#c9a8e0" font-size="11" font-family="Georgia">Estrogen</text>
+
+  <!-- Progesterone bar (low) -->
+  <rect x="670" y="140" width="50" height="180" rx="4" fill="#4a1060" opacity="0.3"/>
+  <rect x="670" y="290" width="50" height="30" rx="4" fill="#6b4fa0" opacity="0.8"/>
+  <text x="695" y="285" text-anchor="middle" fill="#8b6fb5" font-size="11" font-family="Georgia">↓ nizak</text>
+  <text x="695" y="340" text-anchor="middle" fill="#c9a8e0" font-size="11" font-family="Georgia">Progest.</text>
+
+  <!-- Baseline -->
+  <line x1="450" y1="320" x2="730" y2="320" stroke="#6b4fa0" stroke-width="1.5"/>
+
+  <!-- Symptoms list -->
+  <text x="440" y="380" fill="#e91e8c" font-size="12" font-family="Georgia">● Neredovni ciklus</text>
+  <text x="580" y="380" fill="#e91e8c" font-size="12" font-family="Georgia">● Akne</text>
+  <text x="440" y="400" fill="#c9a8e0" font-size="12" font-family="Georgia">● Gubitak kose</text>
+  <text x="580" y="400" fill="#c9a8e0" font-size="12" font-family="Georgia">● Višak dlaka</text>
+</svg>
