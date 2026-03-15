@@ -1,10 +1,21 @@
 """
 Two-step AI content generation using Claude API.
-Step 1: Generate article outline
-Step 2: Generate full article from outline
 
-Content language: Bosnian (Latin script only)
-Topic domain: women's health
+Step 1 — generate_outline(): search intent analysis + heading structure
+Step 2 — generate_article(): full article with SEO/LLM writing guidelines baked in
+
+Writing guidelines incorporated:
+- SEO/AI Writing Guide (for articles) — ZenskoZdravlje.ba
+- Brand voice: expert women's health portal (we/our in Bosnian: mi/nas/nase)
+- 80% education / 20% brand experience
+- Direct answer first, then elaborate
+- Self-contained sentences (snippable for AI/LLM)
+- No em dashes, no AI clichés, no contrastive reframing
+- Short sections (1-2 paragraphs), Q&A FAQ format
+- Ground all claims with specifics; cite sources inline
+- Single CTA at the end
+
+Language: Bosnian Latin script only (NO Cyrillic)
 """
 
 import json
@@ -19,101 +30,115 @@ def get_client():
     return anthropic.Anthropic(api_key=settings.ANTHROPIC_API_KEY)
 
 
-SYSTEM_PROMPT = """Ti si strucni pisac zdravstvenih clanaka za ZenskoZdravlje.ba,
-bosanski portal o zenskom zdravlju. Pises na bosanskom jeziku koristeci ISKLJUCIVO
-latinicno pismo. Nikad ne koristis cirilicu ni engleski jezik u samom sadrzaju.
-Tvoji clanci su medicinski tacni, razumljivi, korisni i optimizirani za SEO i
-LLM pretragu. Ton je topao, profesionalan i empaticni. Bavi se temama reproduktivnog
-zdravlja, hormona, ginekoloskog zdravlja, ishrane i mentalnog zdravlja zena."""
+# ─── System prompt ────────────────────────────────────────────────────────────
 
+SYSTEM_PROMPT = """Ti si ekspertni pisac zdravstvenih clanaka za ZenskoZdravlje.ba,
+bosanski informativni portal o zenskom zdravlju.
+
+IDENTITET I GLAS:
+- Pises KAO clan tima ZenskoZdravlje.ba — koristi "mi", "nas", "nase" prirodno
+- Ton: topao, strucni, direktan. Kao da razgovaras s prijateljicom koja je doktor
+- 80% edukacija (savjeti koje svaka zena moze primijeniti), 20% iskustvo brenda
+- Budi konkretna — brojevi, statistike, primjeri su vrijedniji od opcih tvrdnji
+
+JEZIK I FORMAT:
+- ISKLJUCIVO bosanski latinicni pisam — nikad cirilica, nikad engleski sadrzaj
+- Kratke recenice. Kratki paragrafi (2-4 recenice max)
+- Svaka recenica treba imati smisao i ako se izvuce iz konteksta
+- Direktno odgovori na pitanje PRVO, zatim objasni
+
+ZABRANJENA PONASANJA:
+- Bez em-crtica (—). Umjesto toga koristi dvotacku ili zarez
+- Bez AI kliseja: "nije X, vec Y", "u danasnje digitalno doba", "kljucno je", "vazno je napomenuti"
+- Bez praznih tvrdnji: umjesto "zdravlje je bitno" pisi "redovni pregledi smanjuju rizik od raka grlica za 70%"
+- Bez uvodnih fraza tipa "U ovom clanku cemo..." — kreni odmah s odgovorom
+- Bez dekorativnih simbola (strelice, zvjezdice, usklivnici)
+- Bez kontrastivnog preoblikovanja ("nije samo alat, to je revolucija")
+- Bez navoda koji su genericki ili neprovjerivi. Ako nemas podatak, ne izmisljaj ga
+
+MEDICINSKA TACNOST:
+- Budi tacna. Ovo je zdravstveni portal — dezinformacije mogu stetiti citateljicama
+- Razlikuj "istrazivanja pokazuju" od "strucnjaci preporucuju"
+- Uvijek savjetuj da se konsultuju s doktorom za individualne slucajeve"""
+
+
+# ─── Step 1: Outline ─────────────────────────────────────────────────────────
 
 def generate_outline(keyword: str, cluster: str, is_pillar: bool = False) -> dict:
     """
-    Step 1: Generate article outline.
-    Returns dict with: title, meta_title, meta_description, search_intent,
-    sections, faq_questions, suggested_internal_topics, key_takeaways
+    Step 1: Analyse search intent, determine article type and structure.
+    Returns structured outline for use in generate_article().
     """
-    word_target = "2500-3500 rijeci (pillar clanak)" if is_pillar else "1200-2000 rijeci"
+    word_target = "2500-3500 rijeci (pillar/stub clanak)" if is_pillar else "1200-2000 rijeci"
 
     client = get_client()
 
-    prompt = f"""Kreiraj detaljan outline za SEO clanak na bosanskom jeziku.
+    prompt = f"""Analiziraj pretragu i kreiraj outline za SEO clanak.
 
-Kljucna rijec / tema: {keyword}
-Tematski klaster: {cluster}
-Duljina: {word_target}
+KLJUCNA RIJEC: {keyword}
+KLASTER: {cluster}
+CILJNA DULJINA: {word_target}
 
-Vrati ISKLJUCIVO JSON objekat (bez komentara, bez markdown, bez objasnjavanja) sa sljedecim poljima:
+KORAK 1 — ANALIZA PRETRAGE:
+Promisli: Sta tacno zena trazi kada ukuca "{keyword}" u Google ili ChatGPT?
+- Koja je primarna namjera (informaciona, dijagnosticka, prakticna)?
+- Koji format clanaka najvise odgovara ovoj namjeri? (vodic, lista, Q&A, objasnjenje, usporedba)
+- Sta bi citateljica htjela znati ODMAH, u prvoj recenici?
+
+KORAK 2 — STRUKTURA:
+Kreiraj naslove sekcija koji:
+- Odgovaraju na pitanje koje bi stvarna osoba upisala u Google ili ChatGPT
+- Slijede prirodnu hijerarhiju (H2 > H3)
+- Nisu prepuni kljucnih rijeci — prirodan jezik na prvom mjestu
+- Kljucna rijec se pojavljuje u H1/naslovu i mozda jos 1-2 puta u H2 naslovima, ali NE forsirati
+
+KORAK 3 — FAQ:
+Svako FAQ pitanje mora biti SPECIFICNIJE od naslova clanka (manje konkurentno, dugi rep).
+Ne postavljaj ista pitanja kao naslovi sekcija.
+
+Vrati ISKLJUCIVO JSON (bez markdown, bez komentara):
 
 {{
-  "title": "SEO-optimiziran naslov clanka (max 65 znakova)",
-  "meta_title": "Meta title (max 65 znakova, ukljuci kljucnu rijec)",
-  "meta_description": "Meta opis (max 155 znakova, uvjerljiv i informativan)",
-  "search_intent": "Kratko objasnjenje sto korisnik trazi ovim upitom",
+  "title": "Naslov clanka — kljucna rijec sto blize pocetku, max 65 znakova, ukljuci godinu 2025 gdje ima smisla",
+  "meta_title": "Meta title — max 65 znakova, kljucna rijec na pocetku",
+  "meta_description": "Meta opis — 150-160 znakova, direktan, konkretan, povecaj CTR",
+  "article_type": "guide|list|qa|explanation|comparison",
+  "search_intent": "Jedna recenica: sta citateljica trazi i sta ocekuje naci",
+  "opening_answer": "2-3 recenice koje direktno odgovaraju na primarno pitanje. Ovo ce biti uvod clanka. Pisi kao da ces biti izvucena u Google featured snippet. Samoodrzive recenice.",
+  "brand_mention": "Kratka recenica koja prirodno spominje ZenskoZdravlje.ba tim u kontekstu teme, bez promocije. Npr: Na ZenskoZdravlje.ba cesto dobijamo pitanja o ovoj temi...",
   "sections": [
     {{
-      "heading": "H2 naslov sekcije",
-      "type": "definition|explanation|list|example|comparison",
-      "subsections": ["H3 podnaslov 1", "H3 podnaslov 2"]
+      "heading": "H2 naslov — sto bi neko upisao u Google",
+      "type": "definition|explanation|list|example|comparison|qa",
+      "notes": "Kratka napomena sta ova sekcija treba sadrzavati",
+      "subsections": [
+        {{"heading": "H3 podnaslov", "notes": "sta pokriva"}}
+      ]
     }}
   ],
+  "comparison_table_opportunity": "Kratki opis da li i gdje bi tabela usporedbe imala smisla, ili null",
   "faq_questions": [
-    "Pitanje 1?",
-    "Pitanje 2?",
-    "Pitanje 3?",
-    "Pitanje 4?",
-    "Pitanje 5?"
+    "Specificno pitanje 1 (dugi rep, manje konkurentno)?",
+    "Specificno pitanje 2?",
+    "Specificno pitanje 3?",
+    "Specificno pitanje 4?",
+    "Specificno pitanje 5?"
   ],
   "key_takeaways": [
-    "Kljucni zakljucak 1",
-    "Kljucni zakljucak 2",
-    "Kljucni zakljucak 3",
-    "Kljucni zakljucak 4"
+    "Konkretan zakljucak 1 — sa brojem ili specificom gdje moguce",
+    "Konkretan zakljucak 2",
+    "Konkretan zakljucak 3",
+    "Konkretan zakljucak 4"
   ],
-  "suggested_internal_topics": [
-    "tema za interni link 1",
-    "tema za interni link 2",
-    "tema za interni link 3"
-  ]
+  "cta_text": "Kratki poziv na akciju za kraj clanka — uputi citateljicu da posjeti ZenskoZdravlje.ba blog za vise informacija ili slicne clanke. Bez 'kontaktirajte nas' — informativno."
 }}
-
-Sekcije moraju ukljucivati:
-1. Kratki odgovor / brzi rezime (prva sekcija)
-2. Definicija pojma
-3. 3-5 glavnih sekcija s objasnjenjima
-4. Prakticni savjeti ili primjeri
-5. FAQ sekcija (5 pitanja)
-6. Kljucni zakljucci
 
 Sve na bosanskom latinicnom pismu."""
 
-    for attempt in range(3):
-        try:
-            response = client.messages.create(
-                model="claude-opus-4-6",
-                max_tokens=2000,
-                system=SYSTEM_PROMPT,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            raw = response.content[0].text.strip()
-            # Extract JSON if wrapped in markdown
-            json_match = re.search(r'\{.*\}', raw, re.DOTALL)
-            if json_match:
-                raw = json_match.group()
-            return json.loads(raw)
-        except json.JSONDecodeError:
-            if attempt == 2:
-                raise
-            time.sleep(2)
-        except anthropic.RateLimitError:
-            time.sleep(60)
-        except anthropic.APIError as e:
-            if attempt == 2:
-                raise
-            time.sleep(5 * (attempt + 1))
+    return _call_api(client, prompt, max_tokens=2500)
 
-    return {}
 
+# ─── Step 2: Full article ─────────────────────────────────────────────────────
 
 def generate_article(
     outline: dict,
@@ -125,81 +150,158 @@ def generate_article(
 ) -> dict:
     """
     Step 2: Generate full article HTML from outline.
-    Returns dict with: intro, content_html, faq_json, word_count_estimate
+    Returns dict with: intro, content_html, faq_json
     """
     word_target = "2500-3500 rijeci" if is_pillar else "1200-2000 rijeci"
     related_posts = related_posts or []
 
-    # Build internal links instruction
-    internal_links_text = ''
+    # Internal links block
+    internal_links_lines = []
     if pillar_title and pillar_slug:
-        internal_links_text += f'\n- Linkuj na pillar clanak: "{pillar_title}" (URL: /blog/{pillar_slug}/)'
-    for rp in related_posts[:3]:
-        internal_links_text += f'\n- Linkuj na srodan clanak: "{rp["title"]}" (URL: /blog/{rp["slug"]}/)'
-
-    sections_text = '\n'.join(
-        f'- {s["heading"]}' + (
-            '\n  ' + '\n  '.join(f'- {sub}' for sub in s.get('subsections', []))
-            if s.get('subsections') else ''
+        internal_links_lines.append(
+            f'- Pillar clanak: "{pillar_title}" → <a href="/blog/{pillar_slug}/">{pillar_title}</a>'
         )
-        for s in outline.get('sections', [])
-    )
+    for rp in related_posts[:3]:
+        internal_links_lines.append(
+            f'- Srodni clanak: "{rp["title"]}" → <a href="/blog/{rp["slug"]}/">{rp["title"]}</a>'
+        )
+    internal_links_text = '\n'.join(internal_links_lines) if internal_links_lines else 'Nema specificiranih internih linkova.'
 
-    faq_text = '\n'.join(f'{i+1}. {q}' for i, q in enumerate(outline.get('faq_questions', [])))
+    # Build sections text with notes
+    sections_lines = []
+    for s in outline.get('sections', []):
+        sections_lines.append(f'H2: {s["heading"]}')
+        if s.get('notes'):
+            sections_lines.append(f'    Napomena: {s["notes"]}')
+        for sub in s.get('subsections', []):
+            if isinstance(sub, dict):
+                sections_lines.append(f'  H3: {sub["heading"]}')
+                if sub.get('notes'):
+                    sections_lines.append(f'      Napomena: {sub["notes"]}')
+            else:
+                sections_lines.append(f'  H3: {sub}')
+    sections_text = '\n'.join(sections_lines)
+
+    faq_text = '\n'.join(
+        f'{i+1}. {q}' for i, q in enumerate(outline.get('faq_questions', []))
+    )
     takeaways_text = '\n'.join(f'- {t}' for t in outline.get('key_takeaways', []))
+    opening_answer = outline.get('opening_answer', '')
+    brand_mention = outline.get('brand_mention', '')
+    cta_text = outline.get('cta_text', 'Za vise informacija o zenskom zdravlju, procitajte nase ostale clanke na ZenskoZdravlje.ba.')
+    table_opportunity = outline.get('comparison_table_opportunity', '')
 
     client = get_client()
 
-    prompt = f"""Napisi kompletan SEO clanak na bosanskom jeziku prema outline-u ispod.
+    prompt = f"""Napisi kompletan, SEO-optimiziran clanak na bosanskom jeziku.
 
-NASLOV: {outline.get('title', keyword)}
-KLJUCNA RIJEC: {keyword}
-CILJNA DULJINA: {word_target}
+=== META INFORMACIJE (ne ukljucuj u content_html) ===
+Naslov: {outline.get('title', keyword)}
+Kljucna rijec: {keyword}
+Ciljna duljina: {word_target}
+Tip clanka: {outline.get('article_type', 'guide')}
+Namjera pretrage: {outline.get('search_intent', '')}
 
-STRUKTURA:
+=== UVOD (koristi ovo kao osnovu za intro polje) ===
+Direktan odgovor: {opening_answer}
+Spomen brenda: {brand_mention}
+
+=== STRUKTURA SEKCIJA ===
 {sections_text}
 
-FAQ PITANJA:
+=== FAQ PITANJA ===
 {faq_text}
 
-KLJUCNI ZAKLJUCCI:
+=== KLJUCNI ZAKLJUCCI ===
 {takeaways_text}
 
-INTERNI LINKOVI (obavezno ukljuci u tekst):
-{internal_links_text if internal_links_text else 'Nema specificiranih internih linkova.'}
+=== INTERNI LINKOVI (obavezno ukljuci u tekst gdje se prirodno uklapa) ===
+{internal_links_text}
 
-UPUTE ZA PISANJE:
-1. Pisi ISKLJUCIVO na bosanskom latinicnom pismu
-2. Pocni s kratkim reziméom (2-3 recenice koje direktno odgovaraju na glavno pitanje)
-3. Koristi semanticki HTML: <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>, <blockquote>
-4. Kljucnu rijec koristi prirodno, ne pretjeruj
-5. Kratke paragrafe (2-4 recenice)
-6. Ukljuci barem 2 bulleted liste
-7. FAQ sekcija mora imati <h2>Cesto postavljana pitanja</h2> i svako pitanje kao <h3>
-8. Zavrsi sa <h2>Kljucni zakljucci</h2> i bulleted listom
-9. Za interne linkove koristi: <a href="/blog/SLUG/">NASLOV</a>
-10. Nemoj ukljucivati naslov clanka na vrhu (samo sadrzaj)
-11. Nemoj koristiti em-dash, umjesto toga koristi dvotacku ili zarez
+{f"=== MOGUCNOST ZA TABELU ==={chr(10)}{table_opportunity}" if table_opportunity else ""}
 
-VRATI ISKLJUCIVO JSON objekat:
+=== PRAVILA PISANJA (OBAVEZNO SLIJEDITI) ===
+
+FORMAT:
+- Semanticki HTML: <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>, <blockquote>, <table>
+- Ne ukljucuj H1 naslov — samo tijelo clanka
+- Kratke sekcije: 1-2 paragrafa ispod svakog H2
+- Kratki paragrafi: 2-4 recenice maksimum
+- Koristiti <ul> liste kada nabrajamo stavke (barem 2 liste u clanku)
+- Koristiti <table> za usporedbe: <table class="zz-table"><thead>...<tbody>...
+
+GLAS I STIL:
+- Pisi kao clan tima ZenskoZdravlje.ba — "mi pratimo", "u nasim clancima", "preporucujemo"
+- Direktan odgovor PRVO, zatim pojasnjenje
+- Svaka recenica mora imati smisao sama po sebi (snippable za AI)
+- Konkretni podaci > opste tvrdnje: "magnezij smanjuje boli za 40%" > "magnezij pomaze"
+- Primjeri i scenariji gdje god je moguce
+- Kad citiras statistiku bez URL-a, navedi izvor u zagradi: (izvor: WHO, 2023)
+
+ZABRANA:
+- Bez em-crtica (—) nigdje u tekstu
+- Bez kliseja: "vazno je", "kljucno je", "u danasnje doba", "nije X vec Y"
+- Bez uvodnih fraza: "U ovom clanku...", "Ovaj tekst ce..."
+- Bez izmisljenih statistika — ako nemas podatak, opisi kvalitativno
+- Bez visekratnog ponavljanja kljucne rijeci — koristi sinonime i semanticki slicne termine
+
+FAQ SEKCIJA:
+- <h2>Cesto postavljana pitanja</h2>
+- Svako pitanje kao <h3>Tekst pitanja?</h3>
+- Odmah ispod: <p>Direktan odgovor u 1-3 recenice.</p>
+- Ne koristiti <ul> unutar FAQ odgovora — cisti tekst
+
+KLJUCNI ZAKLJUCCI:
+- <h2>Kljucni zakljucci</h2>
+- <ul> lista s konkretnim, specificnim zakljuccima
+
+CTA (kraj clanka):
+- <div class="zz-cta-inline"><p>{cta_text}</p></div>
+
+=== SAMOPROVJERA PRIJE OUTPUTA ===
+Prije nego vratis JSON, provjeri:
+[ ] Uvod direktno odgovara na "{keyword}" — bez uvijanja
+[ ] Kljucna rijec je prirodno u tekstu, nije forcirana
+[ ] Svaka sekcija je kratka (1-2 paragrafa)
+[ ] Postoje barem 2 liste (<ul>)
+[ ] FAQ pitanja su specificnija od naslova (dugi rep)
+[ ] Nema em-crtica nigdje
+[ ] Nema AI kliseja
+[ ] Interni linkovi su ukljuceni gdje se prirodno uklapaju
+[ ] CTA blok je na kraju
+
+=== OUTPUT FORMAT ===
+Vrati ISKLJUCIVO JSON objekat (bez markdown kod blokova, bez objasnjavanja):
+
 {{
-  "intro": "Uvodni paragraf (2-3 recenice, direktan odgovor na upit)",
-  "content_html": "<p>Cio HTML sadrzaj clanka ovdje...</p>",
+  "intro": "2-3 samoodrzive recenice koje direktno odgovaraju na '{keyword}'. Ovo se prikazuje prominentno iznad clanka. Ukljuci spomen ZenskoZdravlje.ba tima gdje prirodno.",
+  "content_html": "<p>Kompletan HTML sadrzaj clanka...</p>",
   "faq_json": [
-    {{"question": "Pitanje?", "answer": "Odgovor u 2-4 recenice."}},
+    {{"question": "Specificno pitanje?", "answer": "Direktan odgovor u 1-3 recenice."}},
     {{"question": "Pitanje 2?", "answer": "Odgovor."}}
   ]
 }}"""
 
+    max_tokens = 16000 if is_pillar else 12000
+    return _call_api(client, prompt, max_tokens=max_tokens)
+
+
+# ─── Shared API caller with retry logic ──────────────────────────────────────
+
+def _call_api(client, prompt: str, max_tokens: int = 8000) -> dict:
     for attempt in range(3):
         try:
             response = client.messages.create(
                 model="claude-opus-4-6",
-                max_tokens=8000,
+                max_tokens=max_tokens,
                 system=SYSTEM_PROMPT,
                 messages=[{"role": "user", "content": prompt}],
             )
             raw = response.content[0].text.strip()
+            # Strip markdown code fences if present
+            raw = re.sub(r'^```(?:json)?\s*', '', raw)
+            raw = re.sub(r'\s*```$', '', raw)
+            # Extract outermost JSON object
             json_match = re.search(r'\{.*\}', raw, re.DOTALL)
             if json_match:
                 raw = json_match.group()
@@ -214,5 +316,4 @@ VRATI ISKLJUCIVO JSON objekat:
             if attempt == 2:
                 raise
             time.sleep(5 * (attempt + 1))
-
     return {}
