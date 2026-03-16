@@ -925,9 +925,33 @@ p {
 }
 
 /* ─── Featured Article ────────────────────────────────────── */
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes border-spin {
+  0%   { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes card-border-rotate {
+  0%   { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
 .hp-featured {
   padding: 5rem 2rem;
-  background: #F9ECF1;
+  background: linear-gradient(135deg, #f9ecf1 0%, #fce4ef 30%, #f3e8ff 60%, #fce4ef 100%);
+  background-size: 300% 300%;
+  animation: gradient-shift 8s ease infinite;
 }
 
 .hp-featured-inner {
@@ -955,6 +979,22 @@ p {
   background: #B5446E;
 }
 
+.hp-featured-card-wrap {
+  position: relative;
+  border-radius: 22px;
+  padding: 3px;
+  background: linear-gradient(var(--angle, 0deg), #B5446E, #c084fc, #f472b6, #818cf8, #B5446E);
+  background-size: 200%;
+  animation: card-border-rotate 4s linear infinite;
+  box-shadow: 0 0 40px rgba(181,68,110,0.35), 0 0 80px rgba(192,132,252,0.2);
+}
+
+@keyframes card-border-rotate {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .hp-featured-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -962,7 +1002,7 @@ p {
   background: white;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 8px 40px rgba(181,68,110,0.1);
+  position: relative;
 }
 
 .hp-featured-img {
