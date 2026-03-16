@@ -234,7 +234,7 @@ class BlogPost(models.Model):
     key_takeaways = models.JSONField(blank=True, null=True)
 
     meta_title = models.CharField(max_length=255, blank=True)
-    meta_description = models.CharField(max_length=320, blank=True)
+    meta_description = models.TextField(blank=True)
     internal_links = models.JSONField(blank=True, null=True)
 
     quality_score = models.FloatField(default=0)
