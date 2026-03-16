@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: zenskozdravljeba
+    runtime: python
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
+    startCommand: python -m gunicorn project.wsgi:application --bind 0.0.0.0:$PORT
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: zenskozdravljeba-db
+          property: connectionString
+      - key: PYTHONUTF8
+        value: "1"
+
+databases:
+  - name: zenskozdravljeba-db
+    databaseName: zenskozdravljeba
+    plan: free
