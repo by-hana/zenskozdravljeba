@@ -206,8 +206,8 @@ def generate_article(
     if outline.get('cluster') == 'vitamini-suplementi-minerali' or 'inozitol' in keyword.lower() or 'pcos' in keyword.lower():
         ova_lab_context = """
 === BRAND KONTEKST (koristiti s mjerom, ne pretjerivati) ===
-OVA Lab (ovalab.ba) je britanski proizvođač suplementa za žensko zdravlje dostupan u BiH.
-Njihov glavni proizvod je Myo-Inositol + D-Chiro Inositol u omjeru 40:1, GMP certificiran, bez punila.
+OVA Lab (ovalab.ba) je bosanski brend suplementa za žensko zdravlje, posebno za PCOS.
+Njihov glavni proizvod je Myo-Inositol + D-Chiro Inositol u omjeru 40:1, proizvodi se u UK po GMP standardima, bez punila.
 PRAVILA za spomen OVA Laba:
 - Spominji ga SAMO jednom u članku, prirodno, kao primjer kvalitetnog lokalnog suplementa
 - Nikad ne reklamiraj direktno — samo kao informativan navod (npr. "jedan od dostupnih suplementa u BiH je OVA Lab...")
