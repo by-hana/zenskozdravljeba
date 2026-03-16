@@ -1,0 +1,839 @@
+[
+{
+  "model": "marketing.post",
+  "pk": 4,
+  "fields": {
+    "seo_title": "PCOS: Šta je to i kako utiče na vaše zdravlje | ŽenskoZdravlje.ba",
+    "seo_description": "Sve što trebate znati o sindromu policističnih jajnika (PCOS): simptomi, uzroci, dijagnoza i opcije liječenja. Stručni članak na bosanskom jeziku.",
+    "og_title": "",
+    "og_description": "",
+    "og_image": "",
+    "twitter_image": "",
+    "title": "PCOS: Šta je to i kako utiče na vaše zdravlje",
+    "slug": "pcos-sta-je-i-kako-utice-na-zdravlje",
+    "status": "published",
+    "publish_at": "2026-03-13T19:25:08.707Z",
+    "author_name": "ŽenskoZdravlje.ba Tim",
+    "excerpt": "Sindrom policističnih jajnika (PCOS) jedan je od najčešćih hormonalnih poremećaja kod žena u reproduktivnoj dobi. Saznajte šta je PCOS, koji su simptomi i kako se dijagnosticira.",
+    "body_json": null,
+    "body_html": "",
+    "blocks_json": {
+      "blocks": [
+        {
+          "type": "rich_text",
+          "content": {
+            "blocks": [
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Sindrom policističnih jajnika, poznat pod kraticom PCOS (od engleskog Polycystic Ovary Syndrome), jedan je od najčešćih hormonalnih poremećaja kod žena u reproduktivnoj dobi. Procjenjuje se da od PCOS-a boluje između 8 i 13% žena reproduktivne dobi širom svijeta, što ga čini jednim od vodećih uzroka neplodnosti."
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Unatoč rasprostranjenosti, PCOS je često nedijagnosticiran ili pogrešno shvaćen. Mnoge žene žive godinama s simptomima ne znajući da imaju ovaj sindrom. Dobra vijest je da uz pravilnu dijagnozu i liječenje, većina žena s PCOS-om može uspješno upravljati simptomima i živjeti punim životom."
+                }
+              },
+              {
+                "type": "header",
+                "data": {
+                  "text": "Šta je zapravo PCOS?",
+                  "level": 2
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "PCOS je kompleksan endokrini poremećaj koji utječe na jajnike i hormonalnu ravnotežu u tijelu. Naziv \"policistični\" odnosi se na pojavu malih folikula (cista) na jajnicima koji se mogu vidjeti na ultrazvuku, iako nisu svi slučajevi PCOS-a praćeni cistama."
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Tri ključna obilježja PCOS-a su: nepravilna ovulacija ili izostanak ovulacije, povišene razine androgena (muških hormona) i policistični izgled jajnika na ultrazvuku. Za dijagnozu PCOS-a, prema Rotterdamskim kriterijima, dovoljno je prisustvo dva od ova tri obilježja."
+                }
+              },
+              {
+                "type": "header",
+                "data": {
+                  "text": "Najčešći simptomi PCOS-a",
+                  "level": 2
+                }
+              },
+              {
+                "type": "list",
+                "data": {
+                  "style": "unordered",
+                  "items": [
+                    "Neredovita menstruacija ili izostanak menstruacije",
+                    "Pojačana dlakavost na licu, grudima ili stomaku (hirzutizam)",
+                    "Akne i masna koža",
+                    "Gubitak kose ili stanjenje kose na glavi",
+                    "Poteškoće s gubitkom kilograma ili nepojašnjeno debljanje",
+                    "Otpornost na inzulin",
+                    "Poteškoće s začećem",
+                    "Tamnjenje kože u pregibima (akantoza nigrikans)"
+                  ]
+                }
+              }
+            ],
+            "version": "2.30.2"
+          }
+        },
+        {
+          "type": "callout",
+          "title": "Važna činjenica",
+          "body": "PCOS je najčešći uzrok anovulatorne neplodnosti — neplodnosti uzrokovane izostankom ovulacije. Međutim, uz odgovarajući tretman, mnoge žene s PCOS-om uspješno zatrudne."
+        },
+        {
+          "type": "rich_text",
+          "content": {
+            "blocks": [
+              {
+                "type": "header",
+                "data": {
+                  "text": "Uzroci PCOS-a",
+                  "level": 2
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Tačan uzrok PCOS-a još uvijek nije u potpunosti razjašnjen, ali istraživanja ukazuju na kombinaciju genetskih faktora i faktora okoliša. Neke od ključnih uloga igraju: genetska predispozicija (PCOS se češće javlja u porodicama), otpornost na inzulin, upalni procesi u tijelu i poremećaji u lučenju hormona iz mozga."
+                }
+              },
+              {
+                "type": "header",
+                "data": {
+                  "text": "Kako se dijagnosticira PCOS?",
+                  "level": 2
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Dijagnoza PCOS-a postavlja se na osnovu kombinacije kliničkih simptoma, laboratorijskih nalaza i ultrazvuka jajnika. Ljekar će obično naručiti analizu hormona (LH, FSH, testosteron, inzulin, šećer u krvi), ultrazvuk abdomena ili transvaginalni ultrazvuk, te isključiti druga stanja koja mogu imati slične simptome (kao što su bolesti štitnjače ili nadbubrežne žlijezde)."
+                }
+              }
+            ],
+            "version": "2.30.2"
+          }
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Mogu li žene s PCOS-om zatrudnjeti?",
+              "answer": "Da, apsolutno! Mnoge žene s PCOS-om zatrudne, bilo prirodno ili uz medicinsku pomoć. PCOS je vodeći uzrok anovulatorne neplodnosti, ali uz pravilno liječenje i stimulaciju ovulacije, šanse za trudnoću su dobre. Posavjetujte se s ginekologom o opcijama koje su vam na raspolaganju."
+            },
+            {
+              "question": "Da li gubitak tjelesne mase pomaže kod PCOS-a?",
+              "answer": "Za žene s PCOS-om koje imaju prekomjernu tjelesnu težinu, čak i umjereni gubitak kilograma (5-10% tjelesne težine) može značajno poboljšati hormonalni balans, regulisati menstrualni ciklus i povećati šanse za ovulaciju. Međutim, PCOS se javlja i kod žena normalne tjelesne težine."
+            },
+            {
+              "question": "Da li PCOS nestaje s menopauzom?",
+              "answer": "Menopauza donosi kraj menstrualnog ciklusa i promjene u hormonalnom profilu, ali PCOS može i dalje utjecati na zdravlje žene u menopauzi, posebno u pogledu metaboličkog zdravlja i rizika od dijabetesa tipa 2 i kardiovaskularnih bolesti. Važno je nastaviti redovne kontrole i nakon menopauze."
+            }
+          ]
+        }
+      ]
+    },
+    "blocks_html": "<div class=\"cms-prose\"><p>Sindrom policističnih jajnika, poznat pod kraticom PCOS (od engleskog Polycystic Ovary Syndrome), jedan je od najčešćih hormonalnih poremećaja kod žena u reproduktivnoj dobi. Procjenjuje se da od PCOS-a boluje između 8 i 13% žena reproduktivne dobi širom svijeta, što ga čini jednim od vodećih uzroka neplodnosti.</p><p>Unatoč rasprostranjenosti, PCOS je često nedijagnosticiran ili pogrešno shvaćen. Mnoge žene žive godinama s simptomima ne znajući da imaju ovaj sindrom. Dobra vijest je da uz pravilnu dijagnozu i liječenje, većina žena s PCOS-om može uspješno upravljati simptomima i živjeti punim životom.</p><h2>Šta je zapravo PCOS?</h2><p>PCOS je kompleksan endokrini poremećaj koji utječe na jajnike i hormonalnu ravnotežu u tijelu. Naziv \"policistični\" odnosi se na pojavu malih folikula (cista) na jajnicima koji se mogu vidjeti na ultrazvuku, iako nisu svi slučajevi PCOS-a praćeni cistama.</p><p>Tri ključna obilježja PCOS-a su: nepravilna ovulacija ili izostanak ovulacije, povišene razine androgena (muških hormona) i policistični izgled jajnika na ultrazvuku. Za dijagnozu PCOS-a, prema Rotterdamskim kriterijima, dovoljno je prisustvo dva od ova tri obilježja.</p><h2>Najčešći simptomi PCOS-a</h2><ul><li>Neredovita menstruacija ili izostanak menstruacije</li><li>Pojačana dlakavost na licu, grudima ili stomaku (hirzutizam)</li><li>Akne i masna koža</li><li>Gubitak kose ili stanjenje kose na glavi</li><li>Poteškoće s gubitkom kilograma ili nepojašnjeno debljanje</li><li>Otpornost na inzulin</li><li>Poteškoće s začećem</li><li>Tamnjenje kože u pregibima (akantoza nigrikans)</li></ul></div><div class=\"cms-callout\"><h3 class=\"cms-callout-title\">Važna činjenica</h3><p class=\"cms-callout-body\">PCOS je najčešći uzrok anovulatorne neplodnosti — neplodnosti uzrokovane izostankom ovulacije. Međutim, uz odgovarajući tretman, mnoge žene s PCOS-om uspješno zatrudne.</p></div><div class=\"cms-prose\"><h2>Uzroci PCOS-a</h2><p>Tačan uzrok PCOS-a još uvijek nije u potpunosti razjašnjen, ali istraživanja ukazuju na kombinaciju genetskih faktora i faktora okoliša. Neke od ključnih uloga igraju: genetska predispozicija (PCOS se češće javlja u porodicama), otpornost na inzulin, upalni procesi u tijelu i poremećaji u lučenju hormona iz mozga.</p><h2>Kako se dijagnosticira PCOS?</h2><p>Dijagnoza PCOS-a postavlja se na osnovu kombinacije kliničkih simptoma, laboratorijskih nalaza i ultrazvuka jajnika. Ljekar će obično naručiti analizu hormona (LH, FSH, testosteron, inzulin, šećer u krvi), ultrazvuk abdomena ili transvaginalni ultrazvuk, te isključiti druga stanja koja mogu imati slične simptome (kao što su bolesti štitnjače ili nadbubrežne žlijezde).</p></div><div class=\"cms-faq\"><div class=\"cms-faq-item\"><h4>Mogu li žene s PCOS-om zatrudnjeti?</h4><p>Da, apsolutno! Mnoge žene s PCOS-om zatrudne, bilo prirodno ili uz medicinsku pomoć. PCOS je vodeći uzrok anovulatorne neplodnosti, ali uz pravilno liječenje i stimulaciju ovulacije, šanse za trudnoću su dobre. Posavjetujte se s ginekologom o opcijama koje su vam na raspolaganju.</p></div><div class=\"cms-faq-item\"><h4>Da li gubitak tjelesne mase pomaže kod PCOS-a?</h4><p>Za žene s PCOS-om koje imaju prekomjernu tjelesnu težinu, čak i umjereni gubitak kilograma (5-10% tjelesne težine) može značajno poboljšati hormonalni balans, regulisati menstrualni ciklus i povećati šanse za ovulaciju. Međutim, PCOS se javlja i kod žena normalne tjelesne težine.</p></div><div class=\"cms-faq-item\"><h4>Da li PCOS nestaje s menopauzom?</h4><p>Menopauza donosi kraj menstrualnog ciklusa i promjene u hormonalnom profilu, ali PCOS može i dalje utjecati na zdravlje žene u menopauzi, posebno u pogledu metaboličkog zdravlja i rizika od dijabetesa tipa 2 i kardiovaskularnih bolesti. Važno je nastaviti redovne kontrole i nakon menopauze.</p></div></div>",
+    "cover_image": "/static/images/ilustracija-pcos.svg",
+    "primary_image": "",
+    "updated_at": "2026-03-15T19:25:08.719Z",
+    "created_at": "2026-03-15T17:36:29.031Z",
+    "categories": [
+      11
+    ],
+    "tags": [
+      9,
+      8
+    ]
+  }
+},
+{
+  "model": "marketing.post",
+  "pk": 5,
+  "fields": {
+    "seo_title": "Kako regulisati menstrualni ciklus prirodnim putem | ŽenskoZdravlje.ba",
+    "seo_description": "Saznajte šta uzrokuje neredovitu menstruaciju i koje prirodne metode mogu pomoći u regulaciji menstrualnog ciklusa. Stručni savjeti za žene.",
+    "og_title": "",
+    "og_description": "",
+    "og_image": "",
+    "twitter_image": "",
+    "title": "Kako regulisati menstrualni ciklus prirodnim putem",
+    "slug": "kako-regulisati-menstrualni-ciklus",
+    "status": "published",
+    "publish_at": "2026-03-14T19:25:08.707Z",
+    "author_name": "ŽenskoZdravlje.ba Tim",
+    "excerpt": "Neredovita menstruacija može biti uzrokovana stresom, prehranom, hormonalnim disbalansom ili drugim faktorima. Saznajte šta je normalan ciklus i kako prirodno potaknuti njegovu regulaciju.",
+    "body_json": null,
+    "body_html": "",
+    "blocks_json": {
+      "blocks": [
+        {
+          "type": "rich_text",
+          "content": {
+            "blocks": [
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Menstrualni ciklus je jedna od najvažnijih mjera zdravlja kod žena. Redovit ciklus ukazuje na to da su hormoni u ravnoteži, ovulacija se odvija normalno i reproduktivni sustav funkcionira kako treba. S druge strane, neredovita menstruacija može biti znak hormonalnog disbalansa ili nekog drugog zdravstvenog stanja koje zaslužuje pažnju."
+                }
+              },
+              {
+                "type": "header",
+                "data": {
+                  "text": "Šta je normalan menstrualni ciklus?",
+                  "level": 2
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Normalan menstrualni ciklus traje između 21 i 35 dana, pri čemu se kao \"normalno\" smatra svako trajanje unutar ovog raspona. Menstrualno krvarenje obično traje 2 do 7 dana. Važno je razumjeti da ono što je normalno za vas može se razlikovati od onoga što je normalno za drugu ženu — bitno je da je vaš ciklus relativno predvidiv i redovit."
+                }
+              },
+              {
+                "type": "header",
+                "data": {
+                  "text": "Uzroci neredovite menstruacije",
+                  "level": 2
+                }
+              },
+              {
+                "type": "list",
+                "data": {
+                  "style": "unordered",
+                  "items": [
+                    "Stres (jedan od najčešćih uzroka)",
+                    "Prekomjerna fizička aktivnost ili nedovoljno kretanje",
+                    "Nagle promjene u tjelesnoj težini",
+                    "Nedovoljan unos kalorija ili poremećaji prehrane",
+                    "Hormonalni disbalans (PCOS, hipotireoza, hiperprolaktinemija)",
+                    "Perimenopauza",
+                    "Uzimanje određenih lijekova ili kontraceptiva"
+                  ]
+                }
+              },
+              {
+                "type": "header",
+                "data": {
+                  "text": "Prirodni pristupi za regulaciju ciklusa",
+                  "level": 2
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Prije nego što posegnete za hormonskim tretmanima, vrijedi razmotriti neke promjene životnog stila koje mogu prirodno podržati hormonalni balans i regularnost ciklusa."
+                }
+              },
+              {
+                "type": "header",
+                "data": {
+                  "text": "Upravljanje stresom",
+                  "level": 3
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Stres direktno utječe na osi hipotalamus-hipofiza-jajnici i može poremetiti lučenje hormona koji reguliraju ovulaciju. Tehnike poput meditacije, joge, dubokog disanja i redovnih šetnji u prirodi mogu značajno smanjiti razine kortizola (hormona stresa) i poboljšati regularnost ciklusa."
+                }
+              },
+              {
+                "type": "header",
+                "data": {
+                  "text": "Prehrana i ishrana",
+                  "level": 3
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Prehrana bogata vlaknima, zdravim mastima i antioksidansima podržava hormonalni balans. Posebno je korisno uključiti namirnice bogate omega-3 masnim kiselinama (masna riba, laneno sjeme), magnezijumom (tamna čokolada, orašasti plodovi, tamnozeleno povrće) i cink om (bundeva sjemenke, mahunarke)."
+                }
+              },
+              {
+                "type": "header",
+                "data": {
+                  "text": "Umjeren trening",
+                  "level": 3
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Pretjerana fizička aktivnost može poremetiti menstrualni ciklus (poznato kao atletska amenoreja). S druge strane, umjeren, redovan trening pomaže u regulaciji inzulina i smanjenju upale — što je korisno posebno za žene s PCOS-om. Cilj je umjerena aktivnost 150-300 minuta sedmično."
+                }
+              }
+            ],
+            "version": "2.30.2"
+          }
+        },
+        {
+          "type": "callout",
+          "title": "Kada posjetiti ljekara?",
+          "body": "Obratite se ginekologu ako menstruacija izostane tri ili više ciklusa, ako je menstruacija izuzetno bolna ili obilna, ako imate krvarenje između ciklusa, ili ako primijetite bilo kakvu drugu zabrinjavajuću promjenu u svom ciklusu."
+        }
+      ]
+    },
+    "blocks_html": "<div class=\"cms-prose\"><p>Menstrualni ciklus je jedna od najvažnijih mjera zdravlja kod žena. Redovit ciklus ukazuje na to da su hormoni u ravnoteži, ovulacija se odvija normalno i reproduktivni sustav funkcionira kako treba. S druge strane, neredovita menstruacija može biti znak hormonalnog disbalansa ili nekog drugog zdravstvenog stanja koje zaslužuje pažnju.</p><h2>Šta je normalan menstrualni ciklus?</h2><p>Normalan menstrualni ciklus traje između 21 i 35 dana, pri čemu se kao \"normalno\" smatra svako trajanje unutar ovog raspona. Menstrualno krvarenje obično traje 2 do 7 dana. Važno je razumjeti da ono što je normalno za vas može se razlikovati od onoga što je normalno za drugu ženu — bitno je da je vaš ciklus relativno predvidiv i redovit.</p><h2>Uzroci neredovite menstruacije</h2><ul><li>Stres (jedan od najčešćih uzroka)</li><li>Prekomjerna fizička aktivnost ili nedovoljno kretanje</li><li>Nagle promjene u tjelesnoj težini</li><li>Nedovoljan unos kalorija ili poremećaji prehrane</li><li>Hormonalni disbalans (PCOS, hipotireoza, hiperprolaktinemija)</li><li>Perimenopauza</li><li>Uzimanje određenih lijekova ili kontraceptiva</li></ul><h2>Prirodni pristupi za regulaciju ciklusa</h2><p>Prije nego što posegnete za hormonskim tretmanima, vrijedi razmotriti neke promjene životnog stila koje mogu prirodno podržati hormonalni balans i regularnost ciklusa.</p><h3>Upravljanje stresom</h3><p>Stres direktno utječe na osi hipotalamus-hipofiza-jajnici i može poremetiti lučenje hormona koji reguliraju ovulaciju. Tehnike poput meditacije, joge, dubokog disanja i redovnih šetnji u prirodi mogu značajno smanjiti razine kortizola (hormona stresa) i poboljšati regularnost ciklusa.</p><h3>Prehrana i ishrana</h3><p>Prehrana bogata vlaknima, zdravim mastima i antioksidansima podržava hormonalni balans. Posebno je korisno uključiti namirnice bogate omega-3 masnim kiselinama (masna riba, laneno sjeme), magnezijumom (tamna čokolada, orašasti plodovi, tamnozeleno povrće) i cink om (bundeva sjemenke, mahunarke).</p><h3>Umjeren trening</h3><p>Pretjerana fizička aktivnost može poremetiti menstrualni ciklus (poznato kao atletska amenoreja). S druge strane, umjeren, redovan trening pomaže u regulaciji inzulina i smanjenju upale — što je korisno posebno za žene s PCOS-om. Cilj je umjerena aktivnost 150-300 minuta sedmično.</p></div><div class=\"cms-callout\"><h3 class=\"cms-callout-title\">Kada posjetiti ljekara?</h3><p class=\"cms-callout-body\">Obratite se ginekologu ako menstruacija izostane tri ili više ciklusa, ako je menstruacija izuzetno bolna ili obilna, ako imate krvarenje između ciklusa, ili ako primijetite bilo kakvu drugu zabrinjavajuću promjenu u svom ciklusu.</p></div>",
+    "cover_image": "/static/images/ilustracija-menstrualni-ciklus.svg",
+    "primary_image": "",
+    "updated_at": "2026-03-15T19:25:08.729Z",
+    "created_at": "2026-03-15T17:36:29.047Z",
+    "categories": [
+      10
+    ],
+    "tags": [
+      9,
+      13
+    ]
+  }
+},
+{
+  "model": "marketing.post",
+  "pk": 6,
+  "fields": {
+    "seo_title": "Vitamin D i žensko zdravlje: zašto je toliko važan | ŽenskoZdravlje.ba",
+    "seo_description": "Sve o vitaminu D i ženskom zdravlju: simptomi nedostatka, preporučene doze, hrana bogata vitaminom D i savjeti za suplementaciju.",
+    "og_title": "",
+    "og_description": "",
+    "og_image": "",
+    "twitter_image": "",
+    "title": "Vitamin D i žensko zdravlje: zašto je toliko važan",
+    "slug": "vitamin-d-zensko-zdravlje",
+    "status": "published",
+    "publish_at": "2026-03-12T19:25:08.707Z",
+    "author_name": "ŽenskoZdravlje.ba Tim",
+    "excerpt": "Nedostatak vitamina D je globalna epidemija, a žene su posebno ranjive. Saznajte zašto je vitamin D toliko važan za žensko zdravlje, koji su simptomi nedostatka i kako osigurati optimalne razine.",
+    "body_json": null,
+    "body_html": "",
+    "blocks_json": {
+      "blocks": [
+        {
+          "type": "rich_text",
+          "content": {
+            "blocks": [
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Vitamin D nije samo vitamin — on djeluje kao hormon u tijelu i uključen je u gotovo svaki aspekt zdravlja: od jačanja kostiju i imunosnog sistema, do regulacije raspoloženja, hormonalne ravnoteže i zaštite od hroničnih bolesti. Nažalost, procjenjuje se da više od milijardu ljudi širom svijeta ima nedostatak vitamina D, a žene su posebno pogođene."
+                }
+              },
+              {
+                "type": "header",
+                "data": {
+                  "text": "Zašto su žene posebno ranjive?",
+                  "level": 2
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Nekoliko faktora čini žene posebno sklonim nedostatku vitamina D. Trudnoća i dojenje dramatično iscrpljuju zalihe vitamina D. Žene s PCOS-om imaju statistički niže razine vitamina D. Starenje smanjuje sposobnost kože da sintetiše vitamin D. Provođenje više vremena u zatvorenom prostoru i upotreba zaštitnih kremova (koje blokiraju UVB zrake) dodatno smanjuju prirodnu sintezu."
+                }
+              },
+              {
+                "type": "header",
+                "data": {
+                  "text": "Simptomi nedostatka vitamina D",
+                  "level": 2
+                }
+              },
+              {
+                "type": "list",
+                "data": {
+                  "style": "unordered",
+                  "items": [
+                    "Umor i iscrpljenost bez jasnog uzroka",
+                    "Bolovi u kostima i mišićima",
+                    "Učestale infekcije i slab imunitet",
+                    "Depresivno raspoloženje i anksioznost",
+                    "Gubitak kose",
+                    "Poteškoće s koncentracijom i pamćenjem",
+                    "Polagano zarastanje rana"
+                  ]
+                }
+              },
+              {
+                "type": "header",
+                "data": {
+                  "text": "Optimalne razine vitamina D",
+                  "level": 2
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Razina vitamina D mjeri se krvnim testom (25-OH vitamin D). Prema većini stručnjaka, optimalne razine za opće zdravlje su između 50 i 80 ng/mL. Razine ispod 20 ng/mL se smatraju nedostatkom, a razine između 20 i 30 ng/mL insuficijencijom."
+                }
+              },
+              {
+                "type": "header",
+                "data": {
+                  "text": "Vitamin D i PCOS",
+                  "level": 2
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Istraživanja dosljedno pokazuju da žene s PCOS-om imaju statistički niže razine vitamina D u usporedbi sa ženama bez ovog sindroma. Suplementacija vitaminom D u studijama je pokazala pozitivan učinak na regulaciju menstrualnog ciklusa, osjetljivost na inzulin i razine androgena. Zbog toga se ženama s PCOS-om posebno preporučuje provjera i suplementacija vitaminom D."
+                }
+              },
+              {
+                "type": "header",
+                "data": {
+                  "text": "Preporučene doze suplementacije",
+                  "level": 2
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Preporučena dnevna doza vitamina D ovisi o postojećim razinama u krvi i individualnim potrebama. Općenito se preporučuje:"
+                }
+              },
+              {
+                "type": "list",
+                "data": {
+                  "style": "unordered",
+                  "items": [
+                    "Preventivna suplementacija: 1000-2000 IU dnevno",
+                    "Kod nedostatka (20-30 ng/mL): 2000-4000 IU dnevno",
+                    "Kod teškog nedostatka (ispod 20 ng/mL): 4000-10000 IU dnevno pod nadzorom ljekara",
+                    "Tokom trudnoće: 1500-2000 IU dnevno (ili prema preporuci ginekologa)"
+                  ]
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Vitamin D je topljiv u masti, što znači da ga je bolje uzimati s obrokom koji sadrži zdrave masti (avokado, orašasti plodovi, maslinovo ulje). Kombinacija s vitaminom K2 (posebno K2-MK7) pomaže usmjeravanju kalcija u kosti, a ne u krvne žile."
+                }
+              }
+            ],
+            "version": "2.30.2"
+          }
+        },
+        {
+          "type": "callout",
+          "title": "Savjet",
+          "body": "Prije nego što počnete uzimati visoke doze vitamina D, napravite krvnu analizu (25-OH vitamin D). Na osnovu nalaza, liječnik može preporučiti odgovarajuću dozu. Previsoke doze vitamina D mogu biti štetne."
+        }
+      ]
+    },
+    "blocks_html": "<div class=\"cms-prose\"><p>Vitamin D nije samo vitamin — on djeluje kao hormon u tijelu i uključen je u gotovo svaki aspekt zdravlja: od jačanja kostiju i imunosnog sistema, do regulacije raspoloženja, hormonalne ravnoteže i zaštite od hroničnih bolesti. Nažalost, procjenjuje se da više od milijardu ljudi širom svijeta ima nedostatak vitamina D, a žene su posebno pogođene.</p><h2>Zašto su žene posebno ranjive?</h2><p>Nekoliko faktora čini žene posebno sklonim nedostatku vitamina D. Trudnoća i dojenje dramatično iscrpljuju zalihe vitamina D. Žene s PCOS-om imaju statistički niže razine vitamina D. Starenje smanjuje sposobnost kože da sintetiše vitamin D. Provođenje više vremena u zatvorenom prostoru i upotreba zaštitnih kremova (koje blokiraju UVB zrake) dodatno smanjuju prirodnu sintezu.</p><h2>Simptomi nedostatka vitamina D</h2><ul><li>Umor i iscrpljenost bez jasnog uzroka</li><li>Bolovi u kostima i mišićima</li><li>Učestale infekcije i slab imunitet</li><li>Depresivno raspoloženje i anksioznost</li><li>Gubitak kose</li><li>Poteškoće s koncentracijom i pamćenjem</li><li>Polagano zarastanje rana</li></ul><h2>Optimalne razine vitamina D</h2><p>Razina vitamina D mjeri se krvnim testom (25-OH vitamin D). Prema većini stručnjaka, optimalne razine za opće zdravlje su između 50 i 80 ng/mL. Razine ispod 20 ng/mL se smatraju nedostatkom, a razine između 20 i 30 ng/mL insuficijencijom.</p><h2>Vitamin D i PCOS</h2><p>Istraživanja dosljedno pokazuju da žene s PCOS-om imaju statistički niže razine vitamina D u usporedbi sa ženama bez ovog sindroma. Suplementacija vitaminom D u studijama je pokazala pozitivan učinak na regulaciju menstrualnog ciklusa, osjetljivost na inzulin i razine androgena. Zbog toga se ženama s PCOS-om posebno preporučuje provjera i suplementacija vitaminom D.</p><h2>Preporučene doze suplementacije</h2><p>Preporučena dnevna doza vitamina D ovisi o postojećim razinama u krvi i individualnim potrebama. Općenito se preporučuje:</p><ul><li>Preventivna suplementacija: 1000-2000 IU dnevno</li><li>Kod nedostatka (20-30 ng/mL): 2000-4000 IU dnevno</li><li>Kod teškog nedostatka (ispod 20 ng/mL): 4000-10000 IU dnevno pod nadzorom ljekara</li><li>Tokom trudnoće: 1500-2000 IU dnevno (ili prema preporuci ginekologa)</li></ul><p>Vitamin D je topljiv u masti, što znači da ga je bolje uzimati s obrokom koji sadrži zdrave masti (avokado, orašasti plodovi, maslinovo ulje). Kombinacija s vitaminom K2 (posebno K2-MK7) pomaže usmjeravanju kalcija u kosti, a ne u krvne žile.</p></div><div class=\"cms-callout\"><h3 class=\"cms-callout-title\">Savjet</h3><p class=\"cms-callout-body\">Prije nego što počnete uzimati visoke doze vitamina D, napravite krvnu analizu (25-OH vitamin D). Na osnovu nalaza, liječnik može preporučiti odgovarajuću dozu. Previsoke doze vitamina D mogu biti štetne.</p></div>",
+    "cover_image": "/static/images/ilustracija-vitamin-d.svg",
+    "primary_image": "",
+    "updated_at": "2026-03-15T19:25:08.737Z",
+    "created_at": "2026-03-15T17:36:29.062Z",
+    "categories": [
+      14
+    ],
+    "tags": [
+      11,
+      10
+    ]
+  }
+},
+{
+  "model": "marketing.post",
+  "pk": 7,
+  "fields": {
+    "seo_title": "OVA Lab Inositol za PCOS: Myo-Inositol i D-Chiro Inositol | ŽenskoZdravlje.ba",
+    "seo_description": "OVA Lab donosi klinički prouvan omjer Myo-Inositola i D-Chiro Inositola 40:1 za žene s PCOS-om. Britanska proizvodnja, bez punila, dostava u BiH.",
+    "og_title": "",
+    "og_description": "",
+    "og_image": "",
+    "twitter_image": "",
+    "title": "OVA Lab Inositol za PCOS: Myo-Inositol i D-Chiro Inositol suplement u BiH",
+    "slug": "ova-lab-inositol-myo-d-chiro-pcos-bih",
+    "status": "published",
+    "publish_at": "2026-03-15T19:25:08.707Z",
+    "author_name": "ŽenskoZdravlje.ba Tim",
+    "excerpt": "OVA Lab donosi u BiH klinički prouvan omjer Myo-Inositola i D-Chiro Inositola 40:1, proizveden prema GMP standardima u Ujedinjenom Kraljevstvu, bez štetnih punila.",
+    "body_json": null,
+    "body_html": "",
+    "blocks_json": {
+      "blocks": [
+        {
+          "type": "rich_text",
+          "content": {
+            "blocks": [
+              {
+                "type": "html",
+                "data": {
+                  "html": "<div class=\"cms-prose\">\n<p>Inositol je jedna od najistraženih supstanci u suplementaciji za žensko zdravlje. Stotine kliničkih studija potvrđuju njegovu ulogu u regulaciji hormona, poboljšanju ovulacije i smanjenju simptoma PCOS-a. Problem je što većina suplementa na tržištu BiH ne sadrži ispravan omjer aktivnih oblika ili dolazi s nepotrebnim punilima. OVA Lab, britanski proizvođač koji sada isporučuje u Bosnu i Hercegovinu, mijenja tu sliku.</p>\n\n<h2>Myo-Inositol i D-Chiro Inositol: zašto su oba važna</h2>\n<p>Inositol postoji u nekoliko oblika, ali za žensko zdravlje su ključna dva: Myo-Inositol i D-Chiro Inositol. Myo-Inositol podržava osjetljivost na inzulin i potiče zdravu ovulaciju, dok D-Chiro Inositol regulira metabolizam androgena. Istraživanja pokazuju da žene s PCOS-om imaju kronično narušen omjer ova dva oblika u tkivima, što direktno pridonosi hormonalnom disbalansu.</p>\n<p>Suplementacija samo jednim oblikom daje djelomične rezultate. Kombinacija u ispravnom omjeru daje znatno bolje.</p>\n\n<h2>Zašto je omjer 40:1 ključan</h2>\n<p>Klinički prouvan terapijski omjer Myo-Inositola i D-Chiro Inositola je 40:1. Taj omjer odražava prirodnu raspodjelu koja postoji u zdravom ženskom tijelu. OVA Lab je formulisan prema točno tom omjeru, što znači da svaka doza pruža preciznu kombinaciju aktivnih supstanci, a ne samo količinu inositola bez konteksta. Studija objavljena u European Review for Medical and Pharmacological Sciences potvrđuje da omjer 40:1 nadmašuje suplementaciju samim Myo-Inositolom u poboljšanju menstrualnog ciklusa i parametara plodnosti.</p>\n\n<h2>Britanska proizvodnja: što to znači u praksi</h2>\n<p>OVA Lab se proizvodi u certificiranoj tvornici u Ujedinjenom Kraljevstvu koja radi prema GMP standardima (Good Manufacturing Practice). To uključuje provjeru čistoće sirovina, precizno doziranje i neovisno testiranje gotovog proizvoda. Takvi standardi su u BiH i regiji iznimno rijetki, a kupci ih često ne mogu provjeriti na lokalnim suplementima bez certificiranja treće strane.</p>\n\n<h2>Sastav bez punila</h2>\n<p>Mnogi inositol suplementi dostupni u regiji sadrže maltodekstrin, silicijev dioksid ili druge agregate koji mogu umanjiti bioraspoloživost ili izazvati probavne smetnje. OVA Lab sadrži isključivo aktivne supstance bez balastnih sastojaka, što je posebno važno za žene s osjetljivim probavnim sustavom ili intolerancijama.</p>\n\n<h2>Kada očekivati rezultate</h2>\n<p>Inositol nije suplement s trenutnim učinkom. Klinička istraživanja prate rezultate kroz 3 do 6 mjeseci redovne upotrebe. Većina žena s PCOS-om primjećuje poboljšanje regularnosti ciklusa između 8. i 12. tjedna. Parametri kao što su razine androgena i osjetljivost na inzulin poboljšavaju se postupno. Preporučena doza i trajanje upotrebe trebaju biti usklađeni s preporukom ginekologa ili endokrinologa.</p>\n</div>\n<div class=\"cms-callout\">\n<h3 class=\"cms-callout-title\">Za koga je OVA Lab Inositol?</h3>\n<p class=\"cms-callout-body\">OVA Lab je posebno koristan za žene s PCOS-om, hormonalnim disbalansom, neredovitom menstruacijom ili poteškoćama s plodnošću. Korisne učinke mogu osjetiti i žene s inzulinskom rezistencijom te one koje planiraju trudnoću. Preporučujemo savjetovanje s liječnikom ili ginekologom prije uvođenja bilo kojeg novog suplementa.</p>\n</div>\n<div class=\"cms-prose\">\n<h2>Gdje kupiti OVA Lab Inositol u BiH</h2>\n<p>OVA Lab Inositol dostupan je putem službene web stranice s dostavom u Bosnu i Hercegovinu. Na stranici možete pronaći detalje o sastavu, doziranju i preporukama upotrebe.</p>\n</div>\n<div class=\"cms-cta\">\n<h3 class=\"cms-cta-title\">Saznajte više o OVA Lab Inositolu</h3>\n<p class=\"cms-cta-body\">Posjetite zvaničnu stranicu OVA Lab d.o.o. i saznajte sve o ovom suplementu za žensko zdravlje uz dostavu u BiH.</p>\n<a class=\"cms-cta-button\" href=\"https://ovalab.ba\">Posjetite ovalab.ba</a>\n</div>"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "blocks_html": "<div class=\"cms-prose\"></div>",
+    "cover_image": "/static/images/ilustracija-ova-lab.svg",
+    "primary_image": "",
+    "updated_at": "2026-03-16T02:04:14.822Z",
+    "created_at": "2026-03-15T19:07:35.148Z",
+    "categories": [
+      11,
+      14
+    ],
+    "tags": [
+      8,
+      10
+    ]
+  }
+},
+{
+  "model": "marketing.page",
+  "pk": 3,
+  "fields": {
+    "seo_title": "Contact DivineYoga — Book a Class",
+    "seo_description": "Get in touch with the DivineYoga team. Book a class, ask a question, or schedule a free consultation.",
+    "og_title": "",
+    "og_description": "",
+    "og_image": "",
+    "twitter_image": "",
+    "title": "Contact Us",
+    "slug": "contact",
+    "status": "published",
+    "publish_at": null,
+    "unpublish_at": null,
+    "body_json": null,
+    "body_html": "",
+    "blocks_json": {
+      "blocks": [
+        {
+          "type": "rich_text",
+          "content": {
+            "blocks": [
+              {
+                "type": "header",
+                "data": {
+                  "text": "Get in Touch",
+                  "level": 2
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "We'd love to hear from you! Whether you have questions about our classes, want to book a private session, or just want to say hello — our team is here to help."
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Email us at hello@divineyoga.com or call us at +1 (555) 123-4567. We typically respond within one business day."
+                }
+              },
+              {
+                "type": "header",
+                "data": {
+                  "text": "Studio Location",
+                  "level": 3
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "15th Street Avenue, Wellness District\nNew York, NY 10001\nUnited States"
+                }
+              }
+            ],
+            "version": "2.30.2"
+          }
+        },
+        {
+          "type": "callout",
+          "title": "Private & Corporate Classes",
+          "body": "We offer private sessions for individuals and corporate wellness programs for teams. Contact us at events@divineyoga.com for custom packages."
+        }
+      ]
+    },
+    "blocks_html": "<div class=\"cms-prose\"><h2>Get in Touch</h2><p>We'd love to hear from you! Whether you have questions about our classes, want to book a private session, or just want to say hello — our team is here to help.</p><p>Email us at hello@divineyoga.com or call us at +1 (555) 123-4567. We typically respond within one business day.</p><h3>Studio Location</h3><p>15th Street Avenue, Wellness District\nNew York, NY 10001\nUnited States</p></div><div class=\"cms-callout\"><h3 class=\"cms-callout-title\">Private &amp; Corporate Classes</h3><p class=\"cms-callout-body\">We offer private sessions for individuals and corporate wellness programs for teams. Contact us at events@divineyoga.com for custom packages.</p></div>",
+    "primary_image": "",
+    "updated_at": "2026-03-15T16:33:04.140Z",
+    "created_at": "2026-03-15T16:33:04.140Z"
+  }
+},
+{
+  "model": "marketing.page",
+  "pk": 4,
+  "fields": {
+    "seo_title": "O Nama — ŽenskoZdravlje.ba",
+    "seo_description": "Saznajte više o ŽenskoZdravlje.ba — našoj misiji, timu i zašto smo pokrenuli ovaj portal za žene u Bosni i Hercegovini.",
+    "og_title": "",
+    "og_description": "",
+    "og_image": "",
+    "twitter_image": "",
+    "title": "O Nama",
+    "slug": "o-nama",
+    "status": "published",
+    "publish_at": null,
+    "unpublish_at": null,
+    "body_json": null,
+    "body_html": "",
+    "blocks_json": {
+      "blocks": [
+        {
+          "type": "rich_text",
+          "content": {
+            "blocks": [
+              {
+                "type": "header",
+                "data": {
+                  "text": "Naša misija",
+                  "level": 2
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "ŽenskoZdravlje.ba je nastao iz jedne jednostavne potrebe: žene u Bosni i Hercegovini zaslužuju pouzdane, razumljive i besplatne informacije o svom zdravlju. Zdravstvene informacije na internetu uglavnom su na stranim jezicima, prepune medicinskog žargona ili nedovoljno prilagođene kontekstu žena u našoj regiji."
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Naš portal pokriv a teme koje su najvažnije za žensko zdravlje: PCOS i hormonalni disbalans, menstrualni ciklus, trudnoću i plodnost, ishranu i suplemente, te mentalno zdravlje. Sve na bosanskom jeziku, jasno i pristupačno."
+                }
+              },
+              {
+                "type": "header",
+                "data": {
+                  "text": "Zašto smo pokrenuli ovaj portal",
+                  "level": 2
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Pokrenuli smo ŽenskoZdravlje.ba jer smo svjesni da mnoge žene godinama traže odgovore na pitanja o svom tijelu, a ne mogu naći pouzdane informacije na bosanskom jeziku. Naš cilj je popuniti tu prazninu — korak po korak, članak po članak."
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Važna napomena: sav sadržaj na ovom portalu je isključivo informativan i edukativnog karaktera. Ne zamjenjuje savjet, dijagnozu niti liječenje od strane kvalificiranog zdravstvenog radnika. Uvijek se posavjetujte s liječnikom ili ginekologom za konkretne zdravstvene probleme."
+                }
+              }
+            ],
+            "version": "2.30.2"
+          }
+        },
+        {
+          "type": "feature_grid",
+          "items": [
+            {
+              "title": "PCOS i hormoni",
+              "body": "Sve o sindromu policističnih jajnika, hormonalnom disbalansu i načinima regulacije hormona prirodnim i medicinskim putem."
+            },
+            {
+              "title": "Menstrualni ciklus",
+              "body": "Objašnjenja menstrualnog ciklusa, neredovite menstruacije, boli i svega što žene trebaju znati o svom ciklusu."
+            },
+            {
+              "title": "Trudnoća i plodnost",
+              "body": "Informacije o planiranju trudnoće, plodnosti, prenatalnoj njezi i zdravlju tokom trudnoće."
+            },
+            {
+              "title": "Ishrana i suplementi",
+              "body": "Preporuke za ishranu i suplemente koji podržavaju žensko zdravlje u različitim fazama života."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "title": "Medicinska napomena",
+          "body": "Sadržaj na ŽenskoZdravlje.ba je isključivo informativan i edukativnog karaktera. Ne zamjenjuje savjet, dijagnozu niti liječenje od strane kvalificiranog zdravstvenog radnika. Za konkretne zdravstvene tegobe uvijek se obratite svom ginekologu ili liječniku."
+        }
+      ]
+    },
+    "blocks_html": "<div class=\"cms-prose\"><h2>Naša misija</h2><p>ŽenskoZdravlje.ba je nastao iz jedne jednostavne potrebe: žene u Bosni i Hercegovini zaslužuju pouzdane, razumljive i besplatne informacije o svom zdravlju. Zdravstvene informacije na internetu uglavnom su na stranim jezicima, prepune medicinskog žargona ili nedovoljno prilagođene kontekstu žena u našoj regiji.</p><p>Naš portal pokriv a teme koje su najvažnije za žensko zdravlje: PCOS i hormonalni disbalans, menstrualni ciklus, trudnoću i plodnost, ishranu i suplemente, te mentalno zdravlje. Sve na bosanskom jeziku, jasno i pristupačno.</p><h2>Zašto smo pokrenuli ovaj portal</h2><p>Pokrenuli smo ŽenskoZdravlje.ba jer smo svjesni da mnoge žene godinama traže odgovore na pitanja o svom tijelu, a ne mogu naći pouzdane informacije na bosanskom jeziku. Naš cilj je popuniti tu prazninu — korak po korak, članak po članak.</p><p>Važna napomena: sav sadržaj na ovom portalu je isključivo informativan i edukativnog karaktera. Ne zamjenjuje savjet, dijagnozu niti liječenje od strane kvalificiranog zdravstvenog radnika. Uvijek se posavjetujte s liječnikom ili ginekologom za konkretne zdravstvene probleme.</p></div><div class=\"cms-feature-grid\"><div class=\"cms-feature-card\"><h4>PCOS i hormoni</h4><p>Sve o sindromu policističnih jajnika, hormonalnom disbalansu i načinima regulacije hormona prirodnim i medicinskim putem.</p></div><div class=\"cms-feature-card\"><h4>Menstrualni ciklus</h4><p>Objašnjenja menstrualnog ciklusa, neredovite menstruacije, boli i svega što žene trebaju znati o svom ciklusu.</p></div><div class=\"cms-feature-card\"><h4>Trudnoća i plodnost</h4><p>Informacije o planiranju trudnoće, plodnosti, prenatalnoj njezi i zdravlju tokom trudnoće.</p></div><div class=\"cms-feature-card\"><h4>Ishrana i suplementi</h4><p>Preporuke za ishranu i suplemente koji podržavaju žensko zdravlje u različitim fazama života.</p></div></div><div class=\"cms-callout\"><h3 class=\"cms-callout-title\">Medicinska napomena</h3><p class=\"cms-callout-body\">Sadržaj na ŽenskoZdravlje.ba je isključivo informativan i edukativnog karaktera. Ne zamjenjuje savjet, dijagnozu niti liječenje od strane kvalificiranog zdravstvenog radnika. Za konkretne zdravstvene tegobe uvijek se obratite svom ginekologu ili liječniku.</p></div>",
+    "primary_image": "",
+    "updated_at": "2026-03-16T02:06:54.973Z",
+    "created_at": "2026-03-15T17:34:30.288Z"
+  }
+},
+{
+  "model": "marketing.page",
+  "pk": 5,
+  "fields": {
+    "seo_title": "Preporučeni suplementi za žensko zdravlje — ŽenskoZdravlje.ba",
+    "seo_description": "Pregled najvažnijih suplemenata za žensko zdravlje: folna kiselina, magnezij, vitamin D, omega-3 i drugi. Informacije zasnovane na istraživanjima.",
+    "og_title": "",
+    "og_description": "",
+    "og_image": "",
+    "twitter_image": "",
+    "title": "Preporučeni Suplementi",
+    "slug": "suplementi",
+    "status": "published",
+    "publish_at": null,
+    "unpublish_at": null,
+    "body_json": null,
+    "body_html": "",
+    "blocks_json": {
+      "blocks": [
+        {
+          "type": "rich_text",
+          "content": {
+            "blocks": [
+              {
+                "type": "header",
+                "data": {
+                  "text": "Suplementi za žensko zdravlje",
+                  "level": 2
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Pravilna ishrana je temelj zdravlja, ali u nekim slučajevima tijelo zahtijeva dodatnu podršku kroz suplemente. Žene su u posebno ranjivoj skupini kada je riječ o nedostatku određenih nutrijenata — zbog menstrualnog ciklusa, trudnoće, dojenja ili specifičnih zdravstvenih stanja kao što je PCOS."
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Ovdje donosimo pregled suplemenata koji se najčešće preporučuju ženama, zajedno s objašnjenjem zašto su važni i na što treba obratiti pažnju pri kupnji."
+                }
+              }
+            ],
+            "version": "2.30.2"
+          }
+        },
+        {
+          "type": "callout",
+          "title": "Napomena",
+          "body": "Ovi suplementi su informativne prirode. Prije uvođenja bilo kojeg suplementa u svoju rutinu, posavjetujte se s liječnikom, posebno ako imate neko zdravstveno stanje, uzimate lijekove ili ste trudni."
+        },
+        {
+          "type": "feature_grid",
+          "items": [
+            {
+              "title": "Folna kiselina",
+              "body": "Esencijalna za žene u reproduktivnoj dobi, posebno tokom planiranja trudnoće i u prvom tromjesečju. Pomaže u prevenciji neuroloških defekata kod bebe. Preporučena doza: 400-800 mcg dnevno."
+            },
+            {
+              "title": "Magnezij",
+              "body": "Magnezij je uključen u preko 300 enzimskih reakcija u tijelu. Pomaže kod menstrualnih bolova, PMS-a, migrena i anksioznosti. Žene s PCOS-om često imaju niže razine magnezija."
+            },
+            {
+              "title": "Vitamin D",
+              "body": "Vitamin D je esencijalan za hormonalni balans, imunosni sustav i zdravlje kostiju. Nedostatak vitamina D je posebno čest u zimskim mjesecima i kod žena s PCOS-om. Preporučuje se redovna provjera razina."
+            },
+            {
+              "title": "Omega-3 masne kiseline",
+              "body": "Omega-3 masne kiseline (EPA i DHA) imaju protuupalna svojstva i podržavaju hormonalni balans. Posebno korisne za žene s PCOS-om, endometriozom i menstrualnim bolovima."
+            }
+          ]
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Da li trebam uzimati suplemente svakodnevno?",
+              "answer": "Većina suplemenata je najefikasnija kada se uzima redovno. Međutim, važno je pratiti preporučene doze i ne prekoračivati ih. Uvijek se posavjetujte s liječnikom o optimalnom rasporedu."
+            },
+            {
+              "question": "Mogu li uzimati više suplemenata istovremeno?",
+              "answer": "U principu da, ali neke kombinacije mogu smanjiti apsorpciju ili izazvati interakcije. Na primjer, kalcij i magnezij kompetiraju za apsorpciju pa ih je bolje uzimati u različito doba dana."
+            },
+            {
+              "question": "Koliko dugo treba uzimati suplemente da se vide rezultati?",
+              "answer": "Ovisi o suplementu i o tome koliki je bio nedostatak. Obično su potrebne 4-12 sedmica redovne primjene da se osjete značajni rezultati. Vitamin D, na primjer, može uzeti nekoliko mjeseci da se razine normalizuju."
+            },
+            {
+              "question": "Da li su prirodni suplementi sigurniji od sintetičkih?",
+              "answer": "Nije uvijek tako jednostavno. Važnija je kvaliteta i bioraspoloživost suplementa od toga je li prirodan ili sintetički. Birajte suplemente od provjerenih proizvođača koji provode testiranja trećih strana."
+            }
+          ]
+        }
+      ]
+    },
+    "blocks_html": "<div class=\"cms-prose\"><h2>Suplementi za žensko zdravlje</h2><p>Pravilna ishrana je temelj zdravlja, ali u nekim slučajevima tijelo zahtijeva dodatnu podršku kroz suplemente. Žene su u posebno ranjivoj skupini kada je riječ o nedostatku određenih nutrijenata — zbog menstrualnog ciklusa, trudnoće, dojenja ili specifičnih zdravstvenih stanja kao što je PCOS.</p><p>Ovdje donosimo pregled suplemenata koji se najčešće preporučuju ženama, zajedno s objašnjenjem zašto su važni i na što treba obratiti pažnju pri kupnji.</p></div><div class=\"cms-callout\"><h3 class=\"cms-callout-title\">Napomena</h3><p class=\"cms-callout-body\">Ovi suplementi su informativne prirode. Prije uvođenja bilo kojeg suplementa u svoju rutinu, posavjetujte se s liječnikom, posebno ako imate neko zdravstveno stanje, uzimate lijekove ili ste trudni.</p></div><div class=\"cms-feature-grid\"><div class=\"cms-feature-card\"><h4>Folna kiselina</h4><p>Esencijalna za žene u reproduktivnoj dobi, posebno tokom planiranja trudnoće i u prvom tromjesečju. Pomaže u prevenciji neuroloških defekata kod bebe. Preporučena doza: 400-800 mcg dnevno.</p></div><div class=\"cms-feature-card\"><h4>Magnezij</h4><p>Magnezij je uključen u preko 300 enzimskih reakcija u tijelu. Pomaže kod menstrualnih bolova, PMS-a, migrena i anksioznosti. Žene s PCOS-om često imaju niže razine magnezija.</p></div><div class=\"cms-feature-card\"><h4>Vitamin D</h4><p>Vitamin D je esencijalan za hormonalni balans, imunosni sustav i zdravlje kostiju. Nedostatak vitamina D je posebno čest u zimskim mjesecima i kod žena s PCOS-om. Preporučuje se redovna provjera razina.</p></div><div class=\"cms-feature-card\"><h4>Omega-3 masne kiseline</h4><p>Omega-3 masne kiseline (EPA i DHA) imaju protuupalna svojstva i podržavaju hormonalni balans. Posebno korisne za žene s PCOS-om, endometriozom i menstrualnim bolovima.</p></div></div><div class=\"cms-faq\"><div class=\"cms-faq-item\"><h4>Da li trebam uzimati suplemente svakodnevno?</h4><p>Većina suplemenata je najefikasnija kada se uzima redovno. Međutim, važno je pratiti preporučene doze i ne prekoračivati ih. Uvijek se posavjetujte s liječnikom o optimalnom rasporedu.</p></div><div class=\"cms-faq-item\"><h4>Mogu li uzimati više suplemenata istovremeno?</h4><p>U principu da, ali neke kombinacije mogu smanjiti apsorpciju ili izazvati interakcije. Na primjer, kalcij i magnezij kompetiraju za apsorpciju pa ih je bolje uzimati u različito doba dana.</p></div><div class=\"cms-faq-item\"><h4>Koliko dugo treba uzimati suplemente da se vide rezultati?</h4><p>Ovisi o suplementu i o tome koliki je bio nedostatak. Obično su potrebne 4-12 sedmica redovne primjene da se osjete značajni rezultati. Vitamin D, na primjer, može uzeti nekoliko mjeseci da se razine normalizuju.</p></div><div class=\"cms-faq-item\"><h4>Da li su prirodni suplementi sigurniji od sintetičkih?</h4><p>Nije uvijek tako jednostavno. Važnija je kvaliteta i bioraspoloživost suplementa od toga je li prirodan ili sintetički. Birajte suplemente od provjerenih proizvođača koji provode testiranja trećih strana.</p></div></div>",
+    "primary_image": "",
+    "updated_at": "2026-03-15T19:25:08.696Z",
+    "created_at": "2026-03-15T17:34:30.293Z"
+  }
+},
+{
+  "model": "marketing.page",
+  "pk": 6,
+  "fields": {
+    "seo_title": "Kontakt — ŽenskoZdravlje.ba",
+    "seo_description": "Kontaktirajte tim ŽenskoZdravlje.ba. Rado ćemo odgovoriti na vaša pitanja.",
+    "og_title": "",
+    "og_description": "",
+    "og_image": "",
+    "twitter_image": "",
+    "title": "Kontakt",
+    "slug": "kontakt",
+    "status": "published",
+    "publish_at": null,
+    "unpublish_at": null,
+    "body_json": null,
+    "body_html": "",
+    "blocks_json": {
+      "blocks": [
+        {
+          "type": "rich_text",
+          "content": {
+            "blocks": [
+              {
+                "type": "header",
+                "data": {
+                  "text": "Stupite u kontakt s nama",
+                  "level": 2
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Radujemo se vašim porukama! Bilo da imate pitanje o sadržaju koji smo objavili, prijedlog za novu temu, ispravku greške ili jednostavno želite reći zdravo — slobodno nam pišite."
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Možete nas kontaktirati putem e-pošte na adresu: zdravlje@zenskozdravljeba.com"
+                }
+              },
+              {
+                "type": "header",
+                "data": {
+                  "text": "O sadržaju i temama",
+                  "level": 3
+                }
+              },
+              {
+                "type": "paragraph",
+                "data": {
+                  "text": "Ako primijetite grešku u nekom od naših članaka, ili biste željeli predložiti temu koja vas zanima, slobodno nam javite. Trudimo se da naš sadržaj bude što tačniji i korisniji."
+                }
+              }
+            ],
+            "version": "2.30.2"
+          }
+        },
+        {
+          "type": "callout",
+          "title": "Vrijeme odgovora",
+          "body": "Nastojimo odgovoriti na sve upite u roku od 2-3 radna dana. Hvala vam na strpljenju!"
+        }
+      ]
+    },
+    "blocks_html": "<div class=\"cms-prose\"><h2>Stupite u kontakt s nama</h2><p>Radujemo se vašim porukama! Bilo da imate pitanje o sadržaju koji smo objavili, prijedlog za novu temu, ispravku greške ili jednostavno želite reći zdravo — slobodno nam pišite.</p><p>Možete nas kontaktirati putem e-pošte na adresu: zdravlje@zenskozdravljeba.com</p><h3>O sadržaju i temama</h3><p>Ako primijetite grešku u nekom od naših članaka, ili biste željeli predložiti temu koja vas zanima, slobodno nam javite. Trudimo se da naš sadržaj bude što tačniji i korisniji.</p></div><div class=\"cms-callout\"><h3 class=\"cms-callout-title\">Vrijeme odgovora</h3><p class=\"cms-callout-body\">Nastojimo odgovoriti na sve upite u roku od 2-3 radna dana. Hvala vam na strpljenju!</p></div>",
+    "primary_image": "",
+    "updated_at": "2026-03-16T02:06:54.981Z",
+    "created_at": "2026-03-15T17:36:29.025Z"
+  }
+}
+]

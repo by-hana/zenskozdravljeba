@@ -1,0 +1,61 @@
+{% extends "marketing/cms/base.html" %}
+
+{% block title %}AI Blog Posts{% endblock %}
+
+{% block content %}
+<div class="cms-page-header">
+  <div>
+    <h1 class="cms-page-title">AI Blog Posts</h1>
+    <p class="cms-page-subtitle">{{ published_count }} objavljenih &middot; {{ draft_count }} u izradi</p>
+  </div>
+</div>
+
+<div class="cms-card">
+  <table class="cms-table">
+    <thead>
+      <tr>
+        <th>Naslov</th>
+        <th>Klaster</th>
+        <th>Tip</th>
+        <th>Riječi</th>
+        <th>Score</th>
+        <th>Status</th>
+        <th>Datum</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for post in posts %}
+      <tr>
+        <td><strong>{{ post.title|truncatechars:60 }}</strong></td>
+        <td><span style="font-size:0.8rem;color:var(--d-gray-500);">{{ post.cluster }}</span></td>
+        <td>
+          {% if post.is_pillar %}
+          <span class="cms-badge cms-badge-purple">Pillar</span>
+          {% else %}
+          <span class="cms-badge">Supporting</span>
+          {% endif %}
+        </td>
+        <td>{{ post.word_count }}</td>
+        <td>{{ post.quality_score }}</td>
+        <td>
+          {% if post.status == 'published' %}
+          <span class="cms-status cms-status-published">Objavljeno</span>
+          {% else %}
+          <span class="cms-status cms-status-draft">Nacrt</span>
+          {% endif %}
+        </td>
+        <td style="font-size:0.8rem;color:var(--d-gray-500);">
+          {% if post.published_at %}{{ post.published_at|date:"j.n.Y" }}{% endif %}
+        </td>
+        <td>
+          <a href="/blog/{{ post.slug }}/" target="_blank" class="cms-btn cms-btn-sm">Pogledaj</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="8" style="text-align:center;padding:3rem;color:var(--d-gray-400);">Nema AI blog postova.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

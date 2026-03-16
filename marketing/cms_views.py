@@ -187,3 +187,14 @@ def upload_image(request):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
     return JsonResponse(result)
+
+
+@cms_admin_required
+def ai_post_list(request):
+    from .models import BlogPost
+    posts = BlogPost.objects.all().order_by('-published_at', '-created_at')
+    return render(request, 'marketing/cms/ai_post_list.html', {
+        'posts': posts,
+        'published_count': posts.filter(status='published').count(),
+        'draft_count': posts.filter(status='draft').count(),
+    })

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}CMS{% endblock %} — DivineYoga Admin</title>
+  <title>{% block title %}CMS{% endblock %} — ŽenskoZdravlje.ba CMS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@6..72,400;6..72,500;6..72,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
 <!-- ─── Sidebar ────────────────────────────────────────────── -->
 <aside class="cms-sidebar">
   <div class="cms-sidebar-logo">
-    <a href="/">DivineYoga</a>
+    <a href="/">ŽenskoZdravlje.ba</a>
     <span class="cms-sidebar-badge">CMS</span>
   </div>
 
@@ -39,6 +39,12 @@
        class="cms-nav-link {% if request.resolver_match.url_name in 'cms-post-list,cms-post-create,cms-post-edit' %}active{% endif %}">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
       Blog Posts
+    </a>
+
+    <a href="{% url 'cms-ai-post-list' %}"
+       class="cms-nav-link {% if request.resolver_match.url_name == 'cms-ai-post-list' %}active{% endif %}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+      AI Blog Posts
     </a>
 
     <div class="cms-nav-section">Settings</div>

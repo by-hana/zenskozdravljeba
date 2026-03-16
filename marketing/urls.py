@@ -23,6 +23,7 @@ urlpatterns = [
     path('cms/posts/<int:post_id>/', cms_views.post_edit, name='cms-post-edit'),
     path('cms/posts/<int:post_id>/delete/', cms_views.post_delete, name='cms-post-delete'),
     path('cms/posts/<int:post_id>/toggle-status/', cms_views.post_toggle_status, name='cms-post-toggle-status'),
+    path('cms/ai-posts/', cms_views.ai_post_list, name='cms-ai-post-list'),
     path('cms/navigation/', cms_views.navigation_edit, name='cms-navigation'),
     path('cms/upload/', cms_views.upload_image, name='cms-upload-image'),
     # Catch-all MUST be last
