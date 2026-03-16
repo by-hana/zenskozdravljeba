@@ -183,6 +183,7 @@
 .cms-category-chips {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.5rem;
   max-width: 860px;
   margin: 0 auto;

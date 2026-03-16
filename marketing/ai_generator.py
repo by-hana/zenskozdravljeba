@@ -75,67 +75,67 @@ def generate_outline(keyword: str, cluster: str, is_pillar: bool = False) -> dic
 
     client = get_client()
 
-    prompt = f"""Analiziraj pretragu i kreiraj outline za SEO clanak.
+    prompt = f"""Analiziraj pretragu i kreiraj outline za SEO članak.
 
-KLJUCNA RIJEC: {keyword}
+KLJUČNA RIJEČ: {keyword}
 KLASTER: {cluster}
 CILJNA DULJINA: {word_target}
 
 KORAK 1 — ANALIZA PRETRAGE:
-Promisli: Sta tacno zena trazi kada ukuca "{keyword}" u Google ili ChatGPT?
-- Koja je primarna namjera (informaciona, dijagnosticka, prakticna)?
-- Koji format clanaka najvise odgovara ovoj namjeri? (vodic, lista, Q&A, objasnjenje, usporedba)
-- Sta bi citateljica htjela znati ODMAH, u prvoj recenici?
+Promisli: Šta tačno žena traži kada upiše "{keyword}" u Google ili ChatGPT?
+- Koja je primarna namjera (informaciona, dijagnostička, praktična)?
+- Koji format članaka najviše odgovara ovoj namjeri? (vodič, lista, Q&A, objašnjenje, usporedba)
+- Šta bi čitateljica htjela znati ODMAH, u prvoj rečenici?
 
 KORAK 2 — STRUKTURA:
 Kreiraj naslove sekcija koji:
 - Odgovaraju na pitanje koje bi stvarna osoba upisala u Google ili ChatGPT
 - Slijede prirodnu hijerarhiju (H2 > H3)
-- Nisu prepuni kljucnih rijeci — prirodan jezik na prvom mjestu
-- Kljucna rijec se pojavljuje u H1/naslovu i mozda jos 1-2 puta u H2 naslovima, ali NE forsirati
+- Nisu prepuni ključnih riječi — prirodan jezik na prvom mjestu
+- Ključna riječ se pojavljuje u H1/naslovu i možda još 1-2 puta u H2 naslovima, ali NE forsirati
 
 KORAK 3 — FAQ:
-Svako FAQ pitanje mora biti SPECIFICNIJE od naslova clanka (manje konkurentno, dugi rep).
+Svako FAQ pitanje mora biti SPECIFIČNIJE od naslova članka (manje konkurentno, dugi rep).
 Ne postavljaj ista pitanja kao naslovi sekcija.
 
-Vrati ISKLJUCIVO JSON (bez markdown, bez komentara):
+Vrati ISKLJUČIVO JSON (bez markdown, bez komentara):
 
 {{
-  "title": "Naslov clanka — kljucna rijec sto blize pocetku, max 65 znakova. NE koristiti 'kompletan vodic' ni slicne genericki fraze. Varirati format: pitanje, broj, konkretan benefit, kako/zasto. Godinu (2026) dodaj samo ako je topicki relevantno.",
-  "meta_title": "Meta title — max 65 znakova, kljucna rijec na pocetku",
-  "meta_description": "Meta opis — 150-160 znakova, direktan, konkretan, povecaj CTR",
+  "title": "Naslov članka — ključna riječ što bliže početku, max 65 znakova. Varirati format naslova: pitanje, broj, konkretan benefit, kako/zašto. 'Kompletan vodič' koristiti samo ako zaista odgovara sadržaju, ne u svakom naslovu. Godinu (2026) dodaj samo ako je topički relevantno.",
+  "meta_title": "Meta title — max 65 znakova, ključna riječ na početku",
+  "meta_description": "Meta opis — 150-160 znakova, direktan, konkretan, povećaj CTR",
   "article_type": "guide|list|qa|explanation|comparison",
-  "search_intent": "Jedna recenica: sta citateljica trazi i sta ocekuje naci",
-  "opening_answer": "2-3 recenice koje direktno odgovaraju na primarno pitanje. Ovo ce biti uvod clanka. Pisi kao da ces biti izvucena u Google featured snippet. Samoodrzive recenice.",
-  "brand_mention": "Kratka recenica koja prirodno spominje ZenskoZdravlje.ba tim u kontekstu teme, bez promocije. Npr: Na ZenskoZdravlje.ba cesto dobijamo pitanja o ovoj temi...",
+  "search_intent": "Jedna rečenica: šta čitateljica traži i šta očekuje naći",
+  "opening_answer": "2-3 rečenice koje direktno odgovaraju na primarno pitanje. Ovo će biti uvod članka. Piši kao da će biti izvučena u Google featured snippet. Samoodržive rečenice.",
+  "brand_mention": "Kratka rečenica koja prirodno spominje ŽenskoZdravlje.ba tim u kontekstu teme, bez promocije. Npr: Na ŽenskoZdravlje.ba često dobijamo pitanja o ovoj temi...",
   "sections": [
     {{
-      "heading": "H2 naslov — sto bi neko upisao u Google",
+      "heading": "H2 naslov — što bi neko upisao u Google",
       "type": "definition|explanation|list|example|comparison|qa",
-      "notes": "Kratka napomena sta ova sekcija treba sadrzavati",
+      "notes": "Kratka napomena šta ova sekcija treba sadržavati",
       "subsections": [
-        {{"heading": "H3 podnaslov", "notes": "sta pokriva"}}
+        {{"heading": "H3 podnaslov", "notes": "šta pokriva"}}
       ]
     }}
   ],
   "comparison_table_opportunity": "Kratki opis da li i gdje bi tabela usporedbe imala smisla, ili null",
   "faq_questions": [
-    "Specificno pitanje 1 (dugi rep, manje konkurentno)?",
-    "Specificno pitanje 2?",
-    "Specificno pitanje 3?",
-    "Specificno pitanje 4?",
-    "Specificno pitanje 5?"
+    "Specifično pitanje 1 (dugi rep, manje konkurentno)?",
+    "Specifično pitanje 2?",
+    "Specifično pitanje 3?",
+    "Specifično pitanje 4?",
+    "Specifično pitanje 5?"
   ],
   "key_takeaways": [
-    "Konkretan zakljucak 1 — sa brojem ili specificom gdje moguce",
-    "Konkretan zakljucak 2",
-    "Konkretan zakljucak 3",
-    "Konkretan zakljucak 4"
+    "Konkretan zaključak 1 — sa brojem ili specifičnošću gdje moguće",
+    "Konkretan zaključak 2",
+    "Konkretan zaključak 3",
+    "Konkretan zaključak 4"
   ],
-  "cta_text": "Kratki poziv na akciju za kraj clanka — uputi citateljicu da posjeti ZenskoZdravlje.ba blog za vise informacija ili slicne clanke. Bez 'kontaktirajte nas' — informativno."
+  "cta_text": "Kratki poziv na akciju za kraj članka — uputi čitateljicu da posjeti ŽenskoZdravlje.ba blog za više informacija ili slične članke. Bez 'kontaktirajte nas' — informativno."
 }}
 
-Sve na bosanskom latinicnom pismu."""
+Sve na bosanskom latiničnom pismu s pravilnim dijakritičkim znakovima."""
 
     max_tokens = 5000 if is_pillar else 3500
     return _call_api(client, prompt, max_tokens=max_tokens)
@@ -196,13 +196,16 @@ def generate_article(
 
     client = get_client()
 
-    prompt = f"""Napisi kompletan, SEO-optimiziran clanak na bosanskom jeziku.
+    prompt = f"""Napiši kompletan, SEO-optimiziran članak na bosanskom jeziku.
 
-=== META INFORMACIJE (ne ukljucuj u content_html) ===
+VAŽNO: Koristi bosanska slova s dijakritičkim znakovima u cijelom tekstu: č, ć, š, ž, đ.
+Primjeri: što (ne sto), često (ne cesto), žena (ne zena), zdravlje (ne zdravlje), članak (ne clanak), također (ne takodjer), već (ne vec), moći (ne moci), zdravstveni (ne zdravstveni bez kvacice).
+
+=== META INFORMACIJE (ne uključuj u content_html) ===
 Naslov: {outline.get('title', keyword)}
-Kljucna rijec: {keyword}
+Ključna riječ: {keyword}
 Ciljna duljina: {word_target}
-Tip clanka: {outline.get('article_type', 'guide')}
+Tip članka: {outline.get('article_type', 'guide')}
 Namjera pretrage: {outline.get('search_intent', '')}
 
 === UVOD (koristi ovo kao osnovu za intro polje) ===
@@ -215,72 +218,73 @@ Spomen brenda: {brand_mention}
 === FAQ PITANJA ===
 {faq_text}
 
-=== KLJUCNI ZAKLJUCCI ===
+=== KLJUČNI ZAKLJUČCI ===
 {takeaways_text}
 
-=== INTERNI LINKOVI (obavezno ukljuci u tekst gdje se prirodno uklapa) ===
+=== INTERNI LINKOVI (obavezno uključi u tekst gdje se prirodno uklapa) ===
 {internal_links_text}
 
-{f"=== MOGUCNOST ZA TABELU ==={chr(10)}{table_opportunity}" if table_opportunity else ""}
+{f"=== MOGUĆNOST ZA TABELU ==={chr(10)}{table_opportunity}" if table_opportunity else ""}
 
 === PRAVILA PISANJA (OBAVEZNO SLIJEDITI) ===
 
 FORMAT:
-- Semanticki HTML: <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>, <blockquote>, <table>
-- Ne ukljucuj H1 naslov — samo tijelo clanka
+- Semantički HTML: <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>, <blockquote>, <table>
+- Ne uključuj H1 naslov — samo tijelo članka
 - Kratke sekcije: 1-2 paragrafa ispod svakog H2
-- Kratki paragrafi: 2-4 recenice maksimum
-- Koristiti <ul> liste kada nabrajamo stavke (barem 2 liste u clanku)
+- Kratki paragrafi: 2-4 rečenice maksimum
+- Koristiti <ul> liste kada nabrajamo stavke (barem 2 liste u članku)
 - Koristiti <table> za usporedbe: <table class="zz-table"><thead>...<tbody>...
 
 GLAS I STIL:
-- Pisi kao clan tima ZenskoZdravlje.ba — "mi pratimo", "u nasim clancima", "preporucujemo"
-- Direktan odgovor PRVO, zatim pojasnjenje
-- Svaka recenica mora imati smisao sama po sebi (snippable za AI)
-- Konkretni podaci > opste tvrdnje: "magnezij smanjuje boli za 40%" > "magnezij pomaze"
-- Primjeri i scenariji gdje god je moguce
-- Kad citiras statistiku bez URL-a, navedi izvor u zagradi: (izvor: WHO, 2023)
+- Piši kao član tima ŽenskoZdravlje.ba — "mi pratimo", "u našim člancima", "preporučujemo"
+- Direktan odgovor PRVO, zatim pojašnjenje
+- Svaka rečenica mora imati smisao sama po sebi (snippable za AI)
+- Konkretni podaci > opće tvrdnje: "magnezij smanjuje boli za 40%" > "magnezij pomaže"
+- Primjeri i scenariji gdje god je moguće
+- Kad citiraš statistiku bez URL-a, navedi izvor u zagradi: (izvor: WHO, 2023)
 
 ZABRANA:
 - Bez em-crtica (—) nigdje u tekstu
-- Bez kliseja: "vazno je", "kljucno je", "u danasnje doba", "nije X vec Y"
-- Bez uvodnih fraza: "U ovom clanku...", "Ovaj tekst ce..."
-- Bez izmisljenih statistika — ako nemas podatak, opisi kvalitativno
-- Bez visekratnog ponavljanja kljucne rijeci — koristi sinonime i semanticki slicne termine
+- Bez klišeja: "važno je", "ključno je", "u današnje doba", "nije X već Y"
+- Bez uvodnih fraza: "U ovom članku...", "Ovaj tekst će..."
+- Bez izmišljenih statistika — ako nemaš podatak, opiši kvalitativno
+- Bez višekratnog ponavljanja ključne riječi — koristi sinonime i semantički slične termine
 
 FAQ SEKCIJA:
-- <h2>Cesto postavljana pitanja</h2>
+- <h2>Često postavljana pitanja</h2>
 - Svako pitanje kao <h3>Tekst pitanja?</h3>
-- Odmah ispod: <p>Direktan odgovor u 1-3 recenice.</p>
-- Ne koristiti <ul> unutar FAQ odgovora — cisti tekst
+- Odmah ispod: <p>Direktan odgovor u 1-3 rečenice.</p>
+- Ne koristiti <ul> unutar FAQ odgovora — čisti tekst
 
-KLJUCNI ZAKLJUCCI:
-- <h2>Kljucni zakljucci</h2>
-- <ul> lista s konkretnim, specificnim zakljuccima
+KLJUČNI ZAKLJUČCI:
+- <h2>Ključni zaključci</h2>
+- <ul> lista s konkretnim, specifičnim zaključcima
 
-CTA (kraj clanka):
+CTA (kraj članka):
 - <div class="zz-cta-inline"><p>{cta_text}</p></div>
 
 === SAMOPROVJERA PRIJE OUTPUTA ===
-Prije nego vratis JSON, provjeri:
+Provjeri svaki od ovih uvjeta:
 [ ] Uvod direktno odgovara na "{keyword}" — bez uvijanja
-[ ] Kljucna rijec je prirodno u tekstu, nije forcirana
+[ ] Ključna riječ je prirodno u tekstu, nije forsirana
 [ ] Svaka sekcija je kratka (1-2 paragrafa)
 [ ] Postoje barem 2 liste (<ul>)
-[ ] FAQ pitanja su specificnija od naslova (dugi rep)
+[ ] FAQ pitanja su specifičnija od naslova (dugi rep)
 [ ] Nema em-crtica nigdje
-[ ] Nema AI kliseja
-[ ] Interni linkovi su ukljuceni gdje se prirodno uklapaju
+[ ] Nema AI klišeja
+[ ] Interni linkovi su uključeni gdje se prirodno uklapaju
 [ ] CTA blok je na kraju
+[ ] SVI dijakritički znakovi su ispravni (č, ć, š, ž, đ)
 
 === OUTPUT FORMAT ===
-Vrati ISKLJUCIVO JSON objekat (bez markdown kod blokova, bez objasnjavanja):
+Vrati ISKLJUČIVO JSON objekat (bez markdown kod blokova, bez objašnjavanja):
 
 {{
-  "intro": "2-3 samoodrzive recenice koje direktno odgovaraju na '{keyword}'. Ovo se prikazuje prominentno iznad clanka. Ukljuci spomen ZenskoZdravlje.ba tima gdje prirodno.",
-  "content_html": "<p>Kompletan HTML sadrzaj clanka...</p>",
+  "intro": "2-3 samoodržive rečenice koje direktno odgovaraju na '{keyword}'. Ovo se prikazuje prominentno iznad članka. Uključi spomen ŽenskoZdravlje.ba tima gdje prirodno.",
+  "content_html": "<p>Kompletan HTML sadržaj članka...</p>",
   "faq_json": [
-    {{"question": "Specificno pitanje?", "answer": "Direktan odgovor u 1-3 recenice."}},
+    {{"question": "Specifično pitanje?", "answer": "Direktan odgovor u 1-3 rečenice."}},
     {{"question": "Pitanje 2?", "answer": "Odgovor."}}
   ]
 }}"""

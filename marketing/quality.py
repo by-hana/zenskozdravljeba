@@ -51,7 +51,7 @@ def score_article(content_html: str, keyword: str = '', faq_json=None, intro: st
 
     # 1. Word count (30 points)
     if is_pillar:
-        target_min, target_max = 2500, 3500
+        target_min, target_max = 2000, 3500
     else:
         target_min, target_max = 1200, 2000
 

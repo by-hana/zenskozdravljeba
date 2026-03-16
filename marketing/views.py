@@ -10,10 +10,28 @@ def marketing_home(request):
     nav = NavMenu.objects.filter(name='Primary').first()
     footer = Footer.objects.first()
     recent_posts = [p for p in Post.objects.filter(status__in=['published', 'scheduled']).order_by('-publish_at')[:3] if p.is_published]
+
+    # Latest AI posts for the homepage
+    latest_ai_posts = list(BlogPost.objects.filter(status='published').order_by('-published_at')[:6])
+
+    # Category spotlight sections: pick 3 clusters with the most published posts
+    spotlight_clusters = [
+        {'cluster': 'hormoni-menstrualni-ciklus', 'name': 'Hormoni i menstrualni ciklus', 'url': '/kategorija/hormoni-menstrualni-ciklus/'},
+        {'cluster': 'pcos-hormonski-poremecaji',  'name': 'PCOS i hormonski poremećaji',  'url': '/kategorija/pcos-i-hormonski-poremecaji/'},
+        {'cluster': 'ginekolosko-zdravlje',        'name': 'Ginekološko zdravlje',          'url': '/kategorija/ginekolosko-zdravlje/'},
+    ]
+    for spot in spotlight_clusters:
+        spot['posts'] = list(
+            BlogPost.objects.filter(status='published', cluster=spot['cluster'])
+            .order_by('-published_at')[:4]
+        )
+
     return render(request, 'marketing/home.html', {
         'nav_menu': nav,
         'footer': footer,
         'recent_posts': recent_posts,
+        'latest_ai_posts': latest_ai_posts,
+        'spotlight_clusters': spotlight_clusters,
         'seo': {
             'title': 'ZenskoZdravlje.ba: Reproduktivno zdravlje, Ginekologija, Hormoni i Mentalno zdravlje',
             'description': 'Besplatni informativni portal o zenskom zdravlju. Strucni clanci o hormonima, menstrualnom ciklusu, PCOS-u, ginekologiji, trudnoci, ishrani, suplementima i mentalnom zdravlju.',

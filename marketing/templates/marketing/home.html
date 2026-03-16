@@ -341,68 +341,58 @@
       <a href="/blog/" class="hp-all-link">Svi članci &rarr;</a>
     </div>
 
-    {% if recent_posts %}
-      {% with remaining=recent_posts|slice:"1:" %}
-      {% if remaining %}
-      <div class="hp-articles-grid">
-        {% for post in remaining %}
-        <article class="hp-article-card">
-          <div class="hp-article-img">
-            {% if post.cover_image %}
-              <img src="{{ post.cover_image }}" alt="{{ post.title }}" loading="lazy">
-            {% else %}
-              <div class="hp-article-placeholder">&#9792;</div>
-            {% endif %}
+    {% if latest_ai_posts %}
+    <div class="hp-articles-grid">
+      {% for post in latest_ai_posts %}
+      <article class="hp-article-card">
+        <div class="hp-article-img">
+          <img src="{% static 'images/ilustracija-' %}{{ post.cluster }}.svg" alt="{{ post.title }}" loading="lazy">
+        </div>
+        <div class="hp-article-body">
+          {% if post.cluster %}
+          <div class="hp-article-cat">{{ post.cluster|title }}</div>
+          {% endif %}
+          <h3 class="hp-article-title">
+            <a href="/blog/{{ post.slug }}/">{{ post.title }}</a>
+          </h3>
+          <p class="hp-article-excerpt">{{ post.intro|truncatechars:120 }}</p>
+          <div class="hp-article-meta">
+            <span>ŽenskoZdravlje.ba Tim</span>
+            {% if post.published_at %}<span>{{ post.published_at|date:"d.m.Y" }}</span>{% endif %}
           </div>
-          <div class="hp-article-body">
-            {% if post.categories.all %}
-            <div class="hp-article-cat">
-              {% for cat in post.categories.all %}{{ cat.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
-            </div>
-            {% endif %}
-            <h3 class="hp-article-title">
-              <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-            </h3>
-            <p class="hp-article-excerpt">{{ post.computed_excerpt|truncatechars:120 }}</p>
-            <div class="hp-article-meta">
-              <span>{% if post.author_name %}{{ post.author_name }}{% endif %}</span>
-              {% if post.publish_at %}<span>{{ post.publish_at|date:"d.m.Y" }}</span>{% endif %}
-            </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% elif recent_posts %}
+    <div class="hp-articles-grid">
+      {% for post in recent_posts %}
+      <article class="hp-article-card">
+        <div class="hp-article-img">
+          {% if post.cover_image %}
+            <img src="{{ post.cover_image }}" alt="{{ post.title }}" loading="lazy">
+          {% else %}
+            <div class="hp-article-placeholder">&#9792;</div>
+          {% endif %}
+        </div>
+        <div class="hp-article-body">
+          {% if post.categories.all %}
+          <div class="hp-article-cat">
+            {% for cat in post.categories.all %}{{ cat.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
           </div>
-        </article>
-        {% endfor %}
-      </div>
-      {% else %}
-      <div class="hp-articles-grid">
-        {% for post in recent_posts %}
-        <article class="hp-article-card">
-          <div class="hp-article-img">
-            {% if post.cover_image %}
-              <img src="{{ post.cover_image }}" alt="{{ post.title }}" loading="lazy">
-            {% else %}
-              <div class="hp-article-placeholder">&#9792;</div>
-            {% endif %}
+          {% endif %}
+          <h3 class="hp-article-title">
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+          </h3>
+          <p class="hp-article-excerpt">{{ post.computed_excerpt|truncatechars:120 }}</p>
+          <div class="hp-article-meta">
+            <span>{% if post.author_name %}{{ post.author_name }}{% endif %}</span>
+            {% if post.publish_at %}<span>{{ post.publish_at|date:"d.m.Y" }}</span>{% endif %}
           </div>
-          <div class="hp-article-body">
-            {% if post.categories.all %}
-            <div class="hp-article-cat">
-              {% for cat in post.categories.all %}{{ cat.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
-            </div>
-            {% endif %}
-            <h3 class="hp-article-title">
-              <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-            </h3>
-            <p class="hp-article-excerpt">{{ post.computed_excerpt|truncatechars:120 }}</p>
-            <div class="hp-article-meta">
-              <span>{% if post.author_name %}{{ post.author_name }}{% endif %}</span>
-              {% if post.publish_at %}<span>{{ post.publish_at|date:"d.m.Y" }}</span>{% endif %}
-            </div>
-          </div>
-        </article>
-        {% endfor %}
-      </div>
-      {% endif %}
-      {% endwith %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
     {% else %}
     <div style="text-align:center;padding:3rem 0;color:#8A8299;">
       <p>Uskoro ćemo objaviti prve članke. Pratite nas!</p>
@@ -411,6 +401,42 @@
     {% endif %}
   </div>
 </section>
+
+<!-- ─── Category Spotlight Sections ─────────────────────── -->
+{% if spotlight_clusters %}
+{% for spot in spotlight_clusters %}
+{% if spot.posts %}
+<section class="hp-spotlight {% cycle 'hp-spotlight-a' 'hp-spotlight-b' 'hp-spotlight-a' %}">
+  <div class="hp-spotlight-inner">
+
+    <!-- Illustration side -->
+    <div class="hp-spotlight-visual">
+      <div class="hp-spotlight-img-wrap">
+        <img src="{% static 'images/ilustracija-' %}{{ spot.cluster }}.svg" alt="{{ spot.name }}" loading="lazy">
+      </div>
+    </div>
+
+    <!-- Articles side -->
+    <div class="hp-spotlight-content">
+      <div class="hp-spotlight-label">Kategorija</div>
+      <h2 class="hp-spotlight-title">{{ spot.name }}</h2>
+      <ul class="hp-spot-list">
+        {% for post in spot.posts %}
+        <li class="hp-spot-list-item">
+          {% if post.is_pillar %}<span class="hp-spot-badge">Vodič</span>{% endif %}
+          <a href="/blog/{{ post.slug }}/" class="hp-spot-list-title">{{ post.title }}</a>
+          <p class="hp-spot-list-excerpt">{{ post.intro|truncatechars:90 }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+      <a href="{{ spot.url }}" class="hp-spot-cta">Svi članci iz kategorije &rarr;</a>
+    </div>
+
+  </div>
+</section>
+{% endif %}
+{% endfor %}
+{% endif %}
 
 <!-- ─── FAQ Strip ────────────────────────────────────────── -->
 <section class="hp-faq-strip">
