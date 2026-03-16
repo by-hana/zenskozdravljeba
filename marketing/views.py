@@ -148,11 +148,17 @@ def category_archive(request, slug):
     category = get_object_or_404(Category, slug=slug)
     posts_qs = Post.objects.filter(status__in=['published', 'scheduled'], categories=category).order_by('-publish_at')
     posts = [p for p in posts_qs if p.is_published]
+
+    # Also include AI BlogPosts for this category's cluster
+    cluster_slug = _CATEGORY_TO_CLUSTER.get(slug, slug)
+    ai_posts = list(BlogPost.objects.filter(status='published', cluster=cluster_slug).order_by('-published_at'))
+
     nav = NavMenu.objects.filter(name='Primary').first()
     footer = Footer.objects.first()
     return render(request, 'marketing/category.html', {
         'category': category,
         'posts': posts,
+        'ai_posts': ai_posts,
         'nav_menu': nav,
         'footer': footer,
         'seo': {

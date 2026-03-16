@@ -57,21 +57,21 @@
   <span>{{ category.name }}</span>
 </nav>
 
+{% load static %}
 <!-- Category Hero -->
 <div class="cms-blog-hero">
   <h1>{{ category.name }}</h1>
   <p>
-    {% if posts %}
-      {{ posts|length }} član{% if posts|length == 1 %}ak{% elif posts|length < 5 %}ka{% else %}aka{% endif %} u ovoj kategoriji
-    {% else %}
-      Članci o temi {{ category.name }}
-    {% endif %}
+    {% with total=posts|length|add:ai_posts|length %}
+      {% if total %}{{ total }} član{% if total == 1 %}ak{% elif total < 5 %}ka{% else %}aka{% endif %} u ovoj kategoriji{% else %}Članci o temi {{ category.name }}{% endif %}
+    {% endwith %}
   </p>
 </div>
 
 <!-- Post Grid -->
-{% if posts %}
+{% if posts or ai_posts %}
 <div class="cms-post-grid">
+
   {% for post in posts %}
   <article class="cms-post-card">
     {% if post.cover_image %}
@@ -81,7 +81,6 @@
     {% else %}
     <div class="cms-post-card-img-placeholder">&#9792;</div>
     {% endif %}
-
     <div class="cms-post-card-body">
       {% if post.categories.all %}
       <div class="cms-post-card-cats">
@@ -90,13 +89,10 @@
         {% endfor %}
       </div>
       {% endif %}
-
       <h2 class="cms-post-card-title">
         <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
       </h2>
-
       <p class="cms-post-card-excerpt">{{ post.computed_excerpt|truncatechars:140 }}</p>
-
       <div class="cms-post-card-footer">
         <span>{% if post.author_name %}{{ post.author_name }}{% endif %}</span>
         <a href="{{ post.get_absolute_url }}" class="cms-post-card-read-more">Čitaj više &rarr;</a>
@@ -104,6 +100,28 @@
     </div>
   </article>
   {% endfor %}
+
+  {% for post in ai_posts %}
+  <article class="cms-post-card">
+    <div class="cms-post-card-img">
+      <img src="{% static 'images/ilustracija-' %}{{ post.cluster }}.svg" alt="{{ post.title }}" loading="lazy">
+    </div>
+    <div class="cms-post-card-body">
+      {% if post.is_pillar %}
+      <div class="cms-post-card-cats"><span class="cms-post-cat-badge">Vodič</span></div>
+      {% endif %}
+      <h2 class="cms-post-card-title">
+        <a href="/blog/{{ post.slug }}/">{{ post.title }}</a>
+      </h2>
+      <p class="cms-post-card-excerpt">{{ post.intro|truncatechars:140 }}</p>
+      <div class="cms-post-card-footer">
+        <span>ŽenskoZdravlje.ba Tim</span>
+        <a href="/blog/{{ post.slug }}/" class="cms-post-card-read-more">Čitaj više &rarr;</a>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+
 </div>
 {% else %}
 <div style="text-align:center;padding:5rem 2rem;color:var(--d-gray-500);">
