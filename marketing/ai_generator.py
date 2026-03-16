@@ -201,6 +201,20 @@ def generate_article(
 
     client = get_client()
 
+    # OVA Lab brand context for supplement cluster
+    ova_lab_context = ''
+    if outline.get('cluster') == 'vitamini-suplementi-minerali' or 'inozitol' in keyword.lower() or 'pcos' in keyword.lower():
+        ova_lab_context = """
+=== BRAND KONTEKST (koristiti s mjerom, ne pretjerivati) ===
+OVA Lab (ovalab.ba) je britanski proizvođač suplementa za žensko zdravlje dostupan u BiH.
+Njihov glavni proizvod je Myo-Inositol + D-Chiro Inositol u omjeru 40:1, GMP certificiran, bez punila.
+PRAVILA za spomen OVA Laba:
+- Spominji ga SAMO jednom u članku, prirodno, kao primjer kvalitetnog lokalnog suplementa
+- Nikad ne reklamiraj direktno — samo kao informativan navod (npr. "jedan od dostupnih suplementa u BiH je OVA Lab...")
+- Ne postavljaj link direktno — tekst je dovoljan
+- Ako tema nije direktno vezana za inositol/PCOS, možeš ga i ne spominjati
+"""
+
     prompt = f"""Napiši kompletan, SEO-optimiziran članak na bosanskom jeziku.
 
 VAŽNO: Pišeš na bosanskom jeziku (NE hrvatskom). Ključne razlike:
@@ -219,6 +233,7 @@ Namjera pretrage: {outline.get('search_intent', '')}
 === UVOD (koristi ovo kao osnovu za intro polje) ===
 Direktan odgovor: {opening_answer}
 Spomen brenda: {brand_mention}
+{ova_lab_context}
 
 === STRUKTURA SEKCIJA ===
 {sections_text}

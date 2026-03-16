@@ -77,7 +77,15 @@ class Command(BaseCommand):
         if options['pillars_only']:
             posts_to_generate = [p for p in posts_to_generate if p['is_pillar']]
 
-        # Limit count
+        # Filter out existing posts (unless --force) before applying count
+        if not options.get('force'):
+            existing_slugs = set(BlogPost.objects.values_list('slug', flat=True))
+            posts_to_generate = [
+                p for p in posts_to_generate
+                if slugify(p['keyword']) not in existing_slugs
+            ]
+
+        # Limit count (applied after filtering existing, so --count 5 = 5 new posts)
         if options['count']:
             posts_to_generate = posts_to_generate[:options['count']]
 
@@ -122,6 +130,7 @@ class Command(BaseCommand):
                 # Step 1: Generate outline
                 self.stdout.write(f"  Step 1: Generating outline...")
                 outline = generate_outline(keyword, cluster, is_pillar)
+                outline['cluster'] = cluster  # pass cluster to article generator
                 time.sleep(RATE_LIMIT_SLEEP)
 
                 # Get pillar info for internal links
