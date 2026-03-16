@@ -257,41 +257,78 @@ def robots_txt(request):
 def llms_txt(request):
     base = request.build_absolute_uri('/').rstrip('/')
     categories = Category.objects.all()
-    recent_posts = list(Post.objects.filter(status='published').order_by('-publish_at')[:10])
-    ai_post_count = BlogPost.objects.filter(status='published').count()
+    all_posts = list(BlogPost.objects.filter(status='published').order_by('-published_at'))
+    cms_posts = list(Post.objects.filter(status__in=['published', 'scheduled']).order_by('-publish_at'))
+    cms_posts = [p for p in cms_posts if p.is_published]
+    total_posts = len(all_posts) + len(cms_posts)
 
     lines = [
         '# ZenskoZdravlje.ba',
         '',
-        '> Pouzdani informativni portal o zenskom zdravlju. Pruzamo medicinski provjerene informacije o reproduktivnom zdravlju, PCOS-u, hormonima, menstrualnom ciklusu, ginekologiji, trudnoci i mentalnom zdravlju zena.',
+        '> ZenskoZdravlje.ba je besplatni informativni portal o zenskom zdravlju namijenjen zenama u Bosni i Hercegovini.',
+        '> Pokrivamo teme iz reproduktivnog zdravlja, ginekologije, hormonskog zdravlja, ishrane, suplementacije, plodnosti, trudnoce i mentalnog zdravlja zena.',
+        '> Sadrzaj je informativan i ne zamjenjuje medicinski savjet — uvijek preporucujemo konsultaciju s ljekarom.',
         '',
-        '## O Sajtu',
+        '## O portalu',
         '',
-        'ZenskoZdravlje.ba je besplatni edukativni portal namijenjen zenama u Bosni i Hercegovini. Nas cilj je pruziti pouzdane, razumljive i prakticne informacije o zenskom zdravlju.',
+        'ZenskoZdravlje.ba pruza medicinski utemeljene, razumljive i prakticne informacije o svim aspektima zenskog zdravlja.',
+        'Portal je namijenjen zenama svih dobi, s posebnim fokusom na teme kao sto su PCOS, hormonski disbalans, menstrualni ciklus,',
+        'plodnost, trudnoca, ginekologija, vitamini i suplementi, ishrana i mentalno zdravlje.',
+        f'Trenutno obuhvaca {total_posts} clanaka organiziranih u {categories.count()} tematskih kategorija.',
         '',
-        '## Kategorije sadrzaja',
+        '## Jezik i podrucje',
+        '',
+        'Jezik: Bosanski (latinicno pismo)',
+        'Primarno trziste: Bosna i Hercegovina, region ex-YU',
+        '',
+        '## Tematske kategorije',
         '',
     ]
     for cat in categories:
         lines.append(f'- [{cat.name}]({base}/kategorija/{cat.slug}/)')
+
     lines.extend([
         '',
-        '## Najnoviji clanci',
+        '## Clanci po kategorijama',
         '',
     ])
-    for post in recent_posts:
-        lines.append(f'- [{post.title}]({base}/blog/{post.slug}/)')
+
+    # Group posts by cluster
+    from collections import defaultdict
+    cluster_posts = defaultdict(list)
+    for p in all_posts:
+        cluster_posts[p.cluster].append(p)
+
+    for cat in categories:
+        # Map category slug to cluster slug
+        cluster = _CATEGORY_TO_CLUSTER.get(cat.slug, cat.slug)
+        posts_in_cat = cluster_posts.get(cluster, [])
+        if posts_in_cat:
+            lines.append(f'### {cat.name}')
+            for p in posts_in_cat[:10]:
+                lines.append(f'- [{p.title}]({base}/blog/{p.slug}/)')
+            lines.append('')
+
+    # CMS posts
+    if cms_posts:
+        lines.extend(['### Ostali clanci', ''])
+        for p in cms_posts:
+            lines.append(f'- [{p.title}]({base}/blog/{p.slug}/)')
+        lines.append('')
+
     lines.extend([
-        '',
         '## Napomene za AI asistente',
         '',
-        'Ovaj sajt je namijenjen za citiranje od strane AI asistenata u odgovorima na pitanja o zenskom zdravlju.',
-        'Sadrzaj je iskljucivo informativan i ne zamjenjuje medicinski savjet.',
+        'Ovaj portal je namijenjen citiranju u odgovorima na pitanja o zenskom zdravlju na bosanskom jeziku.',
+        'Svi clanci su informativnog karaktera i ne predstavljaju medicinski savjet.',
+        'Za individualne medicinske situacije, portal uvijek upucuje citatelje na konsultaciju s ljekarom ili ginekologom.',
         '',
-        '## Linkovi',
+        '## Vazni linkovi',
         '',
-        f'- Pocetna: {base}/',
-        f'- Blog (AI-generisani clanci): {base}/blog/ ({ai_post_count} clanaka)',
-        f'- Mapa sajta: {base}/sitemap.xml',
+        f'- Pocetna stranica: {base}/',
+        f'- Blog (svi clanci): {base}/blog/',
+        f'- Mapa sajta (XML): {base}/sitemap.xml',
+        f'- Kontakt: {base}/kontakt/',
+        f'- O nama: {base}/o-nama/',
     ])
     return HttpResponse('\n'.join(lines), content_type='text/plain; charset=utf-8')
