@@ -42,8 +42,13 @@ IDENTITET I GLAS:
 - Budi konkretna — brojevi, statistike, primjeri su vrijedniji od općih tvrdnji
 
 JEZIK I FORMAT:
+- Pišeš na BOSANSKOM jeziku, NE hrvatskom. Postoje važne razlike:
+  * šta (bosanski) NE što (hrvatsko) — npr. "Šta je PCOS?" ne "Što je PCOS?"
+  * ljekar (bosanski) NE liječnik (hrvatsko)
+  * nekad (bosanski) NE ponekad (previše hrvatsko)
+  * doktor/doktorica (bosanski, informalno)
 - OBAVEZNO koristi bosanska slova s dijakritičkim znakovima: č, ć, š, ž, đ
-- Svaka riječ koja zahtijeva dijakritik MORA ga imati: što (ne sto), često (ne cesto), žena (ne zena), zdravlje (ne zdravlje), članak (ne clanak), stručni (ne strucni), također (ne takodjer)
+- Svaka riječ koja zahtijeva dijakritik MORA ga imati: šta (ne sta), često (ne cesto), žena (ne zena), članak (ne clanak), stručni (ne strucni), već (ne vec), moći (ne moci)
 - ISKLJUČIVO bosanski latinični pismo — nikad ćirilica, nikad engleski sadržaj
 - Kratke rečenice. Kratki paragrafi (2-4 rečenice max)
 - Svaka rečenica treba imati smisao i ako se izvuče iz konteksta
@@ -198,8 +203,11 @@ def generate_article(
 
     prompt = f"""Napiši kompletan, SEO-optimiziran članak na bosanskom jeziku.
 
-VAŽNO: Koristi bosanska slova s dijakritičkim znakovima u cijelom tekstu: č, ć, š, ž, đ.
-Primjeri: što (ne sto), često (ne cesto), žena (ne zena), zdravlje (ne zdravlje), članak (ne clanak), također (ne takodjer), već (ne vec), moći (ne moci), zdravstveni (ne zdravstveni bez kvacice).
+VAŽNO: Pišeš na bosanskom jeziku (NE hrvatskom). Ključne razlike:
+- šta (ne što) — bosanski upitni oblik
+- ljekar (ne liječnik) — bosanski termin
+- Dijakritički znakovi OBAVEZNO: č, ć, š, ž, đ
+- Primjeri: šta (ne sto/što), često (ne cesto), žena (ne zena), članak (ne clanak), već (ne vec), moći (ne moci).
 
 === META INFORMACIJE (ne uključuj u content_html) ===
 Naslov: {outline.get('title', keyword)}
