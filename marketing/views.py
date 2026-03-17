@@ -83,12 +83,22 @@ def blog_index(request):
         ai_posts_qs = ai_posts_qs.filter(cluster=cluster_slug)
 
     categories = Category.objects.all()
+
+    # Build cluster → Category lookup for badge display
+    cluster_cat_map = {}
+    for cat in categories:
+        cluster = _CATEGORY_TO_CLUSTER.get(cat.slug, cat.slug)
+        cluster_cat_map[cluster] = cat
+    ai_posts = list(ai_posts_qs)
+    for p in ai_posts:
+        p.cluster_category = cluster_cat_map.get(p.cluster)
+
     nav = NavMenu.objects.filter(name='Primary').first()
     footer = Footer.objects.first()
 
     return render(request, 'marketing/blog_index.html', {
         'posts': posts,
-        'ai_posts': list(ai_posts_qs),
+        'ai_posts': ai_posts,
         'categories': categories,
         'active_category': category_slug,
         'nav_menu': nav,

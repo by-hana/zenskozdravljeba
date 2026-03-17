@@ -1,4 +1,5 @@
 {% extends "marketing/base.html" %}
+{% load static %}
 
 {% block title %}Blog o ženskom zdravlju — ŽenskoZdravlje.ba{% endblock %}
 
@@ -78,14 +79,19 @@
 
   {% for post in ai_posts %}
   <article class="cms-post-card">
-    {% load static %}
+    {% with "images/ilustracija-"|add:post.cluster|add:".svg" as img_path %}
     <div class="cms-post-card-img">
-      <img src="{% static 'images/ilustracija-' %}{{ post.cluster }}.svg" alt="{{ post.title }}" loading="lazy">
+      <img src="{% static img_path %}" alt="{{ post.title }}" loading="lazy">
     </div>
+    {% endwith %}
     <div class="cms-post-card-body">
-      {% if post.cluster %}
+      {% if post.cluster_category %}
       <div class="cms-post-card-cats">
-        <a href="/blog/?category={{ post.cluster }}" class="cms-post-cat-badge">{{ post.cluster|title }}</a>
+        <a href="/blog/?category={{ post.cluster_category.slug }}" class="cms-post-cat-badge">{{ post.cluster_category.name }}</a>
+      </div>
+      {% elif post.cluster %}
+      <div class="cms-post-card-cats">
+        <a href="/blog/?category={{ post.cluster }}" class="cms-post-cat-badge">{{ post.cluster }}</a>
       </div>
       {% endif %}
       <h2 class="cms-post-card-title">
