@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var REVEAL_THRESHOLD = 0.12;
+  var REVEAL_THRESHOLD = 0.01;
   var REVEAL_ROOT_MARGIN = '0px 0px -40px 0px';
   var STAGGER_DELAY = 80;
 
@@ -73,7 +73,7 @@
       '.cms-prose', '.cms-callout', '.cms-cta', '.cms-feature-grid',
       '.cms-comparison', '.cms-table', '.cms-faq', '.cms-quote',
       '.cms-logo-cloud', '.cms-pricing', '.cms-gallery-wrap',
-      '.cms-post-cover', '.cms-post-card', '.cms-blog-hero',
+      '.cms-post-cover', '.cms-blog-hero',
     ];
 
     var all = document.querySelectorAll(selectors.join(','));

@@ -45,68 +45,92 @@
 {% endif %}
 
 <!-- Post Grid -->
-{% if posts or ai_posts %}
+{% if page_obj.object_list %}
 <div class="cms-post-grid">
 
-  {% for post in posts %}
+  {% for post in page_obj.object_list %}
   <article class="cms-post-card">
-    {% if post.cover_image %}
-    <div class="cms-post-card-img">
-      <img src="{{ post.cover_image }}" alt="{{ post.title }}" loading="lazy">
-    </div>
+    {% if post.is_ai %}
+      {% with "images/ilustracija-"|add:post.cluster|add:".svg" as img_path %}
+      <div class="cms-post-card-img">
+        <img src="{% static img_path %}" alt="{{ post.title }}" loading="lazy">
+      </div>
+      {% endwith %}
+      <div class="cms-post-card-body">
+        {% if post.cluster_category %}
+        <div class="cms-post-card-cats">
+          <a href="/blog/?category={{ post.cluster_category.slug }}" class="cms-post-cat-badge">{{ post.cluster_category.name }}</a>
+        </div>
+        {% elif post.cluster %}
+        <div class="cms-post-card-cats">
+          <a href="/blog/?category={{ post.cluster }}" class="cms-post-cat-badge">{{ post.cluster }}</a>
+        </div>
+        {% endif %}
+        <h2 class="cms-post-card-title">
+          <a href="/blog/{{ post.slug }}/">{{ post.title }}</a>
+        </h2>
+        <p class="cms-post-card-excerpt">{{ post.intro|truncatechars:140 }}</p>
+        <div class="cms-post-card-footer">
+          <span>ŽenskoZdravlje.ba Tim</span>
+          <a href="/blog/{{ post.slug }}/" class="cms-post-card-read-more">Čitaj više &rarr;</a>
+        </div>
+      </div>
     {% else %}
-    <div class="cms-post-card-img-placeholder">&#9792;</div>
+      {% if post.cover_image %}
+      <div class="cms-post-card-img">
+        <img src="{{ post.cover_image }}" alt="{{ post.title }}" loading="lazy">
+      </div>
+      {% else %}
+      <div class="cms-post-card-img-placeholder">&#9792;</div>
+      {% endif %}
+      <div class="cms-post-card-body">
+        {% if post.categories.all %}
+        <div class="cms-post-card-cats">
+          {% for cat in post.categories.all %}
+          <a href="/blog/?category={{ cat.slug }}" class="cms-post-cat-badge">{{ cat.name }}</a>
+          {% endfor %}
+        </div>
+        {% endif %}
+        <h2 class="cms-post-card-title">
+          <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </h2>
+        <p class="cms-post-card-excerpt">{{ post.computed_excerpt|truncatechars:140 }}</p>
+        <div class="cms-post-card-footer">
+          <span>{% if post.author_name %}{{ post.author_name }}{% endif %}</span>
+          <a href="{{ post.get_absolute_url }}" class="cms-post-card-read-more">Čitaj više &rarr;</a>
+        </div>
+      </div>
     {% endif %}
-    <div class="cms-post-card-body">
-      {% if post.categories.all %}
-      <div class="cms-post-card-cats">
-        {% for cat in post.categories.all %}
-        <a href="/blog/?category={{ cat.slug }}" class="cms-post-cat-badge">{{ cat.name }}</a>
-        {% endfor %}
-      </div>
-      {% endif %}
-      <h2 class="cms-post-card-title">
-        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-      </h2>
-      <p class="cms-post-card-excerpt">{{ post.computed_excerpt|truncatechars:140 }}</p>
-      <div class="cms-post-card-footer">
-        <span>{% if post.author_name %}{{ post.author_name }}{% endif %}</span>
-        <a href="{{ post.get_absolute_url }}" class="cms-post-card-read-more">Čitaj više &rarr;</a>
-      </div>
-    </div>
-  </article>
-  {% endfor %}
-
-  {% for post in ai_posts %}
-  <article class="cms-post-card">
-    {% with "images/ilustracija-"|add:post.cluster|add:".svg" as img_path %}
-    <div class="cms-post-card-img">
-      <img src="{% static img_path %}" alt="{{ post.title }}" loading="lazy">
-    </div>
-    {% endwith %}
-    <div class="cms-post-card-body">
-      {% if post.cluster_category %}
-      <div class="cms-post-card-cats">
-        <a href="/blog/?category={{ post.cluster_category.slug }}" class="cms-post-cat-badge">{{ post.cluster_category.name }}</a>
-      </div>
-      {% elif post.cluster %}
-      <div class="cms-post-card-cats">
-        <a href="/blog/?category={{ post.cluster }}" class="cms-post-cat-badge">{{ post.cluster }}</a>
-      </div>
-      {% endif %}
-      <h2 class="cms-post-card-title">
-        <a href="/blog/{{ post.slug }}/">{{ post.title }}</a>
-      </h2>
-      <p class="cms-post-card-excerpt">{{ post.intro|truncatechars:140 }}</p>
-      <div class="cms-post-card-footer">
-        <span>ŽenskoZdravlje.ba Tim</span>
-        <a href="/blog/{{ post.slug }}/" class="cms-post-card-read-more">Čitaj više &rarr;</a>
-      </div>
-    </div>
   </article>
   {% endfor %}
 
 </div>
+
+<!-- Pagination -->
+{% if page_obj.paginator.num_pages > 1 %}
+<nav class="blog-pagination" aria-label="Stranice">
+  {% if page_obj.has_previous %}
+    {% if page_obj.previous_page_number == 1 %}
+      <a href="/blog/" class="blog-pagination-link">&larr; Prethodna</a>
+    {% else %}
+      <a href="/blog/page/{{ page_obj.previous_page_number }}/" class="blog-pagination-link">&larr; Prethodna</a>
+    {% endif %}
+  {% else %}
+    <span class="blog-pagination-link disabled">&larr; Prethodna</span>
+  {% endif %}
+
+  <span class="blog-pagination-info">
+    Stranica {{ page_obj.number }} od {{ page_obj.paginator.num_pages }}
+  </span>
+
+  {% if page_obj.has_next %}
+    <a href="/blog/page/{{ page_obj.next_page_number }}/" class="blog-pagination-link">Sljedeća &rarr;</a>
+  {% else %}
+    <span class="blog-pagination-link disabled">Sljedeća &rarr;</span>
+  {% endif %}
+</nav>
+{% endif %}
+
 {% else %}
 <div style="text-align:center;padding:4rem 2rem;color:var(--d-gray-500);">
   <p style="font-size:1.1rem;">Još nema članaka u ovoj kategoriji.</p>

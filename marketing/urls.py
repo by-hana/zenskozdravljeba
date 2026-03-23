@@ -10,6 +10,7 @@ urlpatterns = [
     path('robots.txt', views.robots_txt, name='robots-txt'),
     path('llms.txt', views.llms_txt, name='llms-txt'),
     path('blog/', views.blog_index, name='marketing-blog-index'),
+    path('blog/page/<int:page_num>/', views.blog_index, name='marketing-blog-index-page'),
     path('blog/<slug:slug>/', views.blog_post_detail, name='marketing-blog-post'),
     path('kategorija/<slug:slug>/', views.category_archive, name='marketing-category'),
     path('cms/', cms_views.dashboard, name='cms-dashboard'),

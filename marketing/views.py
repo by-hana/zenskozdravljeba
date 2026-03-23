@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.http import Http404, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
@@ -67,14 +68,17 @@ _CLUSTER_TO_CATEGORY = {
 _CATEGORY_TO_CLUSTER = {v: k for k, v in _CLUSTER_TO_CATEGORY.items()}
 
 
-def blog_index(request):
+BLOG_PAGE_SIZE = 10
+
+
+def blog_index(request, page_num=1):
     category_slug = request.GET.get('category', '')
 
     # Existing Post objects
     posts_qs = Post.objects.filter(status__in=['published', 'scheduled']).order_by('-publish_at')
     if category_slug:
         posts_qs = posts_qs.filter(categories__slug=category_slug)
-    posts = [post for post in posts_qs if post.is_published]
+    legacy_posts = [post for post in posts_qs if post.is_published]
 
     # AI BlogPost objects — match by cluster when a category is selected
     ai_posts_qs = BlogPost.objects.filter(status='published').order_by('-published_at')
@@ -89,26 +93,45 @@ def blog_index(request):
     for cat in categories:
         cluster = _CATEGORY_TO_CLUSTER.get(cat.slug, cat.slug)
         cluster_cat_map[cluster] = cat
-    ai_posts = list(ai_posts_qs)
-    for p in ai_posts:
+
+    # Merge legacy posts and AI posts into one list, legacy first
+    all_ai = list(ai_posts_qs)
+    for p in all_ai:
         p.cluster_category = cluster_cat_map.get(p.cluster)
+        p.is_ai = True
+    for p in legacy_posts:
+        p.is_ai = False
+    all_posts = legacy_posts + all_ai
+
+    paginator = Paginator(all_posts, BLOG_PAGE_SIZE)
+    if page_num < 1 or (paginator.num_pages > 0 and page_num > paginator.num_pages):
+        raise Http404()
+    page_obj = paginator.get_page(page_num)
 
     nav = NavMenu.objects.filter(name='Primary').first()
     footer = Footer.objects.first()
 
+    if page_num > 1:
+        seo_title = f'Blog o ženskom zdravlju — stranica {page_num} | ŽenskoZdravlje.ba'
+        canonical = f'/blog/page/{page_num}/'
+    else:
+        seo_title = 'Blog o ženskom zdravlju | ŽenskoZdravlje.ba'
+        canonical = '/blog/'
+
     return render(request, 'marketing/blog_index.html', {
-        'posts': posts,
-        'ai_posts': ai_posts,
+        'page_obj': page_obj,
         'categories': categories,
         'active_category': category_slug,
         'nav_menu': nav,
         'footer': footer,
+        'current_page_num': page_num,
         'seo': {
-            'title': 'Blog o ženskom zdravlju | ŽenskoZdravlje.ba',
+            'title': seo_title,
             'description': 'Stručni članci i informacije o ženskom zdravlju: PCOS, hormoni, ginekologija, trudnoća, ishrana i mentalno zdravlje.',
-            'og_title': 'Blog o ženskom zdravlju | ŽenskoZdravlje.ba',
+            'og_title': seo_title,
             'og_description': 'Stručni članci o ženskom zdravlju: PCOS, hormoni, ginekologija, trudnoća i mentalno zdravlje.',
             'image': None,
+            'url': f'https://www.zenskozdravljeba.com{canonical}',
         },
     })
 
